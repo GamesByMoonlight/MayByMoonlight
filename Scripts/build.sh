@@ -1,6 +1,6 @@
 #! /bin/sh
 
-ls -LR /Applications/Unity/
+# ls -LR /Applications/Unity/
 echo "Attempting to build for Windows"
 /Applications/Unity//Unity.app/Contents/MacOS/Unity \
   -silent-crashes \
