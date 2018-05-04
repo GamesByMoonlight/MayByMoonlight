@@ -2,7 +2,7 @@
 
 ls -LR /Applications/Unity/
 echo "Attempting to build for Windows"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+/Applications/Unity//Unity.app/Contents/MacOS/Unity \
   -silent-crashes \
   -batchmode \
   -nographics \
@@ -12,7 +12,7 @@ echo "Attempting to build for Windows"
   -quit
 
   echo "Attempting to build for OSX"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+/Applications/Unity//Unity.app/Contents/MacOS/Unity \
   -silent-crashes \
   -batchmode \
   -nographics \
