@@ -20,7 +20,7 @@ install() {
 }
 
 install "MacEditorInstaller/Unity-$version.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$version.pkg"
+# install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$version.pkg"
 
 
 
