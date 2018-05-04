@@ -9,3 +9,6 @@ https://docs.google.com/document/d/1fDoE3_Lk-G9TvQ4ai1c0ZbfuHVWA3Ak_L-AfmMijkK4/
 
 ## Code Standards and Considerations
 https://docs.google.com/document/d/1LjoAWhZh6M6__AIscaCzjQT_oZxHHN94Pf68wmhC-fQ/edit?usp=sharing
+
+## Whiskey Business GDD
+https://docs.google.com/document/d/1YmSmHOAYKzmCU9hBz_QsyhOy-GWBxBwKasGI5-ZyYhw/edit?usp=sharing
