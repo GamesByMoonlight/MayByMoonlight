@@ -1,11 +1,11 @@
 #! /bin/sh
 
 BASE_URL=http://netstorage.unity3d.com/unity
-VERSION=2017.3.1f1
+version=2018.1.0f2
 
 download() {
   file=$1
-  url="$BASE_URL/${HASH}/$package"
+  url="$BASE_URL/${hash}/$package"
 
   echo "Downloading from $url: "
   curl -o `basename "$package"` "$url"
@@ -19,8 +19,8 @@ install() {
   sudo installer -dumplog -package `basename "$package"` -target /
 }
 
-install "MacEditorInstaller/Unity-$VERSION.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
+install "MacEditorInstaller/Unity-$version.pkg"
+install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$version.pkg"
 
 
 

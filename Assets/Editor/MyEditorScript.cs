@@ -9,7 +9,7 @@ public class MyEditorScript
         string[] scenes = {""};
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
 		buildPlayerOptions.scenes = scenes;
-		buildPlayerOptions.locationPathName = "Build/windows/MayByMoonlight.exe";
+		buildPlayerOptions.locationPathName = "Build/windows/Windows.exe";
 		buildPlayerOptions.target = BuildTarget.StandaloneWindows;
 		buildPlayerOptions.options = BuildOptions.None;
 		BuildPipeline.BuildPlayer(buildPlayerOptions);
@@ -20,7 +20,7 @@ public class MyEditorScript
         string[] scenes = {""};
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
 		buildPlayerOptions.scenes = scenes;
-		buildPlayerOptions.locationPathName = "Build/osx/MayByMoonlight.app";
+		buildPlayerOptions.locationPathName = "Build/osx/OSX.app";
 		buildPlayerOptions.target = BuildTarget.StandaloneOSX;
 		buildPlayerOptions.options = BuildOptions.None;
 		BuildPipeline.BuildPlayer(buildPlayerOptions);
