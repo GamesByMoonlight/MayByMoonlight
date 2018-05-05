@@ -14,12 +14,12 @@ public class Drink : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Down Lane: " + Lane + ". I am a drink of type (Whiskey, Vodka, Rum | Soda, Coke, Vermouth | Garnish): {" +
-                  Whiskey + ", " +
+        Debug.Log("Down Lane: " + Lane + ". I am a drink of type (Vodka, Whiskey, Rum | Coke, Soda, Vermouth | Garnish): {" +
                   Vodka + ", " +
+                  Whiskey + ", " +
                   Rum + " | " +
-                  Soda + ", " +
                   Coke + ", " +
+                  Soda + ", " +
                   Vermouth + " | " +
                   TypeOfGarnish +
                   "}");
