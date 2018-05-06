@@ -182,8 +182,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Drinks output to Console\n\nQWE to mix alcohol (press and hold)\nASD to
     add mixers (press and hold)\n123 to apply garnish and make drink \nSpace to clear
-    drink\nDouble tap Space to make water\n\n(play with Edit-->Project Settings-->Input
-    to test different button variations if you don't like the above)\n"
+    drink\nDouble tap Space to make water\nSide arrows to change lanes\n\n(play with
+    Edit-->Project Settings-->Input to test different button variations if you don't
+    like the above)\n"
 --- !u!222 &35750039
 CanvasRenderer:
   m_ObjectHideFlags: 0
