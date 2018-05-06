@@ -30,10 +30,4 @@ public class Drink : MonoBehaviour {
                   TypeOfGarnish +
                   "}");
 	}
-	
-}
-
-public enum Garnish
-{
-    Lime, Cherry, Olive
 }
