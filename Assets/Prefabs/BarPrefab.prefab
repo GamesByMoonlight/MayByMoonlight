@@ -38,11 +38,10 @@ GameObject:
   - component: {fileID: 4272103583966374}
   - component: {fileID: 33223575861062474}
   - component: {fileID: 114331479943943824}
-  - component: {fileID: 65907337403907942}
   m_Layer: 0
   m_Name: DrinkSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -223,18 +222,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65907337403907942
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1191839545783046}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65969588037021680
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -261,3 +248,4 @@ MonoBehaviour:
   drinkPrefab: {fileID: 54222842659683578, guid: 9da62ccf391ae204799697a3f6a71ee8,
     type: 2}
   drinkSpawnLoc: {fileID: 4272103583966374}
+  DrinkSpeed: -500

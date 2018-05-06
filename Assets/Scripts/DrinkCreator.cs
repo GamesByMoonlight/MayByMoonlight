@@ -7,6 +7,8 @@ public class DrinkCreator : MonoBehaviour {
     public Rigidbody drinkPrefab;
     public Transform drinkSpawnLoc;
 
+    public float DrinkSpeed = -500;
+
     bool keypress = false;
 
 	// Update is called once per frame
@@ -15,9 +17,10 @@ public class DrinkCreator : MonoBehaviour {
         //Checking for keypress is a temporary work around until actual drink data can be passed in.
         if (Input.GetKey("s") && !keypress)
         {
+            // This is the actual drink spawning code to save.
             Rigidbody drinkInstance;
             drinkInstance = Instantiate(drinkPrefab, drinkSpawnLoc.position, drinkSpawnLoc.rotation) as Rigidbody;
-            drinkInstance.AddForce(500, 0, 0);
+            drinkInstance.AddForce(DrinkSpeed, 0, 0);
             keypress = true;
 
         }

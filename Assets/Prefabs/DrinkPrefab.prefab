@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  xVel: 6000
+  xVel: 0
 --- !u!114 &114674997044303270
 MonoBehaviour:
   m_ObjectHideFlags: 1
