@@ -11,9 +11,15 @@ public class Drink : MonoBehaviour {
     public float Coke = 0f;
     public float Vermouth = 0f;
     public Garnish TypeOfGarnish = Garnish.Lime;
+    public bool IsJustWater = false;
 
 	// Use this for initialization
 	void Start () {
+        if (IsJustWater)
+        {
+            Debug.Log("Lane: " + Lane + ". I am just water");
+            return;
+        }
         Debug.Log("Down Lane: " + Lane + ". I am a drink of type (Vodka, Whiskey, Rum | Coke, Soda, Vermouth | Garnish): {" +
                   Vodka + ", " +
                   Whiskey + ", " +

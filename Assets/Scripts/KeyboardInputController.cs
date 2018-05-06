@@ -1,24 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardInputController : MonoBehaviour {
     public Drink DrinkPrefab;
-    public float FillRate = .01f;
+    public float FillRate = .3f;
+    public float DoubleTapTime = .5f;
     public int MaxLanes = 5;
 
 
-    float whiskey, rum, vodka, soda, coke, vermouth;        // Final values
+    float whiskey, rum, vodka, soda, coke, vermouth;    // Final values
     Garnish selectedGarnish;
-    int lane = 0;                                               // Current lane
-	
+    int lane = 0;                                       // Current lane
+    bool doubleTapped = false;                          // Double tapping the clear glass button creates water
+    float timeLastCleared = 0f;
+
     // Calculating in this way clamps each value between 0 - 1.0.  Returning via the ?: operator prevents dividing by 0.
-    public float Whiskey { get { return whiskey == 0f ? 0f : whiskey / (whiskey + rum + vodka + soda + coke + vermouth); }}
-    public float Rum { get { return rum == 0f ? 0f : rum / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Vodka { get { return vodka == 0f ? 0f : vodka / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Soda { get { return soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Coke { get { return coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Vermouth { get { return vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } }
+    public float Whiskey    { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? whiskey :    whiskey == 0f ? 0f : whiskey / (whiskey + rum + vodka + soda + coke + vermouth); }}
+    public float Rum        { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? rum :        rum == 0f ? 0f : rum / (whiskey + rum + vodka + soda + coke + vermouth); } }
+    public float Vodka      { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vodka :      vodka == 0f ? 0f : vodka / (whiskey + rum + vodka + soda + coke + vermouth); } }
+    public float Soda       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? soda :       soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } }
+    public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } }
+    public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } }
 
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +33,10 @@ public class KeyboardInputController : MonoBehaviour {
         {
             MakeDrink();
             ClearValues();
+        } else if(EmptiedDrink() && doubleTapped)
+        {
+            doubleTapped = false;
+            MakeWater();
         }
 	}
 
@@ -73,17 +81,19 @@ public class KeyboardInputController : MonoBehaviour {
         return false;
     }
 
-    void MakeDrink()
+    Drink MakeDrink()
     {
-        var drinkGO = Instantiate(DrinkPrefab);
-        drinkGO.Whiskey = Whiskey;
-        drinkGO.Rum = Rum;
-        drinkGO.Vodka = Vodka;
-        drinkGO.Soda = Soda;
-        drinkGO.Coke = Coke;
-        drinkGO.Vermouth = Vermouth;
-        drinkGO.TypeOfGarnish = selectedGarnish;
-        drinkGO.Lane = lane;
+        var drink = Instantiate(DrinkPrefab);
+        drink.Whiskey = Whiskey;
+        drink.Rum = Rum;
+        drink.Vodka = Vodka;
+        drink.Soda = Soda;
+        drink.Coke = Coke;
+        drink.Vermouth = Vermouth;
+        drink.TypeOfGarnish = selectedGarnish;
+        drink.Lane = lane;
+
+        return drink;
     }
 
     void ClearValues()
@@ -96,6 +106,23 @@ public class KeyboardInputController : MonoBehaviour {
         vermouth = 0f;
         // selectedGarnish doesn't matter
         // lane stays the same
+    }
+
+    bool EmptiedDrink()
+    {
+        if(Input.GetButtonDown("Clear"))
+        {
+            doubleTapped = Time.time - timeLastCleared < DoubleTapTime;
+            timeLastCleared = Time.time;
+            ClearValues();
+            return true;
+        }
+        return false;
+    }
+
+    private void MakeWater()
+    {
+        MakeDrink().IsJustWater = true;
     }
 }
 
