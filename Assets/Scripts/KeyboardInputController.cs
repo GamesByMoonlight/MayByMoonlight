@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardInputController : MonoBehaviour {
+public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     public Drink DrinkPrefab;
     public float FillRate = .3f;
     public float DoubleTapTime = .5f;
@@ -23,6 +23,9 @@ public class KeyboardInputController : MonoBehaviour {
     public float Soda       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? soda :       soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } }
     public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } }
     public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } }
+    public int Lane { get { return lane; } }
+    public bool IsJustWater { get { return false; } }
+    public Garnish TheGarnish { get { return selectedGarnish; } }
 
 	// Update is called once per frame
 	void Update () {
