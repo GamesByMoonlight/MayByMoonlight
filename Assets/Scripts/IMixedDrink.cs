@@ -10,6 +10,12 @@ public interface IMixedDrink {
     float Soda { get; }
     float Coke { get; }
     float Vermouth { get; }
+    Garnish TheGarnish { get; }
     int Lane { get; }
     bool IsJustWater { get; } 
+}
+
+public enum Garnish
+{
+    Lime, Cherry, Olive
 }

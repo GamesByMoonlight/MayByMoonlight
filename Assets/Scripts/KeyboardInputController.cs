@@ -25,6 +25,7 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } }
     public int Lane { get { return lane; } }
     public bool IsJustWater { get { return false; } }
+    public Garnish TheGarnish { get { return selectedGarnish; } }
 
 	// Update is called once per frame
 	void Update () {
