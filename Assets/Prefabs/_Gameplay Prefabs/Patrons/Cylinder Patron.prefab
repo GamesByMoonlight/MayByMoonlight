@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114926545569222988}
   m_Layer: 0
   m_Name: Cylinder Patron
-  m_TagString: Untagged
+  m_TagString: Patron
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

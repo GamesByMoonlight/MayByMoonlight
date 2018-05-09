@@ -9,6 +9,13 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     public float DoubleTapTime = .5f;
     public int MaxLanes = 5;
 
+    public GameObject lane1;
+    public GameObject lane2;
+    public GameObject lane3;
+    public GameObject lane4;
+    public GameObject lane5;
+    private GameObject[] lanes;
+
 
     float whiskey, rum, vodka, soda, coke, vermouth;    // Final values
     Garnish selectedGarnish;
@@ -26,6 +33,16 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     public int Lane { get { return lane; } }
     public bool IsJustWater { get { return false; } }
     public Garnish TheGarnish { get { return selectedGarnish; } }
+
+    void Start()
+    {
+        lanes = new GameObject[MaxLanes];
+        lanes[0] = lane1;
+        lanes[1] = lane2;
+        lanes[2] = lane3;
+        lanes[3] = lane4;
+        lanes[4] = lane5;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -50,7 +67,8 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
             if (Input.GetAxis("Horizontal") < 0f)
                 lane = lane == 0 ? 0 : lane - 1;
             else
-                lane = lane == MaxLanes ? MaxLanes : lane + 1;
+                // Subtracting 1 from the max lanes here due to the array indexing it is used for.
+                lane = lane == MaxLanes-1 ? MaxLanes-1 : lane + 1;
         }
     }
 
@@ -84,9 +102,9 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
         return false;
     }
 
-    Drink MakeDrink()
+    void MakeDrink()
     {
-        var drink = Instantiate(DrinkPrefab);
+        Drink drink = new Drink();
         drink.Whiskey = Whiskey;
         drink.Rum = Rum;
         drink.Vodka = Vodka;
@@ -96,7 +114,8 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
         drink.TypeOfGarnish = selectedGarnish;
         drink.Lane = lane;
 
-        return drink;
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink);
+
     }
 
     void ClearValues()
@@ -125,7 +144,11 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
 
     private void MakeWater()
     {
-        MakeDrink().IsJustWater = true;
+        Drink drink = new Drink();
+        drink.IsJustWater = true;
+        drink.Lane = lane;
+
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink);
     }
 }
 

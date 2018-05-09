@@ -30,4 +30,18 @@ public class Drink : MonoBehaviour {
                   TypeOfGarnish +
                   "}");
 	}
+
+    public void SetValues(Drink input)
+    {
+        this.Whiskey = input.Whiskey;
+        this.Vodka = input.Vodka;
+        this.Rum = input.Rum;
+        this.Soda = input.Soda;
+        this.Coke = input.Coke;
+        this.Vermouth = input.Vermouth;
+        this.TypeOfGarnish = input.TypeOfGarnish;
+        this.IsJustWater = input.IsJustWater;
+        //this. = input.;
+
+    }
 }
