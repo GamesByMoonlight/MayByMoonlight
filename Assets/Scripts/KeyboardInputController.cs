@@ -95,14 +95,14 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     {
         // Drink drink = new Drink();  // I believe this creates memory leaks in Unity
         var drink = Instantiate(DrinkPrefab);
-        drink.Whiskey = Whiskey;
-        drink.Rum = Rum;
-        drink.Vodka = Vodka;
-        drink.Soda = Soda;
-        drink.Coke = Coke;
-        drink.Vermouth = Vermouth;
+        drink.WhiskeyValue = Whiskey;
+        drink.RumValue = Rum;
+        drink.VodkaValue = Vodka;
+        drink.SodaValue = Soda;
+        drink.CokeValue = Coke;
+        drink.VermouthValue = Vermouth;
         drink.TypeOfGarnish = selectedGarnish;
-        drink.Lane = lane;
+        drink.LaneValue = lane;
 
         return drink;
     }
@@ -111,7 +111,7 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     {
         // Drink drink = new Drink(); // I believe this creates memory leaks in Unity
         var drink = MakeDrink();
-        drink.IsJustWater = true;
+        drink.IsJustWaterValue = true;
 
         return drink;
     }
