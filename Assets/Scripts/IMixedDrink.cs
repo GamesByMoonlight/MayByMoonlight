@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IMixedDrink {
-
+    GameObject gameObject { get; }
     float Whiskey { get; }
     float Rum { get; }
     float Vodka { get; }

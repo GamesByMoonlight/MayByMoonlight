@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DrinkCreator : MonoBehaviour {
-
-    public Rigidbody drinkPrefab;
     public Transform drinkSpawnLoc;
 
     public float DrinkSpeed = -500;
@@ -15,19 +13,16 @@ public class DrinkCreator : MonoBehaviour {
 
 	}
 
-    public void InputDrink(Drink input)
+    public void InputDrink(IMixedDrink input)
     {
         SpawnDrink( input );
     }
 
-    private void SpawnDrink(Drink input)
+    private void SpawnDrink(IMixedDrink input)
     {
-        Rigidbody drinkInstance;
-        drinkInstance = Instantiate(drinkPrefab, drinkSpawnLoc.position, drinkSpawnLoc.rotation) as Rigidbody;
-        drinkInstance.AddForce(DrinkSpeed, 0, 0);
-        drinkInstance.GetComponent<Drink>().SetValues(input);
-        //drinkInstance.
-
+        input.gameObject.transform.position = drinkSpawnLoc.position;
+        input.gameObject.transform.rotation = drinkSpawnLoc.rotation;
+        input.gameObject.GetComponent<Rigidbody>().AddForce(DrinkSpeed, 0, 0);
 
     }
 }
