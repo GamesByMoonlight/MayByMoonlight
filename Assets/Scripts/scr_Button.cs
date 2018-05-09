@@ -45,6 +45,12 @@ public class scr_Button : MonoBehaviour
         levelManager.addMixer = true;
     }
 
+    public void AddGarnish(string typeOfGarnish)
+    {
+        levelManager.hasGarnish = true;
+        levelManager.garnishType = typeOfGarnish;
+    }
+
     public void StopPour()
     {
         levelManager.addDrink = false;
