@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4185641154363074, guid: 313509cfbc5ade9468575a770652c2bc, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1888669320139606, guid: 313509cfbc5ade9468575a770652c2bc, type: 2}
       propertyPath: m_Name
@@ -389,6 +389,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: lanes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4819020434825016, guid: 9eb8a03939283bd4281157cf8e0e10d4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -451,6 +456,37 @@ Prefab:
       propertyPath: MaxLanes
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: DrinkPrefab
+      value: 
+      objectReference: {fileID: 114298177223717396, guid: 9da62ccf391ae204799697a3f6a71ee8,
+        type: 2}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: lanes.Array.data[0]
+      value: 
+      objectReference: {fileID: 779230862}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: lanes.Array.data[1]
+      value: 
+      objectReference: {fileID: 876426262}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: lanes.Array.data[2]
+      value: 
+      objectReference: {fileID: 2437515}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: lanes.Array.data[3]
+      value: 
+      objectReference: {fileID: 2103649629}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: lanes.Array.data[4]
+      value: 
+      objectReference: {fileID: 1848109363}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eb8a03939283bd4281157cf8e0e10d4, type: 2}
   m_IsPrefabParent: 0
@@ -834,6 +870,31 @@ Prefab:
       propertyPath: DrinkToDisplay
       value: 
       objectReference: {fileID: 1839661635}
+    - target: {fileID: 224448379200002320, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224448379200002320, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224749630522078118, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224749630522078118, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224749630522078118, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efa9695696e1a4001881c1669cb01762, type: 2}
   m_IsPrefabParent: 0
@@ -1100,7 +1161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4185641154363074, guid: 313509cfbc5ade9468575a770652c2bc, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1888669320139606, guid: 313509cfbc5ade9468575a770652c2bc, type: 2}
       propertyPath: m_Name
