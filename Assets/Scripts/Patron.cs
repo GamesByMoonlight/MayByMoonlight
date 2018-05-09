@@ -47,12 +47,15 @@ public class Patron : MonoBehaviour, IPatron     {
             Debug.Log("Drink scored at " + thisScore.Bucks + " Bucks, " + thisScore.Score + " Points, and matched " + thisScore.PreferenceMatches + " preferences");
 
             GameObject scoreDisplay = Instantiate(scoreDisplayPrefab);
+            scoreDisplay.transform.position = transform.position;
             scoreDisplay.GetComponentInChildren<Text>().text = thisScore.Score.ToString();
 
             GameObject tipDisplay = Instantiate(tipDisplayPrefab);
+            tipDisplay.transform.position = transform.position;
             tipDisplay.GetComponentInChildren<Text>().text = thisScore.Bucks.ToString();
 
             GameObject satisfactionHearts = Instantiate(satisfactionHeartsPrefab);
+            satisfactionHearts.transform.position = transform.position;
             satisfactionHearts.GetComponent<Animator>().SetInteger("MatchCount", thisScore.PreferenceMatches);
 
             Destroy(myDrink.gameObject);  // likely something else should be done with the drink, just cleaning it up
