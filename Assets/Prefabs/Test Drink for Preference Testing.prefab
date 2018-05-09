@@ -9,52 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1618602228796444}
+  m_RootGameObject: {fileID: 1842244991800918}
   m_IsPrefabParent: 1
---- !u!1 &1618602228796444
+--- !u!1 &1842244991800918
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4124442016273688}
-  - component: {fileID: 114291248087117456}
-  - component: {fileID: 54941104303242726}
-  - component: {fileID: 135036422662082620}
-  - component: {fileID: 23909262424562896}
-  - component: {fileID: 33274996876645204}
+  - component: {fileID: 4153055119538796}
+  - component: {fileID: 54361338691346806}
+  - component: {fileID: 23358026995818318}
+  - component: {fileID: 135243652705984316}
+  - component: {fileID: 33296665730321350}
+  - component: {fileID: 114184193692962824}
   m_Layer: 0
-<<<<<<< HEAD:Assets/Prefabs/_Gameplay Prefabs/Sphere Patron.prefab
-  m_Name: Sphere Patron
-  m_TagString: Patron
-=======
-  m_Name: Test Drink for Preferences Scene
+  m_Name: Test Drink for Preference Testing
   m_TagString: Untagged
->>>>>>> develop:Assets/Prefabs/Test Drink for Preferences Scene.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4124442016273688
+--- !u!4 &4153055119538796
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618602228796444}
+  m_GameObject: {fileID: 1842244991800918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 3.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23909262424562896
+--- !u!23 &23358026995818318
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618602228796444}
+  m_GameObject: {fileID: 1842244991800918}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 6de013c078f0f524e8a3b3fbb9fd937f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33274996876645204
+--- !u!33 &33296665730321350
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618602228796444}
+  m_GameObject: {fileID: 1842244991800918}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54941104303242726
+--- !u!54 &54361338691346806
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618602228796444}
+  m_GameObject: {fileID: 1842244991800918}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -106,12 +101,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114291248087117456
+--- !u!114 &114184193692962824
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618602228796444}
+  m_GameObject: {fileID: 1842244991800918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caaa21a929a7545dda96e00908fb5c2b, type: 3}
@@ -126,12 +121,12 @@ MonoBehaviour:
   Vermouth: 0
   TypeOfGarnish: 0
   IsJustWater: 0
---- !u!135 &135036422662082620
+--- !u!135 &135243652705984316
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618602228796444}
+  m_GameObject: {fileID: 1842244991800918}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

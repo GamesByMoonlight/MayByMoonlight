@@ -64,7 +64,7 @@ public class Patron : MonoBehaviour, IPatron     {
 
 
 
-    private DrinkScore CalculateDrinkScore(Drink drinkToScore, Patron patron)
+    public DrinkScore CalculateDrinkScore(Drink drinkToScore, Patron patron)
     {
         DrinkScore thisScore = new DrinkScore();
 
