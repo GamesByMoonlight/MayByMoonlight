@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Patron : MonoBehaviour, IPatron     {
 
@@ -17,11 +18,14 @@ public class Patron : MonoBehaviour, IPatron     {
     public GarnishPref preferredGarnish = GarnishPref.Lime;
     public int tipRate = 25;
     public int scoreRate = 100;
-    
-       
-	
-	// Update is called once per frame
-	void Update () {
+    public GameObject scoreDisplayPrefab;
+    public GameObject tipDisplayPrefab;
+    public GameObject satisfactionHeartsPrefab;
+
+
+
+    // Update is called once per frame
+    void Update () {
         // Just to make the objects move to the left, for demo purposes
 
         var xPos = transform.position.x;
@@ -42,10 +46,18 @@ public class Patron : MonoBehaviour, IPatron     {
             Debug.Log("Drink Collected");
             Debug.Log("Drink scored at " + thisScore.Bucks + " Bucks, " + thisScore.Score + " Points, and matched " + thisScore.PreferenceMatches + " preferences");
 
+            GameObject scoreDisplay = Instantiate(scoreDisplayPrefab);
+            scoreDisplay.GetComponentInChildren<Text>().text = thisScore.Score.ToString();
+
+            GameObject tipDisplay = Instantiate(tipDisplayPrefab);
+            tipDisplay.GetComponentInChildren<Text>().text = thisScore.Bucks.ToString();
+
+            GameObject satisfactionHearts = Instantiate(satisfactionHeartsPrefab);
+            satisfactionHearts.GetComponent<Animator>().SetInteger("MatchCount", thisScore.PreferenceMatches);
+
             Destroy(myDrink.gameObject);  // likely something else should be done with the drink, just cleaning it up
         }
     }
-
 
 
 
@@ -99,22 +111,22 @@ public class Patron : MonoBehaviour, IPatron     {
         
         if (drinkToScore.TypeOfGarnish == Garnish.Cherry && patron.preferredGarnish == GarnishPref.Cherry)
         {
-            thisScore.Bucks += Mathf.RoundToInt(tipRate);
-            thisScore.Score += Mathf.RoundToInt(scoreRate);
+            thisScore.Bucks += thisScore.Bucks;
+            thisScore.Score += thisScore.Score;
             thisScore.PreferenceMatches += 1;
         }
 
         if (drinkToScore.TypeOfGarnish == Garnish.Lime && patron.preferredGarnish == GarnishPref.Lime)
         {
-            thisScore.Bucks += Mathf.RoundToInt(tipRate);
-            thisScore.Score += Mathf.RoundToInt(scoreRate);
+            thisScore.Bucks += thisScore.Bucks;
+            thisScore.Score += thisScore.Score;
             thisScore.PreferenceMatches += 1;
         }
 
         if (drinkToScore.TypeOfGarnish == Garnish.Olive && patron.preferredGarnish == GarnishPref.Olive)
         {
-            thisScore.Bucks += Mathf.RoundToInt(tipRate);
-            thisScore.Score += Mathf.RoundToInt(scoreRate);
+            thisScore.Bucks += thisScore.Bucks;
+            thisScore.Score += thisScore.Score;
             thisScore.PreferenceMatches += 1;
         }
 

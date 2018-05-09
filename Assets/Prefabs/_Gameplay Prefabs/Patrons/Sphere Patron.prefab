@@ -159,6 +159,11 @@ MonoBehaviour:
   preferredAlcohol: 1
   preferredMixer: 0
   preferredGarnish: 2
+  tipRate: 25
+  scoreRate: 100
+  scoreDisplayPrefab: {fileID: 0}
+  tipDisplayPrefab: {fileID: 0}
+  satisfactionHeartsPrefab: {fileID: 0}
 --- !u!135 &135429196509511604
 SphereCollider:
   m_ObjectHideFlags: 1
