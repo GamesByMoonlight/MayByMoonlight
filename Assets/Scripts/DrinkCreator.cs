@@ -9,26 +9,25 @@ public class DrinkCreator : MonoBehaviour {
 
     public float DrinkSpeed = -500;
 
-    bool keypress = false;
 
 	// Update is called once per frame
 	void Update () {
 
-        //Checking for keypress is a temporary work around until actual drink data can be passed in.
-        if (Input.GetKey("s") && !keypress)
-        {
-            // This is the actual drink spawning code to save.
-            Rigidbody drinkInstance;
-            drinkInstance = Instantiate(drinkPrefab, drinkSpawnLoc.position, drinkSpawnLoc.rotation) as Rigidbody;
-            drinkInstance.AddForce(DrinkSpeed, 0, 0);
-            keypress = true;
-
-        }
-        else if (!Input.GetKey("s"))
-        {
-
-            keypress = false;
-        }
-		
 	}
+
+    public void InputDrink(Drink input)
+    {
+        SpawnDrink( input );
+    }
+
+    private void SpawnDrink(Drink input)
+    {
+        Rigidbody drinkInstance;
+        drinkInstance = Instantiate(drinkPrefab, drinkSpawnLoc.position, drinkSpawnLoc.rotation) as Rigidbody;
+        drinkInstance.AddForce(DrinkSpeed, 0, 0);
+        drinkInstance.GetComponent<Drink>().SetValues(input);
+        //drinkInstance.
+
+
+    }
 }
