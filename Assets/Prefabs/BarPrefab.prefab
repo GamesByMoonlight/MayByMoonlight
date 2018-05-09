@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4804801307301186}
   - component: {fileID: 33884199918310832}
   - component: {fileID: 65203865968232426}
+  - component: {fileID: 114815617928919884}
   m_Layer: 0
   m_Name: PatronSpawner
   m_TagString: Untagged
@@ -87,8 +88,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888669320139606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 1, z: -11}
-  m_LocalScale: {x: 5, y: 1, z: 0.5}
+  m_LocalPosition: {x: 0.62, y: 1, z: -7.5}
+  m_LocalScale: {x: 10.9, y: 1, z: 0.5}
   m_Children:
   - {fileID: 4272103583966374}
   - {fileID: 4588091007888234}
@@ -103,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191839545783046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4528, y: 0.64100003, z: 0}
+  m_LocalPosition: {x: 0.43, y: 0.64100003, z: 0}
   m_LocalScale: {x: 0.05, y: 0.25, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4185641154363074}
@@ -116,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1751853185724880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.578, y: -0.41799998, z: 0}
+  m_LocalPosition: {x: 0.561, y: -0.41799998, z: 0}
   m_LocalScale: {x: 0.1, y: 0.11, z: 1}
   m_Children: []
   m_Father: {fileID: 4185641154363074}
@@ -129,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1128562723748424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.591, y: -0.41799998, z: 1.17}
+  m_LocalPosition: {x: -0.611, y: 0.74, z: 1.5}
   m_LocalScale: {x: 0.1, y: 0.11, z: 1}
   m_Children: []
   m_Father: {fileID: 4185641154363074}
@@ -245,7 +246,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4766b3280c4fcd74898b63767680a17d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkPrefab: {fileID: 54222842659683578, guid: 9da62ccf391ae204799697a3f6a71ee8,
-    type: 2}
   drinkSpawnLoc: {fileID: 4272103583966374}
   DrinkSpeed: -500
+--- !u!114 &114815617928919884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128562723748424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9caceb6f078ba3478356172e111086d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patronPrefabArray:
+  - {fileID: 1625615275879892, guid: 497ef992fd7bec743bd52f8cc74c6a0d, type: 2}
+  - {fileID: 1416002034144896, guid: 1123431301db47947a56b8e5bd919564, type: 2}

@@ -36,16 +36,13 @@ public class Patron : MonoBehaviour, IPatron     {
 
     public void ReceiveDrink (GameObject myDrink)
     {
-        Debug.Log("ReceiveDrink");
+        
 
         if (myDrink.GetComponent<Drink>())
         {
             DrinkScore thisScore = new DrinkScore();
             thisScore = CalculateDrinkScore(myDrink.GetComponent<Drink>(), this);
-
-            Debug.Log("Drink Collected");
-            Debug.Log("Drink scored at " + thisScore.Bucks + " Bucks, " + thisScore.Score + " Points, and matched " + thisScore.PreferenceMatches + " preferences");
-
+                    
             GameObject scoreDisplay = Instantiate(scoreDisplayPrefab);
             scoreDisplay.transform.position = transform.position;
             scoreDisplay.GetComponentInChildren<Text>().text = thisScore.Score.ToString();
@@ -59,6 +56,7 @@ public class Patron : MonoBehaviour, IPatron     {
             satisfactionHearts.GetComponent<Animator>().SetInteger("MatchCount", thisScore.PreferenceMatches);
 
             Destroy(myDrink.gameObject);  // likely something else should be done with the drink, just cleaning it up
+            Destroy(this.gameObject);
         }
     }
 
