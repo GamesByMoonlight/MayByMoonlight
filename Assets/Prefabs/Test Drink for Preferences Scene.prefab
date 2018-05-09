@@ -114,9 +114,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lane: 0
   Whiskey: 0
-  Vodka: 0
+  Vodka: 0.5
   Rum: 0
-  Soda: 0
+  Soda: 0.5
   Coke: 0
   Vermouth: 0
   TypeOfGarnish: 0
