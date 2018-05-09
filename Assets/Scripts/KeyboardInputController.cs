@@ -67,7 +67,7 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
             if (Input.GetAxis("Horizontal") < 0f)
                 lane = lane == 0 ? 0 : lane - 1;
             else
-                // Subtracting 1 from the max lanes here 
+                // Subtracting 1 from the max lanes here due to the array indexing it is used for.
                 lane = lane == MaxLanes-1 ? MaxLanes-1 : lane + 1;
         }
     }
