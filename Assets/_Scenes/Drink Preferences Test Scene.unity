@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5714347f482e6c04da51de4b61a44331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkPrefab: {fileID: 1618602228796444, guid: 9224123a92d5cb047944bb1b5291e06f,
+  drinkPrefab: {fileID: 1842244991800918, guid: fcc8f3bb7231b2f4193c43021dc6b5ab,
     type: 2}
 --- !u!4 &208107817
 Transform:
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5714347f482e6c04da51de4b61a44331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkPrefab: {fileID: 1618602228796444, guid: 9224123a92d5cb047944bb1b5291e06f,
+  drinkPrefab: {fileID: 1842244991800918, guid: fcc8f3bb7231b2f4193c43021dc6b5ab,
     type: 2}
 --- !u!4 &1253052370
 Transform:
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5714347f482e6c04da51de4b61a44331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkPrefab: {fileID: 1618602228796444, guid: 9224123a92d5cb047944bb1b5291e06f,
+  drinkPrefab: {fileID: 1842244991800918, guid: fcc8f3bb7231b2f4193c43021dc6b5ab,
     type: 2}
 --- !u!4 &1285333200
 Transform:
