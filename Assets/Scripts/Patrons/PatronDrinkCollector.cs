@@ -14,7 +14,6 @@ public class PatronDrinkCollector : MonoBehaviour {
 	void OnTriggerEnter (Collider col)
     {
         if (col.GetComponent<Drink>()){
-            Debug.Log("ow!");
             GameObject drinkCollected = col.gameObject;
             myPatron.ReceiveDrink(drinkCollected);
         }
