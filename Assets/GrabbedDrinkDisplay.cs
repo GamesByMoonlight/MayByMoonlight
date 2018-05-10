@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrabbedDrinkDisplay : MonoBehaviour {
 
@@ -10,11 +11,18 @@ public class GrabbedDrinkDisplay : MonoBehaviour {
 
     public void AssignScore(DrinkScore drinkScore)
     {
-        scoreDisplay.GetComponentInChildren<Text>().text = drinkScore.Score.ToString();
+        scoreDisplayPrefab.GetComponentInChildren<Text>().text = drinkScore.Score.ToString();
 
-        tipDisplay.GetComponentInChildren<Text>().text = drinkScore.Bucks.ToString();
+        tipDisplayPrefab.GetComponentInChildren<Text>().text = drinkScore.Bucks.ToString();
 
-        satisfactionHearts.GetComponent<Animator>().SetInteger("MatchCount", drinkScore.PreferenceMatches);
+        satisfactionHeartsPrefab.GetComponent<Animator>().SetInteger("MatchCount", drinkScore.PreferenceMatches);
+
+
+        if (FindObjectOfType<ScoreDisplay>())
+        {
+            ScoreDisplay uiDisplay = FindObjectOfType<ScoreDisplay>();
+            uiDisplay.UpdateScoreboard(drinkScore);
+        }
     }
 
 }

@@ -37,17 +37,17 @@ public class Patron : MonoBehaviour, IPatron {
     public void ReceiveDrink (GameObject myDrink)
     {
         
-
         if (myDrink.GetComponent<Drink>())
         {
             DrinkScore thisScore = new DrinkScore(myDrink.GetComponent<Drink>(), this);
 
-            GameObject scoreDisplay = (GrabbedDrinkDisplay)Instantiate(grabbedDrinkDisplay);
-            scoreDisplay.AssignScore(thisScore);
+            GameObject scoreDisplay = (Instantiate(grabbedDrinkDisplay));
+            GrabbedDrinkDisplay gDD = scoreDisplay.GetComponent<GrabbedDrinkDisplay>();
+            gDD.AssignScore(thisScore);
             scoreDisplay.transform.position = transform.position;
             
             Destroy(myDrink.gameObject);  // likely something else should be done with the drink, just cleaning it up
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
