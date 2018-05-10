@@ -51,13 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06340c70e04584df684b07bbd5453713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrinkPrefab: {fileID: 114550561534294972, guid: 1c3353a5a170f4b4082cda8a17d75848,
+  DrinkPrefab: {fileID: 114298177223717396, guid: 9da62ccf391ae204799697a3f6a71ee8,
     type: 2}
   FillRate: 0.3
   DoubleTapTime: 0.5
-  MaxLanes: 5
-  lane1: {fileID: 0}
-  lane2: {fileID: 0}
-  lane3: {fileID: 0}
-  lane4: {fileID: 0}
-  lane5: {fileID: 0}
+  lanes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

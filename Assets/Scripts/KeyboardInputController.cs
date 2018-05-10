@@ -7,15 +7,9 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     public Drink DrinkPrefab;
     public float FillRate = .3f;
     public float DoubleTapTime = .5f;
-    public int MaxLanes = 5;
+    public GameObject[] lanes;
 
-    public GameObject lane1;
-    public GameObject lane2;
-    public GameObject lane3;
-    public GameObject lane4;
-    public GameObject lane5;
-    private GameObject[] lanes;
-
+    private int maxLanes;
 
     float whiskey, rum, vodka, soda, coke, vermouth;    // Final values
     Garnish selectedGarnish;
@@ -36,12 +30,7 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
 
     void Start()
     {
-        lanes = new GameObject[MaxLanes];
-        lanes[0] = lane1;
-        lanes[1] = lane2;
-        lanes[2] = lane3;
-        lanes[3] = lane4;
-        lanes[4] = lane5;
+        maxLanes = lanes.Length;
     }
 
 	// Update is called once per frame
@@ -51,12 +40,12 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
 
         if(GarnishSelected()) 
         {
-            MakeDrink();
+            lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink());
             ClearValues();
         } else if(EmptiedDrink() && doubleTapped)
         {
             doubleTapped = false;
-            MakeWater();
+            lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeWater());
         }
 	}
 
@@ -68,7 +57,7 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
                 lane = lane == 0 ? 0 : lane - 1;
             else
                 // Subtracting 1 from the max lanes here due to the array indexing it is used for.
-                lane = lane == MaxLanes-1 ? MaxLanes-1 : lane + 1;
+                lane = lane == maxLanes-1 ? maxLanes-1 : lane + 1;
         }
     }
 
@@ -102,20 +91,29 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
         return false;
     }
 
-    void MakeDrink()
+    Drink MakeDrink()
     {
-        Drink drink = new Drink();
-        drink.Whiskey = Whiskey;
-        drink.Rum = Rum;
-        drink.Vodka = Vodka;
-        drink.Soda = Soda;
-        drink.Coke = Coke;
-        drink.Vermouth = Vermouth;
+        // Drink drink = new Drink();  // I believe this creates memory leaks in Unity
+        var drink = Instantiate(DrinkPrefab);
+        drink.WhiskeyValue = Whiskey;
+        drink.RumValue = Rum;
+        drink.VodkaValue = Vodka;
+        drink.SodaValue = Soda;
+        drink.CokeValue = Coke;
+        drink.VermouthValue = Vermouth;
         drink.TypeOfGarnish = selectedGarnish;
-        drink.Lane = lane;
+        drink.LaneValue = lane;
 
-        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink);
+        return drink;
+    }
 
+    Drink MakeWater()
+    {
+        // Drink drink = new Drink(); // I believe this creates memory leaks in Unity
+        var drink = MakeDrink();
+        drink.IsJustWaterValue = true;
+
+        return drink;
     }
 
     void ClearValues()
@@ -140,15 +138,6 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
             return true;
         }
         return false;
-    }
-
-    private void MakeWater()
-    {
-        Drink drink = new Drink();
-        drink.IsJustWater = true;
-        drink.Lane = lane;
-
-        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink);
     }
 }
 

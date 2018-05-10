@@ -36,16 +36,13 @@ public class Patron : MonoBehaviour, IPatron     {
 
     public void ReceiveDrink (GameObject myDrink)
     {
-        Debug.Log("ReceiveDrink");
+        
 
         if (myDrink.GetComponent<Drink>())
         {
             DrinkScore thisScore = new DrinkScore();
             thisScore = CalculateDrinkScore(myDrink.GetComponent<Drink>(), this);
-
-            Debug.Log("Drink Collected");
-            Debug.Log("Drink scored at " + thisScore.Bucks + " Bucks, " + thisScore.Score + " Points, and matched " + thisScore.PreferenceMatches + " preferences");
-
+                    
             GameObject scoreDisplay = Instantiate(scoreDisplayPrefab);
             scoreDisplay.transform.position = transform.position;
             scoreDisplay.GetComponentInChildren<Text>().text = thisScore.Score.ToString();
@@ -59,6 +56,7 @@ public class Patron : MonoBehaviour, IPatron     {
             satisfactionHearts.GetComponent<Animator>().SetInteger("MatchCount", thisScore.PreferenceMatches);
 
             Destroy(myDrink.gameObject);  // likely something else should be done with the drink, just cleaning it up
+            Destroy(this.gameObject);
         }
     }
 
@@ -71,21 +69,21 @@ public class Patron : MonoBehaviour, IPatron     {
         switch (patron.preferredAlcohol)
         {
             case AlcoholPref.Whiskey:
-                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.Whiskey);
-                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.Whiskey);
-                if (drinkToScore.Whiskey > 0)
+                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.WhiskeyValue);
+                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.WhiskeyValue);
+                if (drinkToScore.WhiskeyValue > 0)
                     thisScore.PreferenceMatches += 1;
                 break;
             case AlcoholPref.Vodka:
-                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.Vodka);
-                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.Vodka);
-                if (drinkToScore.Vodka > 0)
+                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.VodkaValue);
+                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.VodkaValue);
+                if (drinkToScore.VodkaValue > 0)
                     thisScore.PreferenceMatches += 1;
                 break;
             case AlcoholPref.Rum:
-                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.Rum);
-                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.Rum);
-                if (drinkToScore.Rum > 0)
+                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.RumValue);
+                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.RumValue);
+                if (drinkToScore.RumValue > 0)
                     thisScore.PreferenceMatches += 1;
                 break;
         }
@@ -93,21 +91,21 @@ public class Patron : MonoBehaviour, IPatron     {
         switch (patron.preferredMixer)
         {
             case MixerPref.Soda:
-                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.Soda);
-                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.Soda);
-                if (drinkToScore.Soda > 0)
+                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.SodaValue);
+                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.SodaValue);
+                if (drinkToScore.SodaValue > 0)
                     thisScore.PreferenceMatches += 1;
                 break;
             case MixerPref.Coke:
-                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.Coke);
-                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.Coke);
-                if (drinkToScore.Coke > 0)
+                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.CokeValue);
+                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.CokeValue);
+                if (drinkToScore.CokeValue > 0)
                     thisScore.PreferenceMatches += 1;
                 break;
             case MixerPref.Vermouth:
-                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.Vermouth);
-                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.Vermouth);
-                if (drinkToScore.Vermouth > 0)
+                thisScore.Bucks += Mathf.RoundToInt(tipRate * drinkToScore.VermouthValue);
+                thisScore.Score += Mathf.RoundToInt(scoreRate * drinkToScore.VermouthValue);
+                if (drinkToScore.VermouthValue > 0)
                         thisScore.PreferenceMatches += 1;
                 break;
         }
