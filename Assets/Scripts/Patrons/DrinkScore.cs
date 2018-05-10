@@ -61,31 +61,57 @@ public class DrinkScore
                 break;
         }
 
-        if (drinkToScore.TypeOfGarnish == Garnish.Cherry && patron.preferredGarnish == GarnishPref.Cherry)
+        if (drinkToScore.TypeOfGarnish == patron.preferredGarnish)
         {
             Bucks += Bucks;
             Score += Score;
             PreferenceMatches += 1;
         }
-
-        if (drinkToScore.TypeOfGarnish == Garnish.Lime && patron.preferredGarnish == GarnishPref.Lime)
-        {
-            Bucks += Bucks;
-            Score += Score;
-            PreferenceMatches += 1;
-        }
-
-        if (drinkToScore.TypeOfGarnish == Garnish.Olive && patron.preferredGarnish == GarnishPref.Olive)
-        {
-            Bucks += Bucks;
-            Score += Score;
-            PreferenceMatches += 1;
-        }
-
     }
 
     public DrinkScore(Drink drinkToScore, FancyPatron fancyPatron)
     {
+        int matches = 0;
+  
+        if (fancyPatron.bigTipper == true)
+        {
+            
+            if (drinkToScore.Whiskey > fancyPatron.WhiskeyValue * 2)
+                matches++;
+            if (drinkToScore.Vodka > fancyPatron.VodkaValue * 2)
+                matches++;
+            if (drinkToScore.Rum > fancyPatron.RumValue * 2)
+                matches++;
+            
+                
+        }
+        
+        
+        if (drinkToScore.Whiskey > fancyPatron.WhiskeyValue)
+            matches++;
+        if (drinkToScore.Vodka > fancyPatron.VodkaValue)
+            matches++;
+        if (drinkToScore.Rum > fancyPatron.RumValue)
+            matches++;
+        if (drinkToScore.Soda > fancyPatron.SodaValue)
+            matches++;
+        if (drinkToScore.Coke > fancyPatron.CokeValue)
+            matches++;
+        if (drinkToScore.Vermouth > fancyPatron.VermouthValue)
+            matches++;
 
+     
+        Bucks = matches * fancyPatron.TipRate;
+        Score = matches * fancyPatron.ScoreRate;
+
+        if (drinkToScore.TypeOfGarnish == fancyPatron.TypeOfGarnish)
+        {
+            Bucks += Bucks;
+            Score += Score;
+        }
+
+        if (drinkToScore.TypeOfGarnish == fancyPatron.TypeOfGarnish)  // This is dumb and I hate it but it works and I'm on a time crunch
+            matches++;
+        PreferenceMatches = matches;
     }
 }

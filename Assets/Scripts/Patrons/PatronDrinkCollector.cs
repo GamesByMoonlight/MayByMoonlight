@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PatronDrinkCollector : MonoBehaviour {
 
-    private Patron myPatron;
+    private IPatron myPatron;
 
 	// Use this for initialization
 	void Start () {
-        myPatron = GetComponentInParent<Patron>();
+        myPatron = GetComponentInParent<IPatron>();
 	}
 	
 	void OnTriggerEnter (Collider col)
