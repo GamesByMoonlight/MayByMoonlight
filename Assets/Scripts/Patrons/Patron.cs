@@ -16,13 +16,16 @@ public class Patron : MonoBehaviour, IPatron {
     public AlcoholPref preferredAlcohol = AlcoholPref.Whiskey;
     public MixerPref preferredMixer = MixerPref.Coke;
     public GarnishPref preferredGarnish = GarnishPref.Lime;
+
     public int tipRate = 25;
     public int scoreRate = 100;
 
     public GameObject grabbedDrinkDisplay;
+    
+    public float MoveSpeed { get { return advanceSpeed; } }
+    public int TipRate { get { return tipRate; } }
+    public int ScoreRate { get { return scoreRate; } }
 
-
-    public float MoveSpeed { get { return advanceSpeed; } set { advanceSpeed = value; } }
 
     // Update is called once per frame
     void Update () {

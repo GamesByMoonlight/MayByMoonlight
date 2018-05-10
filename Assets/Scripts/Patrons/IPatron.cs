@@ -3,5 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IPatron {
-    float MoveSpeed { get; set;  }
+    float MoveSpeed { get;   }
+    int TipRate { get;  }
+    int ScoreRate { get;  }
+
 }
