@@ -7,4 +7,5 @@ public interface IPatron {
     int TipRate { get;  }
     int ScoreRate { get;  }
 
+    void ReceiveDrink(GameObject T);
 }
