@@ -28,9 +28,9 @@ public class PatronSpawner : MonoBehaviour {
 
 	bool IsTimeToSpawn (GameObject attackerSpawnCooldown)
 	{
-		Patron patronScript = attackerSpawnCooldown.GetComponent<Patron> ();
+		IPatron patronScript = attackerSpawnCooldown.GetComponent<IPatron> ();
 
-		float meanSpawnDelay = patronScript.seenEverySeconds;
+		float meanSpawnDelay = patronScript.SeenEverySeconds;
 		float spawnsPerSecond = 1 / meanSpawnDelay;
 
 		if (Time.deltaTime > meanSpawnDelay) {
