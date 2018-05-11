@@ -5,12 +5,12 @@ using UnityEngine;
 public class FancyPatron : MonoBehaviour, IPatron {
 
     [Tooltip("Percent amount in the final drink to earn 1 Tip and Score")]
-    public float WhiskeyValue = 1f;
-    public float VodkaValue = 1f;
-    public float RumValue = 1f;
-    public float SodaValue = 1f;
-    public float CokeValue = 1f;
-    public float VermouthValue = 1f;
+    public float WhiskeyValue = 0f;
+    public float VodkaValue = 0f;
+    public float RumValue = 0f;
+    public float SodaValue = 0f;
+    public float CokeValue = 0f;
+    public float VermouthValue = 0f;
     public Garnish TypeOfGarnish = Garnish.Lime;
 
     public int tipRate = 25;
@@ -28,6 +28,19 @@ public class FancyPatron : MonoBehaviour, IPatron {
     public int TipRate { get { return tipRate; } }
     public int ScoreRate { get { return scoreRate; } }
     public float SeenEverySeconds { get { return seenEverySeconds; } }
+    public AlcoholPref TheAlcoholPref { get {
+            if (VodkaValue > WhiskeyValue && VodkaValue > RumValue)
+                return AlcoholPref.Vodka;
+            if (RumValue > VodkaValue && RumValue > WhiskeyValue)
+                return AlcoholPref.Rum;
+            return AlcoholPref.Whiskey; } }
+    public MixerPref TheMixerPref { get {
+            if (CokeValue > SodaValue && CokeValue > VermouthValue)
+                return MixerPref.Coke;
+            if (VermouthValue > CokeValue && VermouthValue > SodaValue)
+                return MixerPref.Vermouth;
+            return MixerPref.Soda; } }
+    public Garnish TheGarnish { get { return TypeOfGarnish; } }
 
     // Update is called once per frame
     void Update () {

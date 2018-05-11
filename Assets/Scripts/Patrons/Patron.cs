@@ -26,6 +26,9 @@ public class Patron : MonoBehaviour, IPatron {
     public int TipRate { get { return tipRate; } }
     public int ScoreRate { get { return scoreRate; } }
     public float SeenEverySeconds { get { return seenEverySeconds; } }
+    public AlcoholPref TheAlcoholPref { get { return preferredAlcohol; } }
+    public MixerPref TheMixerPref { get { return preferredMixer; } }
+    public Garnish TheGarnish { get { return preferredGarnish; } }
 
     // Update is called once per frame
     void Update () {
@@ -55,13 +58,3 @@ public class Patron : MonoBehaviour, IPatron {
     }
 }
 
-
-public enum AlcoholPref
-{
-    Whiskey, Vodka, Rum
-}
-
-public enum MixerPref
-{
-    Soda, Coke, Vermouth
-}

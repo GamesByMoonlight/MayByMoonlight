@@ -76,28 +76,28 @@ public class DrinkScore
         if (fancyPatron.bigTipper == true)
         {
             
-            if (drinkToScore.Whiskey > fancyPatron.WhiskeyValue * 2)
+            if (drinkToScore.Whiskey > fancyPatron.WhiskeyValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Whiskey))
                 matches++;
-            if (drinkToScore.Vodka > fancyPatron.VodkaValue * 2)
+            if (drinkToScore.Vodka > fancyPatron.VodkaValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Vodka))
                 matches++;
-            if (drinkToScore.Rum > fancyPatron.RumValue * 2)
+            if (drinkToScore.Rum > fancyPatron.RumValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Rum))
                 matches++;
             
                 
         }
         
         
-        if (drinkToScore.Whiskey > fancyPatron.WhiskeyValue)
+        if ((drinkToScore.Whiskey > fancyPatron.WhiskeyValue) && (fancyPatron.WhiskeyValue > 0))
             matches++;
-        if (drinkToScore.Vodka > fancyPatron.VodkaValue)
+        if ((drinkToScore.Vodka > fancyPatron.VodkaValue) && (fancyPatron.VodkaValue > 0))
             matches++;
-        if (drinkToScore.Rum > fancyPatron.RumValue)
+        if ((drinkToScore.Rum > fancyPatron.RumValue) && (fancyPatron.RumValue > 0))
             matches++;
-        if (drinkToScore.Soda > fancyPatron.SodaValue)
+        if ((drinkToScore.Soda > fancyPatron.SodaValue) && (fancyPatron.SodaValue > 0))
             matches++;
-        if (drinkToScore.Coke > fancyPatron.CokeValue)
+        if ((drinkToScore.Coke > fancyPatron.CokeValue && fancyPatron.CokeValue > 0))
             matches++;
-        if (drinkToScore.Vermouth > fancyPatron.VermouthValue)
+        if ((drinkToScore.Vermouth > fancyPatron.VermouthValue && fancyPatron.VermouthValue > 0))
             matches++;
 
      
