@@ -144,17 +144,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WhiskeyValue: 0.25
-  VodkaValue: 1
-  RumValue: 1
-  SodaValue: 1
+  VodkaValue: 0
+  RumValue: 0
+  SodaValue: 0
   CokeValue: 0.25
-  VermouthValue: 1
+  VermouthValue: 0
   TypeOfGarnish: 1
   tipRate: 20
   scoreRate: 100
   bigTipper: 1
   advanceSpeed: 3
-  seenEverySeconds: 6
+  seenEverySeconds: 2
   grabbedDrinkDisplay: {fileID: 1192270627037332, guid: 9b73e297b6faa854ebb6360a2dcdecaa,
     type: 2}
 --- !u!114 &114948429324308664

@@ -82,8 +82,7 @@ public class DrinkScore
                 matches++;
             if (drinkToScore.Rum > fancyPatron.RumValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Rum))
                 matches++;
-            
-                
+             
         }
         
         

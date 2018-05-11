@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 4091745597491736}
   - component: {fileID: 95799999855651966}
   - component: {fileID: 114913320191233070}
+  - component: {fileID: 114150047479621824}
   m_Layer: 0
   m_Name: Satisfaction Hearts
   m_TagString: Untagged
@@ -1036,6 +1037,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad928c1de0c7d0940b1e98dba24541e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114150047479621824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516100380204302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d7722f62bca574499c35015ba4eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114164993154278762
