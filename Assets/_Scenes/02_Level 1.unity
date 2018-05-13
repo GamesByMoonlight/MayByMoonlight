@@ -821,6 +821,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: lanes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 224210011624016222, guid: 034f775557b38494e8276dd561d9d055,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1191,6 +1196,37 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -41
       objectReference: {fileID: 0}
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: DrinkPrefab
+      value: 
+      objectReference: {fileID: 1353737038237236, guid: 9da62ccf391ae204799697a3f6a71ee8,
+        type: 2}
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: lanes.Array.data[0]
+      value: 
+      objectReference: {fileID: 779230862}
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: lanes.Array.data[1]
+      value: 
+      objectReference: {fileID: 876426262}
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: lanes.Array.data[2]
+      value: 
+      objectReference: {fileID: 2437515}
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: lanes.Array.data[3]
+      value: 
+      objectReference: {fileID: 525131205}
+    - target: {fileID: 114133207266848784, guid: 034f775557b38494e8276dd561d9d055,
+        type: 2}
+      propertyPath: lanes.Array.data[4]
+      value: 
+      objectReference: {fileID: 1848109363}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 034f775557b38494e8276dd561d9d055, type: 2}
   m_IsPrefabParent: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 public class scr_Button : MonoBehaviour
 {
     public scr_levelManager levelManager;
-    public GameObject DrinkPrefab;
 
     public void PourDrink(string typeOfDrink)
     {

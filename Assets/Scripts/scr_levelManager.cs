@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class scr_levelManager : MonoBehaviour 
+public class scr_levelManager : MonoBehaviour, IMixedDrink
 {
     public enum State
     {
@@ -12,6 +12,9 @@ public class scr_levelManager : MonoBehaviour
         serving
     };
     public State currentState;
+
+    public GameObject DrinkPrefab;
+    public GameObject[] lanes;
 
     public int myMoney;
     public int myXp;
@@ -31,8 +34,22 @@ public class scr_levelManager : MonoBehaviour
     public Text drinkAmountText;
     public Text mixerAmountText;
 
-	// Use this for initialization
-	void Start () 
+    private int laneValue;
+
+    // IMixedDrink interface ---------------------------------
+    public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } }
+    public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } }
+    public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } }
+    public float Soda { get { return drinkType == "Soda" ? mixerAmount / 100f : 0f; } }
+    public float Coke { get { return drinkType == "Coke" ? mixerAmount / 100f : 0f; } }
+    public float Vermouth { get { return drinkType == "Vermouth" ? mixerAmount / 100f : 0f; } }
+    public Garnish TheGarnish { get { return garnishType == "Cherry" ? Garnish.Cherry : garnishType == "Lime" ? Garnish.Lime : Garnish.Olive; } }
+    public bool IsJustWater { get { return false; } }
+    public int Lane { get { return laneValue; } }
+    //----------------------------------------------------------
+
+    // Use this for initialization
+    void Start () 
     {
         addDrink = false;
         addMixer = false;
@@ -78,6 +95,17 @@ public class scr_levelManager : MonoBehaviour
 
     public void MakeDrinkAtLane(int lane)
     {
-        Debug.Log("Making drink at lane " + lane);
+        laneValue = lane;
+        var drink = Instantiate(DrinkPrefab).GetComponent<Drink>();
+        drink.WhiskeyValue = Whiskey;
+        drink.RumValue = Rum;
+        drink.VodkaValue = Vodka;
+        drink.SodaValue = Soda;
+        drink.CokeValue = Coke;
+        drink.VermouthValue = Vermouth;
+        drink.TypeOfGarnish = TheGarnish;
+        drink.LaneValue = lane;
+
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink);
     }
 }
