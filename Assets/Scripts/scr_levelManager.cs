@@ -51,9 +51,7 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     // Use this for initialization
     void Start () 
     {
-        addDrink = false;
-        addMixer = false;
-        hasGarnish = false;
+        ResetDrink();
 	}
 	
 	// Update is called once per frame
@@ -95,6 +93,12 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
     public void MakeDrinkAtLane(int lane)
     {
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink(lane).gameObject);
+        ResetDrink();
+    }
+
+    GameObject MakeDrink(int lane)
+    {
         laneValue = lane;
         var drink = Instantiate(DrinkPrefab).GetComponent<Drink>();
         drink.WhiskeyValue = Whiskey;
@@ -106,8 +110,16 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
         drink.TypeOfGarnish = TheGarnish;
         drink.LaneValue = lane;
 
-        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink.gameObject);
+        return drink.gameObject;
     }
 
+    void ResetDrink()
+    {
+        addDrink = false;
+        addMixer = false;
+        hasGarnish = false;
 
+        drinkAmount = 0f;
+        mixerAmount = 0f;
+    }
 }
