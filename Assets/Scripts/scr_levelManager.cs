@@ -76,12 +76,8 @@ public class scr_levelManager : MonoBehaviour
         }
 	}
 
-    void BuildDrink()
+    public void MakeDrinkAtLane(int lane)
     {
-        
-    }
-
-    void StartRound()
-    {
+        Debug.Log("Making drink at lane " + lane);
     }
 }

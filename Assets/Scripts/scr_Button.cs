@@ -21,7 +21,9 @@ public class scr_Button : MonoBehaviour
 
     public scr_levelManager levelManager;
     public Type myType;
+    public GameObject DrinkPrefab;
     private string myName;
+
 
 	// Use this for initialization
 	void Start () 
