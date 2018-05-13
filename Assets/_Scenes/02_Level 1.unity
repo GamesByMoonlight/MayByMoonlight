@@ -1342,22 +1342,22 @@ Prefab:
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
@@ -1367,12 +1367,12 @@ Prefab:
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
@@ -1382,28 +1382,18 @@ Prefab:
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224220933640704086, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114984590277606690, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: DrinkToDisplay
       value: 
       objectReference: {fileID: 1839661635}
-    - target: {fileID: 224448379200002320, guid: efa9695696e1a4001881c1669cb01762,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224448379200002320, guid: efa9695696e1a4001881c1669cb01762,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224749630522078118, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchorMin.x
@@ -1415,6 +1405,16 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224749630522078118, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224448379200002320, guid: efa9695696e1a4001881c1669cb01762,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224448379200002320, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0

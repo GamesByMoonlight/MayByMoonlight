@@ -30,9 +30,10 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     public float drinkAmount;
     public float mixerAmount;
 
-    public Text drinkTypeText;
-    public Text drinkAmountText;
-    public Text mixerAmountText;
+    // Better to separate UI logic from drink making logic
+    //public Text drinkTypeText;
+    //public Text drinkAmountText;
+    //public Text mixerAmountText;
 
     private int laneValue;
 
@@ -57,18 +58,19 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 	// Update is called once per frame
 	void Update () 
     {
-        if (mixerType != string.Empty)
-        {
-            if (hasGarnish != true)
-                drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType;
-            else
-                drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType + " with " + garnishType;
-        }
-        else
-            drinkTypeText.text = "Current Drink: " + drinkType;
+        // Better to separate UI logic from drink making logic
+        //if (mixerType != string.Empty)
+        //{
+        //    if (hasGarnish != true)
+        //        drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType;
+        //    else
+        //        drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType + " with " + garnishType;
+        //}
+        //else
+        //    drinkTypeText.text = "Current Drink: " + drinkType;
         
-        drinkAmountText.text = "Alcohol: " + drinkAmount.ToString() + "%";
-        mixerAmountText.text = "Mixer: " + mixerAmount.ToString() + "%";
+        //drinkAmountText.text = "Alcohol: " + drinkAmount.ToString() + "%";
+        //mixerAmountText.text = "Mixer: " + mixerAmount.ToString() + "%";
 
         if (addDrink)
         {
