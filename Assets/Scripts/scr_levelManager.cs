@@ -106,6 +106,8 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
         drink.TypeOfGarnish = TheGarnish;
         drink.LaneValue = lane;
 
-        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink);
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(drink.gameObject);
     }
+
+
 }
