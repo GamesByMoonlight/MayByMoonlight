@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class scr_levelManager : MonoBehaviour 
+public class scr_levelManager : MonoBehaviour, IMixedDrink
 {
     public enum State
     {
@@ -12,6 +12,9 @@ public class scr_levelManager : MonoBehaviour
         serving
     };
     public State currentState;
+
+    public GameObject DrinkPrefab;
+    public GameObject[] lanes;
 
     public int myMoney;
     public int myXp;
@@ -27,33 +30,47 @@ public class scr_levelManager : MonoBehaviour
     public float drinkAmount;
     public float mixerAmount;
 
-    public Text drinkTypeText;
-    public Text drinkAmountText;
-    public Text mixerAmountText;
+    // Better to separate UI logic from drink making logic
+    //public Text drinkTypeText;
+    //public Text drinkAmountText;
+    //public Text mixerAmountText;
 
-	// Use this for initialization
-	void Start () 
+    private int laneValue;
+
+    // IMixedDrink interface ---------------------------------
+    public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } }
+    public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } }
+    public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } }
+    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } }
+    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } }
+    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } }
+    public Garnish TheGarnish { get { return garnishType == "Cherry" ? Garnish.Cherry : garnishType == "Lime" ? Garnish.Lime : Garnish.Olive; } }
+    public bool IsJustWater { get { return false; } }
+    public int Lane { get { return laneValue; } }
+    //----------------------------------------------------------
+
+    // Use this for initialization
+    void Start () 
     {
-        addDrink = false;
-        addMixer = false;
-        hasGarnish = false;
+        ResetDrink();
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (mixerType != string.Empty)
-        {
-            if (hasGarnish != true)
-                drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType;
-            else
-                drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType + " with " + garnishType;
-        }
-        else
-            drinkTypeText.text = "Current Drink: " + drinkType;
+        // Better to separate UI logic from drink making logic
+        //if (mixerType != string.Empty)
+        //{
+        //    if (hasGarnish != true)
+        //        drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType;
+        //    else
+        //        drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType + " with " + garnishType;
+        //}
+        //else
+        //    drinkTypeText.text = "Current Drink: " + drinkType;
         
-        drinkAmountText.text = "Alcohol: " + drinkAmount.ToString() + "%";
-        mixerAmountText.text = "Mixer: " + mixerAmount.ToString() + "%";
+        //drinkAmountText.text = "Alcohol: " + drinkAmount.ToString() + "%";
+        //mixerAmountText.text = "Mixer: " + mixerAmount.ToString() + "%";
 
         if (addDrink)
         {
@@ -76,12 +93,35 @@ public class scr_levelManager : MonoBehaviour
         }
 	}
 
-    void BuildDrink()
+    public void MakeDrinkAtLane(int lane)
     {
-        
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink(lane).gameObject);
+        ResetDrink();
     }
 
-    void StartRound()
+    GameObject MakeDrink(int lane)
     {
+        laneValue = lane;
+        var drink = Instantiate(DrinkPrefab).GetComponent<Drink>();
+        drink.WhiskeyValue = Whiskey;
+        drink.RumValue = Rum;
+        drink.VodkaValue = Vodka;
+        drink.SodaValue = Soda;
+        drink.CokeValue = Coke;
+        drink.VermouthValue = Vermouth;
+        drink.TypeOfGarnish = TheGarnish;
+        drink.LaneValue = lane;
+
+        return drink.gameObject;
+    }
+
+    void ResetDrink()
+    {
+        addDrink = false;
+        addMixer = false;
+        hasGarnish = false;
+
+        drinkAmount = 0f;
+        mixerAmount = 0f;
     }
 }

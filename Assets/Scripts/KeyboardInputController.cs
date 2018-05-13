@@ -40,12 +40,12 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
 
         if(GarnishSelected()) 
         {
-            lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink());
+            lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink().gameObject);
             ClearValues();
         } else if(EmptiedDrink() && doubleTapped)
         {
             doubleTapped = false;
-            lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeWater());
+            lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeWater().gameObject);
         }
 	}
 

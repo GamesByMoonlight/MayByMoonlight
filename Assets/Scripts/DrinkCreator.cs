@@ -13,16 +13,16 @@ public class DrinkCreator : MonoBehaviour {
 
 	}
 
-    public void InputDrink(IMixedDrink input)
+    public void InputDrink(GameObject input)
     {
         SpawnDrink( input );
     }
 
-    private void SpawnDrink(IMixedDrink input)
+    private void SpawnDrink(GameObject input)
     {
-        input.gameObject.transform.position = drinkSpawnLoc.position;
-        input.gameObject.transform.rotation = drinkSpawnLoc.rotation;
-        input.gameObject.GetComponent<Rigidbody>().AddForce(DrinkSpeed, 0, 0);
+        input.transform.position = drinkSpawnLoc.position;
+        input.transform.rotation = drinkSpawnLoc.rotation;
+        input.GetComponent<Rigidbody>().AddForce(DrinkSpeed, 0, 0);
 
     }
 }

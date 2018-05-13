@@ -4,30 +4,7 @@ using UnityEngine;
 
 public class scr_Button : MonoBehaviour
 {
-    public enum Type
-    {
-        rum,
-        vodka,
-        whiskey,
-        soda,
-        vermouth,
-        cola,
-        cherry,
-        lime,
-        olive,
-        water,
-        cancel
-    };
-
     public scr_levelManager levelManager;
-    public Type myType;
-    private string myName;
-
-	// Use this for initialization
-	void Start () 
-    {
-        myName = myType.ToString();
-    }
 
     public void PourDrink(string typeOfDrink)
     {
