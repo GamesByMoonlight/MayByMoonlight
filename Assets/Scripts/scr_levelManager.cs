@@ -41,9 +41,9 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } }
     public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } }
     public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } }
-    public float Soda { get { return drinkType == "Soda" ? mixerAmount / 100f : 0f; } }
-    public float Coke { get { return drinkType == "Coke" ? mixerAmount / 100f : 0f; } }
-    public float Vermouth { get { return drinkType == "Vermouth" ? mixerAmount / 100f : 0f; } }
+    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } }
+    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } }
+    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } }
     public Garnish TheGarnish { get { return garnishType == "Cherry" ? Garnish.Cherry : garnishType == "Lime" ? Garnish.Lime : Garnish.Olive; } }
     public bool IsJustWater { get { return false; } }
     public int Lane { get { return laneValue; } }

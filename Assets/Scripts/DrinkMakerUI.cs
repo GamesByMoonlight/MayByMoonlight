@@ -35,6 +35,6 @@ public class DrinkMakerUI : MonoBehaviour {
         Alcohol.value = theDrink.Rum + theDrink.Whiskey + theDrink.Vodka;
         Mixer.value = theDrink.Coke + theDrink.Soda + theDrink.Vermouth;
         LaneValue.text = theDrink.Lane.ToString();
-        GarnishValue.text = "(previous) " + theDrink.TheGarnish;
+        GarnishValue.text = "" + theDrink.TheGarnish;
 	}
 }
