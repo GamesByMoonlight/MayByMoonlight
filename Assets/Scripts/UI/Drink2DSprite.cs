@@ -16,12 +16,18 @@ public class Drink2DSprite : MonoBehaviour {
     
     void Start () {
         
-        IPatron patron = transform.root.GetComponentInChildren<IPatron>();
+        IPatron patron = transform.parent.GetComponentInChildren<IPatron>();
 
         if (patron != null)
         {
             isPatron = true;
-            Debug.Log("Do Patron logic");
+
+            float[] drinkLevel = new float[6] { 0, 0, 0, 0, 0, 0 };
+            drinkLevel[(int)patron.TheAlcoholPref] = 0.5f;
+            drinkLevel[(int)patron.TheMixerPref + 3] = 0.5f;
+            theGarnish = patron.TheGarnish;
+
+            SetImage(drinkLevel);
         }
 	}
 

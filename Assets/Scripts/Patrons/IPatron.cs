@@ -18,10 +18,10 @@ public interface IPatron {
 
 public enum AlcoholPref
 {
-    Whiskey, Vodka, Rum
+    Vodka, Whiskey, Rum
 }
 
 public enum MixerPref
 {
-    Soda, Coke, Vermouth
+    Coke, Soda, Vermouth
 }
