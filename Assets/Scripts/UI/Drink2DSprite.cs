@@ -54,8 +54,6 @@ public class Drink2DSprite : MonoBehaviour {
             drink2DImages[i].GetComponent<SpriteRenderer>().enabled = false;
         }
 
-        // Display garnishes for patrons
-        if (isPatron == true)
-            drink2DImages[(int)theGarnish + 6].GetComponent<SpriteRenderer>().enabled = true;
+        drink2DImages[(int)theGarnish + 6].GetComponent<SpriteRenderer>().enabled = true;
     }
 }
