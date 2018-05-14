@@ -18,6 +18,7 @@ public class DrinkMakerUI : MonoBehaviour {
         {
             theDrink = DrinkToDisplay.GetComponent<IMixedDrink>();
             drinkSprite = transform.root.GetComponentInChildren<Drink2DSprite>();
+
             if (theDrink != null)
             {
                 if (drinkSprite != null)
@@ -36,7 +37,7 @@ public class DrinkMakerUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        drinkSprite.updateImage(theDrink);
+        drinkSprite.UpdateImage(theDrink);
         LaneValue.text = theDrink.Lane.ToString();
         
 	}
