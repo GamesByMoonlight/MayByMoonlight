@@ -14,9 +14,6 @@ public interface IPatron {
 
     void ReceiveDrink(GameObject T);
 
-
-
-
 }
 
 public enum AlcoholPref
