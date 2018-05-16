@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class DifficultyScaler : MonoBehaviour {
 
+    /* A little bit of math wizardry to try to start balancing # of patrons on screen with respect to player's performance, and target game time
+     * 
+     * */
+
+
     private int _patrons = 1, _specialPatrons = 1;
 
     public int Patrons
@@ -66,6 +71,7 @@ public class DifficultyScaler : MonoBehaviour {
 
 
         buckLossAccumulator += bucksLossPerMinute / 60 * Time.deltaTime;
+
         if (Mathf.RoundToInt(buckLossAccumulator) > 1)
         {
             scoreDisplay.SubtractBucks(Mathf.RoundToInt(buckLossAccumulator));
