@@ -16,9 +16,6 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     public GameObject DrinkPrefab;
     public GameObject[] lanes;
 
-    public int myMoney;
-    public int myXp;
-
     public string drinkType;
     public string mixerType;
     public string garnishType;
