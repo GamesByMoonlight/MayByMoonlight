@@ -45,9 +45,7 @@ public class DifficultyScaler : MonoBehaviour {
 
     private float _calculatedDifficulty;
     private float _timeMultiplier = 1;
-    
     private float _performanceIndicator;
-
 
     ScoreDisplay scoreDisplay;
 
