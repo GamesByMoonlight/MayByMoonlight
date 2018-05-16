@@ -16,6 +16,7 @@ public class ScoreDisplay : MonoBehaviour {
     public int bucksLossPerMinute = 500;
 
     private float buckLossAccumulator = 0;
+    private bool gameOverFlag = false;
 
 	public void UpdateScoreboard(DrinkScore drinkScore)
     {
@@ -36,7 +37,12 @@ public class ScoreDisplay : MonoBehaviour {
             buckLossAccumulator -= Mathf.RoundToInt(buckLossAccumulator);
             bucksText.text = bucks.ToString();
         }
-        
+
+        if(bucks < 0f && !gameOverFlag)
+        {
+            gameOverFlag = true;
+            GameEventSystem.Instance.GameEnded.Invoke();
+        }
     }
 
 
