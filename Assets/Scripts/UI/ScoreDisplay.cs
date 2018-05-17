@@ -5,39 +5,35 @@ using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour {
 
-    // This class is temporary just so that there's a UI on screen.  
-
-    public int bucks;
-    public int score;
+    public int Bucks { get; set; }
+    public int Score { get; set; }
 
     public Text bucksText;
     public Text scoreText;
 
-    public int bucksLossPerMinute = 500;
-
-    private float buckLossAccumulator = 0;
+    private bool gameOverFlag = false;
 
 	public void UpdateScoreboard(DrinkScore drinkScore)
     {
-        bucks += drinkScore.Bucks;
-        score += drinkScore.Score;
+        Bucks += drinkScore.Bucks;
+        Score += drinkScore.Score;
 
-        bucksText.text = bucks.ToString();
-        scoreText.text = score.ToString();
+        bucksText.text = Bucks.ToString();
+        scoreText.text = Score.ToString();
     }
 
-    void Update()
+    public void SubtractBucks(int bucksToSubtract)
     {
-        buckLossAccumulator += bucksLossPerMinute / 60 * Time.deltaTime;
+        Bucks -= bucksToSubtract;
+        bucksText.text = Bucks.ToString();
 
-        if (Mathf.RoundToInt(buckLossAccumulator) > 1)
+
+        if (Bucks < 0f && !gameOverFlag)
         {
-            bucks -= Mathf.RoundToInt(buckLossAccumulator);
-            buckLossAccumulator -= Mathf.RoundToInt(buckLossAccumulator);
-            bucksText.text = bucks.ToString();
+            gameOverFlag = true;
+            GameEventSystem.Instance.GameEnded.Invoke();
         }
-        
     }
 
-
+  
 }

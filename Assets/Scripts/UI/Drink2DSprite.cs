@@ -11,8 +11,6 @@ public class Drink2DSprite : MonoBehaviour {
 
     Garnish theGarnish;
     float[] drinkLevel;
-
-    bool isPatron = false;
     
     void Start () {
         
@@ -20,8 +18,6 @@ public class Drink2DSprite : MonoBehaviour {
 
         if (patron != null)
         {
-            isPatron = true;
-
             float[] drinkLevel = new float[6] { 0, 0, 0, 0, 0, 0 };
             drinkLevel[(int)patron.TheAlcoholPref] = 0.5f;
             drinkLevel[(int)patron.TheMixerPref + 3] = 0.5f;
