@@ -22,7 +22,7 @@ echo "Attempting to build for Windows"
   -quit
 
 # echo 'Build Log'
-# cat $(pwd)/unity.log
+ cat $(pwd)/unity.log
 # echo 'End Build Log'
 
 
