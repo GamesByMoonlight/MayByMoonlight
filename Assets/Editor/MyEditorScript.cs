@@ -6,7 +6,7 @@ public class MyEditorScript
 {
 	public static void PerformBuild ()
 	{
-        string[] scenes = {""};
+        string[] scenes = {"Assets/_Scenes/01_Start.unity"};
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
 		buildPlayerOptions.scenes = scenes;
 		buildPlayerOptions.locationPathName = "Build/windows/Windows.exe";
@@ -17,7 +17,7 @@ public class MyEditorScript
 
 	public static void PerformOSXBuild ()
 	{
-        string[] scenes = {""};
+        string[] scenes = {"Assets/_Scenes/01_Start.unity"};
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
 		buildPlayerOptions.scenes = scenes;
 		buildPlayerOptions.locationPathName = "Build/osx/OSX.app";

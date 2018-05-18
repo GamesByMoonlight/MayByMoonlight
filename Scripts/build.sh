@@ -7,7 +7,7 @@ echo "Attempting to build for Windows"
   -batchmode \
   -nographics \
   -logFile $(pwd)/unity.log \
-  -projectPath $(pwd)/ \
+  -projectPath $(pwd)/../ \
   -executeMethod MyEditorScript.PerformBuild  \
   -quit
 
@@ -17,7 +17,7 @@ echo "Attempting to build for Windows"
   -batchmode \
   -nographics \
   -logFile $(pwd)/unity.log \
-  -projectPath $(pwd)/ \
+  -projectPath $(pwd)/../ \
   -executeMethod MyEditorScript.PerformOSXBuild  \
   -quit
 
