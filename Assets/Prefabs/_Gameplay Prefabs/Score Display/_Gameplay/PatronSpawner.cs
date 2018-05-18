@@ -13,36 +13,37 @@ public class PatronSpawner : MonoBehaviour {
         
 	void Update ()
 	{
-		foreach (GameObject myPatron in patronPrefabArray) {
-			if (IsTimeToSpawn (myPatron)){
-				Spawn(myPatron);
-			}
-		}
+		// foreach (GameObject myPatron in patronPrefabArray) {
+		// 	if (IsTimeToSpawn (myPatron)){
+		// 		Spawn(myPatron);
+		// 	}
+		// }
 	}
 
-	public void Spawn (GameObject myGameObject)	{
-		GameObject spawn = Instantiate(myGameObject);
-		spawn.transform.parent = gameObject.transform;
-		spawn.transform.position = transform.position;
+	public GameObject Spawn (GameObject patronPrefab)	{
+		GameObject patronSpawned = Instantiate(patronPrefab);
+		patronSpawned.transform.parent = gameObject.transform;
+		patronSpawned.transform.position = transform.position;
+		return patronSpawned;
 	}
 
-	bool IsTimeToSpawn (GameObject attackerSpawnCooldown)
-	{
-		IPatron patronScript = attackerSpawnCooldown.GetComponent<IPatron> ();
+	// bool IsTimeToSpawn (GameObject attackerSpawnCooldown)
+	// {
+	// 	IPatron patronScript = attackerSpawnCooldown.GetComponent<IPatron> ();
 
-		float meanSpawnDelay = patronScript.SeenEverySeconds;
-		float spawnsPerSecond = 1 / meanSpawnDelay;
+	// 	float meanSpawnDelay = patronScript.SeenEverySeconds;
+	// 	float spawnsPerSecond = 1 / meanSpawnDelay;
 
-		if (Time.deltaTime > meanSpawnDelay) {
-			Debug.LogWarning ("Spawn rate capped by frame rate");
-		} 
+	// 	if (Time.deltaTime > meanSpawnDelay) {
+	// 		Debug.LogWarning ("Spawn rate capped by frame rate");
+	// 	} 
 
-		float threshold = spawnsPerSecond * Time.deltaTime / 5;
+	// 	float threshold = spawnsPerSecond * Time.deltaTime / 5;
 
-		if (Random.value < threshold) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	// 	if (Random.value < threshold) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
 }

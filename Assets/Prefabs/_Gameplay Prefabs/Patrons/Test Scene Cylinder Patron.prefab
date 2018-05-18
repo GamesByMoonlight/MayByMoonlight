@@ -88,7 +88,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -161,12 +160,7 @@ MonoBehaviour:
   preferredGarnish: 0
   tipRate: 25
   scoreRate: 100
-  scoreDisplayPrefab: {fileID: 1969782740608916, guid: 8e349cc6016f40348a79c602e28b94a8,
-    type: 2}
-  tipDisplayPrefab: {fileID: 1418868971265952, guid: 9776ed370b5c0cb479500cd4fd68211f,
-    type: 2}
-  satisfactionHeartsPrefab: {fileID: 1190671715767546, guid: 7c4512e80bb306f42a7c7f9f0077b7fc,
-    type: 2}
+  grabbedDrinkDisplay: {fileID: 0}
 --- !u!135 &135699743745083228
 SphereCollider:
   m_ObjectHideFlags: 1
