@@ -14,32 +14,39 @@ public class Drink : MonoBehaviour, IMixedDrink
     public Garnish TypeOfGarnish = Garnish.Lime;
     public bool IsJustWaterValue = false;
 
-    // IMixedDrink interface ---------------------------------
-    public float Whiskey { get { return WhiskeyValue; } }
-    public float Rum { get { return RumValue; } }
-    public float Vodka { get { return VodkaValue; } }
-    public float Soda { get { return SodaValue; } }
-    public float Coke { get { return CokeValue; } }
-    public float Vermouth { get { return VermouthValue; } }
-    public Garnish TheGarnish { get { return TypeOfGarnish; } }
-    public bool IsJustWater { get { return IsJustWaterValue; } }
-    public int Lane { get { return LaneValue; } }
+    //// IMixedDrink interface ---------------------------------
+    //public float Whiskey { get { return WhiskeyValue; } set { WhiskeyValue = value; } }
+    //public float Rum { get { return RumValue; } set { RumValue = value; } }
+    //public float Vodka { get { return VodkaValue; } set { VodkaValue = value; } }
+    //public float Soda { get { return SodaValue; } set { SodaValue = value; } }
+    //public float Coke { get { return CokeValue; } set { CokeValue = value; } }
+    //public float Vermouth { get { return VermouthValue; } set { VermouthValue = value; } }
+    //public Garnish TheGarnish { get { return TypeOfGarnish; } set { TypeOfGarnish = value; } }
+    //public bool IsJustWater { get { return IsJustWaterValue; } set { IsJustWaterValue = value; } }
+    //public int Lane { get { return LaneValue; } set { LaneValue = value; } }
     //----------------------------------------------------------
 
-    void Start () {
-        if (IsJustWaterValue)
-        {
-            Debug.Log("Lane: " + LaneValue + ". I am just water");
-            return;
-        }
-        Debug.Log("Down Lane: " + LaneValue + ". I am a drink of type (Vodka, Whiskey, Rum | Coke, Soda, Vermouth | Garnish): {" +
-                  VodkaValue + ", " +
-                  WhiskeyValue + ", " +
-                  RumValue + " | " +
-                  CokeValue + ", " +
-                  SodaValue + ", " +
-                  VermouthValue + " | " +
-                  TypeOfGarnish +
-                  "}");
-	}
+
+    public float Whiskey { get; set; }
+    public float Rum { get; set; }
+    public float Vodka { get; set; }
+    public float Soda { get; set; }
+    public float Coke { get; set; }
+    public float Vermouth { get; set; }
+    public Garnish TheGarnish { get; set; }
+    public int Lane { get; set; }
+    public bool IsJustWater { get; set; }
+
+    private void Start()
+    {
+        LaneValue = Lane;
+        WhiskeyValue = Whiskey;
+        VodkaValue = Vodka;
+        RumValue = Rum;
+        SodaValue = Soda;
+        CokeValue = Coke;
+        VermouthValue = Vermouth;
+        TypeOfGarnish = TheGarnish;
+        IsJustWaterValue = IsJustWater;
+    }
 }
