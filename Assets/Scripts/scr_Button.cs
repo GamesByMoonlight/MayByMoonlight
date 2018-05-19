@@ -29,13 +29,13 @@ public class scr_Button : MonoBehaviour
         switch(typeOfGarnish)
         {
             case "Olive":
-                levelManager.garnishType = Garnish.Olive;
+                levelManager.TheGarnish = Garnish.Olive;
                 break;
             case "Cherry":
-                levelManager.garnishType = Garnish.Cherry;
+                levelManager.TheGarnish = Garnish.Cherry;
                 break;
             case "Lime":
-                levelManager.garnishType = Garnish.Lime;
+                levelManager.TheGarnish = Garnish.Lime;
                 break;
         }
 

@@ -15,14 +15,11 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
     public GameObject DrinkPrefab;
     public GameObject[] lanes;
-
-    // This is handled by scoring manager
-    //public int myMoney;
-    //public int myXp;
+    public GameObject CurrentDrinkInProgress;
+    IMixedDrink CurrentDrink;
 
     public string drinkType;
     public string mixerType;
-    public Garnish garnishType;
 
     public bool addDrink;
     public bool addMixer;
@@ -31,48 +28,29 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     public float drinkAmount;
     public float mixerAmount;
 
-    // Better to separate UI logic from drink making logic
-    //public Text drinkTypeText;
-    //public Text drinkAmountText;
-    //public Text mixerAmountText;
-
-    private int laneValue;
-
     // IMixedDrink interface ---------------------------------
-    public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } set { drinkType = "Whiskey"; drinkAmount = value; } }
-    public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } set { drinkType = "Rum"; drinkAmount = value; } }
-    public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } set { drinkType = "Vodka"; drinkAmount = value; } }
-    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } set { mixerType = "Soda"; drinkAmount = value; } }
-    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } set { mixerType = "Cola"; drinkAmount = value; } }
-    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } set { mixerType = "Vermouth"; drinkAmount = value; } }
-    public Garnish TheGarnish { get { return garnishType; } set { garnishType = value; } }
+    public float Whiskey { get { return CurrentDrink.Whiskey; } set { CurrentDrink.Whiskey = value; } }
+    public float Rum { get { return CurrentDrink.Rum; } set { CurrentDrink.Rum = value; } }
+    public float Vodka { get { return CurrentDrink.Vodka; } set { CurrentDrink.Vodka = value; } }
+    public float Soda { get { return CurrentDrink.Soda; } set { CurrentDrink.Soda = value; } }
+    public float Coke { get { return CurrentDrink.Coke; } set { CurrentDrink.Coke = value; } }
+    public float Vermouth { get { return CurrentDrink.Vermouth; } set { CurrentDrink.Vermouth = value; } }
+    public Garnish TheGarnish { get { return CurrentDrink.TheGarnish; } set { CurrentDrink.TheGarnish = value; } }
     public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value); } }
-    public int Lane { get { return laneValue; } set { laneValue = value; } }
+    public int Lane { get { return CurrentDrink.Lane; } set { CurrentDrink.Lane = value; } }
     //----------------------------------------------------------
 
     // Use this for initialization
     void Start () 
     {
         ResetDrink();
+        CurrentDrink = CurrentDrinkInProgress.GetComponent<IMixedDrink>();
         GameEventSystem.Instance.DrinkMade.AddListener(DrinkMadeListener);
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        // Better to separate UI logic from drink making logic
-        //if (mixerType != string.Empty)
-        //{
-        //    if (hasGarnish != true)
-        //        drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType;
-        //    else
-        //        drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType + " with " + garnishType;
-        //}
-        //else
-        //    drinkTypeText.text = "Current Drink: " + drinkType;
-        
-        //drinkAmountText.text = "Alcohol: " + drinkAmount.ToString() + "%";
-        //mixerAmountText.text = "Mixer: " + mixerAmount.ToString() + "%";
 
         if (addDrink)
         {
@@ -82,6 +60,7 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
                 drinkAmount = 100;
             if (drinkAmount + mixerAmount >= 100)
                 mixerAmount = 100 - drinkAmount;
+            UpdateDrink();
         }
 
         if (addMixer)
@@ -92,8 +71,14 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
                 mixerAmount = 100;
             if (drinkAmount + mixerAmount >= 100)
                 drinkAmount = 100 - mixerAmount;
+            UpdateDrink();
         }
 	}
+
+    void UpdateDrink()
+    {
+        
+    }
 
     public void MakeDrinkAtLane(int lane)
     {
@@ -103,7 +88,6 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
     GameObject MakeDrink(int lane)
     {
-        laneValue = lane;
         var drink = Instantiate(DrinkPrefab).GetComponent<Drink>();
         drink.Whiskey = Whiskey;
         drink.Rum = Rum;
