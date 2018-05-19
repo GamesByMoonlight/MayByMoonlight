@@ -54,6 +54,7 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     void Start () 
     {
         ResetDrink();
+        GameEventSystem.Instance.DrinkMade.AddListener(DrinkMadeListener);
 	}
 	
 	// Update is called once per frame
@@ -125,5 +126,16 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
         drinkAmount = 0f;
         mixerAmount = 0f;
+    }
+
+    void DrinkMadeListener(GameObject drink)
+    {
+        ResetDrink();
+    }
+
+    private void OnDestroy()
+    {
+        if (GameEventSystem.Instance != null)
+            GameEventSystem.Instance.DrinkMade.RemoveListener(DrinkMadeListener);
     }
 }

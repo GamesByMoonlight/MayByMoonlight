@@ -25,12 +25,13 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } set { coke = value; } }
     public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } set { vermouth = value; } }
     public int Lane { get { return lane; } set { lane = value; }}
-    public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value);} }
+    public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value); } }
     public Garnish TheGarnish { get { return selectedGarnish; } set { selectedGarnish = value; } }
 
     void Start()
     {
         maxLanes = lanes.Length;
+        GameEventSystem.Instance.DrinkMade.AddListener(DrinkMadeListener);
     }
 
 	// Update is called once per frame
@@ -139,6 +140,17 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
             return true;
         }
         return false;
+    }
+
+    void DrinkMadeListener(GameObject drink)
+    {
+        ClearValues();
+    }
+
+    private void OnDestroy()
+    {
+        if (GameEventSystem.Instance != null)
+            GameEventSystem.Instance.DrinkMade.RemoveListener(DrinkMadeListener);
     }
 }
 
