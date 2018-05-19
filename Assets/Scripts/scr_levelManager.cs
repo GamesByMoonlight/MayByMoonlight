@@ -16,8 +16,9 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     public GameObject DrinkPrefab;
     public GameObject[] lanes;
 
-    public int myMoney;
-    public int myXp;
+    // This is handled by scoring manager
+    //public int myMoney;
+    //public int myXp;
 
     public string drinkType;
     public string mixerType;
@@ -103,14 +104,15 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     {
         laneValue = lane;
         var drink = Instantiate(DrinkPrefab).GetComponent<Drink>();
-        drink.WhiskeyValue = Whiskey;
-        drink.RumValue = Rum;
-        drink.VodkaValue = Vodka;
-        drink.SodaValue = Soda;
-        drink.CokeValue = Coke;
-        drink.VermouthValue = Vermouth;
-        drink.TypeOfGarnish = TheGarnish;
-        drink.LaneValue = lane;
+        drink.Whiskey = Whiskey;
+        drink.Rum = Rum;
+        drink.Vodka = Vodka;
+        drink.Soda = Soda;
+        drink.Coke = Coke;
+        drink.Vermouth = Vermouth;
+        drink.TheGarnish = TheGarnish;
+        drink.Lane = lane;
+        drink.IsJustWater = false;
 
         return drink.gameObject;
     }
