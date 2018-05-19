@@ -22,7 +22,7 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
     public string drinkType;
     public string mixerType;
-    public string garnishType;
+    public Garnish garnishType;
 
     public bool addDrink;
     public bool addMixer;
@@ -39,15 +39,15 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     private int laneValue;
 
     // IMixedDrink interface ---------------------------------
-    public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } }
-    public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } }
-    public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } }
-    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } }
-    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } }
-    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } }
-    public Garnish TheGarnish { get { return garnishType == "Cherry" ? Garnish.Cherry : garnishType == "Lime" ? Garnish.Lime : Garnish.Olive; } }
-    public bool IsJustWater { get { return false; } }
-    public int Lane { get { return laneValue; } }
+    public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } set { drinkType = "Whiskey"; drinkAmount = value; } }
+    public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } set { drinkType = "Rum"; drinkAmount = value; } }
+    public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } set { drinkType = "Vodka"; drinkAmount = value; } }
+    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } set { drinkType = "Soda"; drinkAmount = value; } }
+    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } set { drinkType = "Cola"; drinkAmount = value; } }
+    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } set { drinkType = "Vermouth"; drinkAmount = value; } }
+    public Garnish TheGarnish { get { return garnishType; } set { garnishType = value; } }
+    public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value); } }
+    public int Lane { get { return laneValue; } set { laneValue = value; } }
     //----------------------------------------------------------
 
     // Use this for initialization
