@@ -655,7 +655,7 @@ Prefab:
         type: 2}
       propertyPath: DrinkToDisplay
       value: 
-      objectReference: {fileID: 130180262}
+      objectReference: {fileID: 1839661635}
     - target: {fileID: 224199369615797154, guid: efa9695696e1a4001881c1669cb01762,
         type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -734,48 +734,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &130180262
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 130180264}
-  - component: {fileID: 130180263}
-  m_Layer: 0
-  m_Name: Unified Input Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &130180263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 130180262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23bb4954ee2624fd98d4de50581a0ae5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyboardController: {fileID: 1839661635}
-  MouseController: {fileID: 898388586}
---- !u!4 &130180264
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 130180262}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 502, y: 218, z: -3.94}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &146023862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,9 +2361,9 @@ MonoBehaviour:
   - {fileID: 2437515}
   - {fileID: 525131205}
   - {fileID: 1848109363}
+  CurrentDrinkInProgress: {fileID: 1839661635}
   drinkType: 
   mixerType: 
-  garnishType: 0
   addDrink: 0
   addMixer: 0
   hasGarnish: 0

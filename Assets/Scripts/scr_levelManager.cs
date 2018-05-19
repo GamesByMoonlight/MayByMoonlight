@@ -15,7 +15,7 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
     public GameObject DrinkPrefab;
     public GameObject[] lanes;
-    public GameObject CurrentDrinkInProgress;
+    public GameObject CurrentDrinkInProgress;   // This is the KeyboardInputController for right now.  It could be anything, but to work in tandem with Keyboard input, just make this the KeyboardInputController
     IMixedDrink CurrentDrink;
 
     public string drinkType;
@@ -77,11 +77,17 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
 
     void UpdateDrink()
     {
-        
+        CurrentDrink.Whiskey = drinkType == "Whiskey" ? drinkAmount / 100f : 0f; 
+        CurrentDrink.Rum = drinkType == "Rum" ? drinkAmount / 100f : 0f; 
+        CurrentDrink.Vodka = drinkType == "Vodka" ? drinkAmount / 100f : 0f; 
+        CurrentDrink.Soda = mixerType == "Soda" ? mixerAmount / 100f : 0f; 
+        CurrentDrink.Coke = mixerType == "Cola" ? mixerAmount / 100f : 0f; 
+        CurrentDrink.Vermouth = mixerType == "Vermouth" ? mixerAmount / 100f : 0f; 
     }
 
     public void MakeDrinkAtLane(int lane)
     {
+        Lane = lane;
         lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink(lane).gameObject);
         ResetDrink();
     }

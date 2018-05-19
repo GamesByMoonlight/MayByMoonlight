@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Drink : MonoBehaviour, IMixedDrink
 {
-    //public int LaneValue = 0;
-    //public float WhiskeyValue = 0f;
-    //public float VodkaValue = 0f;
-    //public float RumValue = 0f;
-    //public float SodaValue = 0f;
-    //public float CokeValue = 0f;
-    //public float VermouthValue = 0f;
-    //public Garnish TypeOfGarnish = Garnish.Lime;
-    //public bool IsJustWaterValue = false;
+    public int LaneValue = 0;
+    public float WhiskeyValue = 0f;
+    public float VodkaValue = 0f;
+    public float RumValue = 0f;
+    public float SodaValue = 0f;
+    public float CokeValue = 0f;
+    public float VermouthValue = 0f;
+    public Garnish TypeOfGarnish = Garnish.Lime;
+    public bool IsJustWaterValue = false;
 
     //// IMixedDrink interface ---------------------------------
     //public float Whiskey { get { return WhiskeyValue; } set { WhiskeyValue = value; } }
@@ -35,5 +35,18 @@ public class Drink : MonoBehaviour, IMixedDrink
     public float Vermouth { get; set; }
     public Garnish TheGarnish { get; set; }
     public int Lane { get; set; }
-    public bool IsJustWater { get; set; } 
+    public bool IsJustWater { get; set; }
+
+    private void Start()
+    {
+        LaneValue = Lane;
+        WhiskeyValue = Whiskey;
+        VodkaValue = Vodka;
+        RumValue = Rum;
+        SodaValue = Soda;
+        CokeValue = Coke;
+        VermouthValue = Vermouth;
+        TypeOfGarnish = TheGarnish;
+        IsJustWaterValue = IsJustWater;
+    }
 }
