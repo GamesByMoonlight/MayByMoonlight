@@ -18,15 +18,15 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     float timeLastCleared = 0f;
 
     // Calculating in this way clamps each value between 0 - 1.0.  Returning via the ?: operator prevents dividing by 0.
-    public float Whiskey    { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? whiskey :    whiskey == 0f ? 0f : whiskey / (whiskey + rum + vodka + soda + coke + vermouth); }}
-    public float Rum        { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? rum :        rum == 0f ? 0f : rum / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Vodka      { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vodka :      vodka == 0f ? 0f : vodka / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Soda       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? soda :       soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public int Lane { get { return lane; } }
-    public bool IsJustWater { get { return false; } }
-    public Garnish TheGarnish { get { return selectedGarnish; } }
+    public float Whiskey    { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? whiskey :    whiskey == 0f ? 0f : whiskey / (whiskey + rum + vodka + soda + coke + vermouth); } set { whiskey = value; } }
+    public float Rum        { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? rum :        rum == 0f ? 0f : rum / (whiskey + rum + vodka + soda + coke + vermouth); } set { rum = value; }}
+    public float Vodka      { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vodka :      vodka == 0f ? 0f : vodka / (whiskey + rum + vodka + soda + coke + vermouth); } set { vodka = value; } }
+    public float Soda       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? soda :       soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } set { soda = value; } }
+    public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } set { coke = value; } }
+    public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } set { vermouth = value; } }
+    public int Lane { get { return lane; } set { lane = value; }}
+    public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value);} }
+    public Garnish TheGarnish { get { return selectedGarnish; } set { selectedGarnish = value; } }
 
     void Start()
     {
