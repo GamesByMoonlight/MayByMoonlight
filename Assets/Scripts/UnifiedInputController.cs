@@ -26,6 +26,7 @@ public class UnifiedInputController : MonoBehaviour, IMixedDrink {
     {
         keyboard = KeyboardController.GetComponent<IMixedDrink>();
         mouse = MouseController.GetComponent<IMixedDrink>();
+        ClearValues();
         GameEventSystem.Instance.DrinkMade.AddListener(DrinkMadeListener);
     }
 
@@ -85,6 +86,18 @@ public class UnifiedInputController : MonoBehaviour, IMixedDrink {
         garnish = mixedDrink.TheGarnish;
         keyboard.TheGarnish = mixedDrink.TheGarnish;
         mouse.TheGarnish = mixedDrink.TheGarnish;
+
+        ClearValues();
+    }
+
+    void ClearValues()
+    {
+        whiskey = 0f;
+        rum = 0f;
+        vodka = 0f;
+        soda = 0f;
+        coke = 0f; 
+        vermouth = 0f;
     }
 
     private void OnDestroy()
