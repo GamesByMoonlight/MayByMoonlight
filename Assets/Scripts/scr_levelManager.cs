@@ -42,9 +42,9 @@ public class scr_levelManager : MonoBehaviour, IMixedDrink
     public float Whiskey { get { return drinkType == "Whiskey" ? drinkAmount / 100f : 0f; } set { drinkType = "Whiskey"; drinkAmount = value; } }
     public float Rum { get { return drinkType == "Rum" ? drinkAmount / 100f : 0f; } set { drinkType = "Rum"; drinkAmount = value; } }
     public float Vodka { get { return drinkType == "Vodka" ? drinkAmount / 100f : 0f; } set { drinkType = "Vodka"; drinkAmount = value; } }
-    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } set { drinkType = "Soda"; drinkAmount = value; } }
-    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } set { drinkType = "Cola"; drinkAmount = value; } }
-    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } set { drinkType = "Vermouth"; drinkAmount = value; } }
+    public float Soda { get { return mixerType == "Soda" ? mixerAmount / 100f : 0f; } set { mixerType = "Soda"; drinkAmount = value; } }
+    public float Coke { get { return mixerType == "Cola" ? mixerAmount / 100f : 0f; } set { mixerType = "Cola"; drinkAmount = value; } }
+    public float Vermouth { get { return mixerType == "Vermouth" ? mixerAmount / 100f : 0f; } set { mixerType = "Vermouth"; drinkAmount = value; } }
     public Garnish TheGarnish { get { return garnishType; } set { garnishType = value; } }
     public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value); } }
     public int Lane { get { return laneValue; } set { laneValue = value; } }
