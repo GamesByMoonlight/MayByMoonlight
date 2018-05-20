@@ -15,7 +15,9 @@ public class EndBar : MonoBehaviour {
         {
             Destroy(col.gameObject);
             
-            
+            scoreDisplay.SubtractBucks(BucksPenalty);
+            scoreDisplay.SubtractScore(ScorePenalty);
+
 
         }
 

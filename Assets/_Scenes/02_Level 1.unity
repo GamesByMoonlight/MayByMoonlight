@@ -2285,6 +2285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f440506a23d062499010167925af8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreDisplay: {fileID: 1392863896}
+  ScorePenalty: 5
+  BucksPenalty: 5
 --- !u!54 &1888278036
 Rigidbody:
   m_ObjectHideFlags: 0
