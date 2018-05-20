@@ -1248,6 +1248,57 @@ Transform:
   m_PrefabParentObject: {fileID: 4588091007888234, guid: 313509cfbc5ade9468575a770652c2bc,
     type: 2}
   m_PrefabInternal: {fileID: 1848109362}
+--- !u!1001 &376322924
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495688107894150, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593724836485334, guid: 5f321cbc15c8f5d498387cba05daf612,
+        type: 2}
+      propertyPath: scoreDisplay
+      value: 
+      objectReference: {fileID: 1392863896}
+    - target: {fileID: 1811785316526076, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_Name
+      value: Patron Destroyer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &376792798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,7 +2548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -54.26001, y: -13.050003}
+  m_AnchoredPosition: {x: -54.26001, y: -13.049988}
   m_SizeDelta: {x: 108.53, y: 26.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911526553
@@ -2814,7 +2865,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1091224488
 GameObject:

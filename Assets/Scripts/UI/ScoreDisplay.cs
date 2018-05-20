@@ -34,6 +34,12 @@ public class ScoreDisplay : MonoBehaviour {
             GameEventSystem.Instance.GameEnded.Invoke();
         }
     }
+    public void SubtractScore(int scoreToSubtract)
+    {
+        Score -= scoreToSubtract;
+        scoreText.text = Score.ToString();
+
+    }
 
   
 }
