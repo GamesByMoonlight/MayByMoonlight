@@ -29,17 +29,17 @@ public class Drink : MonoBehaviour, IMixedDrink
     void Start () {
         if (IsJustWaterValue)
         {
-            Debug.Log("Lane: " + LaneValue + ". I am just water");
+            // Debug.Log("Lane: " + LaneValue + ". I am just water");
             return;
         }
-        Debug.Log("Down Lane: " + LaneValue + ". I am a drink of type (Vodka, Whiskey, Rum | Coke, Soda, Vermouth | Garnish): {" +
-                  VodkaValue + ", " +
-                  WhiskeyValue + ", " +
-                  RumValue + " | " +
-                  CokeValue + ", " +
-                  SodaValue + ", " +
-                  VermouthValue + " | " +
-                  TypeOfGarnish +
-                  "}");
+        // Debug.Log("Down Lane: " + LaneValue + ". I am a drink of type (Vodka, Whiskey, Rum | Coke, Soda, Vermouth | Garnish): {" +
+        //           VodkaValue + ", " +
+        //           WhiskeyValue + ", " +
+        //           RumValue + " | " +
+        //           CokeValue + ", " +
+        //           SodaValue + ", " +
+        //           VermouthValue + " | " +
+        //           TypeOfGarnish +
+        //           "}");
 	}
 }

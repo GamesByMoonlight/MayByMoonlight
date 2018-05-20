@@ -13,15 +13,22 @@ public class DifficultyRegulator : MonoBehaviour {
 	private PatronSpawner[] Spawners;
 
 	public GameObject[] PatronPrefabs;
-	public IList<GameObject> CurrentPatrons;
+	public IList<GameObject> CurrentPatrons {
+		get {
+			return GameObject.FindGameObjectsWithTag("Patron");
+		}
+	}
 
-	public float SpeedModifier = -0.5f;
+	// public float SpeedModifier = -0.2f;
 
 	private float myTimer = 0.0f;
 
+	public int MaxPatronCount = 10;
+
+	public float SpawnChance = 0.5f;
+
 	// Use this for initialization
 	void Start () {
-		this.CurrentPatrons = new List<GameObject>();
 		this.Spawners = GameObject.Find("Bars").GetComponentsInChildren<PatronSpawner>();
 	}
 
@@ -54,29 +61,45 @@ public class DifficultyRegulator : MonoBehaviour {
 	}	
 
 	public bool ShouldSpawn() {
+		if (ScoreDisplay.Bucks > 100) {
+			this.SpawnChance += 0.1f * ScoreDisplay.Bucks;
+		} else {
+			this.SpawnChance = 0.50f;
+		}
+
+		var i = Random.Range(0.0f, 1.0f);
+		if (i <= this.SpawnChance) {
+			return true;
+		}
 		return false;
 	}
 
 	public void SpawnPatrons() {
-		if (CurrentPatrons.Count > 0) {
+		Debug.Log(CurrentPatrons.Count);
+		if (CurrentPatrons.Count >= this.MaxPatronCount) {
 			return;
 		}
+
+		if (!this.ShouldSpawn()) {
+			return;
+		}
+
 		var randomPatronPrefab = GetRandomPatron();
 		
 		var patronComponent = randomPatronPrefab.GetComponent<IPatron>();
 
-		// if (patronComponent.MoveSpeed >  0.2) {
+		// if (patronComponent.MoveSpeed >  0) {
 
 		// 	patronComponent.MoveSpeed += SpeedModifier;
 		// }
 		// else {
 		// 	SpeedModifier = 0f;
+		// 	patronComponent.MoveSpeed = 0.5f;
 		// }
 
-		// Debug.Log(patronComponent.MoveSpeed);
+		// Debug.Log(patronComponent.MoveSpeked);
 
 		var spawnedPatron = GetRandomSpawner().Spawn( randomPatronPrefab); 
-		this.CurrentPatrons.Add(spawnedPatron);
 
 	}
 
@@ -84,16 +107,14 @@ public class DifficultyRegulator : MonoBehaviour {
 	public void KillPatrons() {
 		var removed = new List<GameObject>();
 		foreach(var patron in this.CurrentPatrons) {
+			if (patron == null) {
+				continue;
+			}
 			//TODO why do I need localPosition here?
 			if (patron.transform.localPosition.x >= KillXCoordinate) {
+				ScoreDisplay.Bucks -= 50;
 				Destroy(patron);
-				removed.Add(patron);
 			}
-		}
-
-
-		foreach(var patron in removed) {
-			this.CurrentPatrons.Remove(patron);	
 		}
 	}
 

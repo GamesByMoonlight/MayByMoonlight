@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1063639977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf829097fb9d4a46b16fbff331385f6, type: 3}
   m_Name: 
@@ -1409,12 +1409,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalNumberOfPatrons: 0
   ScoreInLastNSeconds: 0
-  ScoreDisplay: {fileID: 0}
+  ScoreDisplay: {fileID: 1392863896}
   ScoreTimeThreshold: 10
   PatronPrefabs:
   - {fileID: 1625615275879892, guid: d6cd1cc074358264186ea6e55b7b5ffe, type: 2}
   - {fileID: 1416002034144896, guid: 411ff8d53c5ff614eae63a451f38144b, type: 2}
-  SpeedModifier: -2
+  MaxPatronCount: 10
+  SpawnChance: 0.5
   KillXCoordinate: 14
 --- !u!4 &1183121598 stripped
 Transform:
