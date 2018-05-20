@@ -18,19 +18,20 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     float timeLastCleared = 0f;
 
     // Calculating in this way clamps each value between 0 - 1.0.  Returning via the ?: operator prevents dividing by 0.
-    public float Whiskey    { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? whiskey :    whiskey == 0f ? 0f : whiskey / (whiskey + rum + vodka + soda + coke + vermouth); }}
-    public float Rum        { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? rum :        rum == 0f ? 0f : rum / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Vodka      { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vodka :      vodka == 0f ? 0f : vodka / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Soda       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? soda :       soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } }
-    public int Lane { get { return lane; } }
-    public bool IsJustWater { get { return false; } }
-    public Garnish TheGarnish { get { return selectedGarnish; } }
+    public float Whiskey    { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? whiskey :    whiskey == 0f ? 0f : whiskey / (whiskey + rum + vodka + soda + coke + vermouth); } set { whiskey = value; } }
+    public float Rum        { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? rum :        rum == 0f ? 0f : rum / (whiskey + rum + vodka + soda + coke + vermouth); } set { rum = value; }}
+    public float Vodka      { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vodka :      vodka == 0f ? 0f : vodka / (whiskey + rum + vodka + soda + coke + vermouth); } set { vodka = value; } }
+    public float Soda       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? soda :       soda == 0f ? 0f : soda / (whiskey + rum + vodka + soda + coke + vermouth); } set { soda = value; } }
+    public float Coke       { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? coke :       coke == 0f ? 0f : coke / (whiskey + rum + vodka + soda + coke + vermouth); } set { coke = value; } }
+    public float Vermouth   { get { return (whiskey + rum + vodka + soda + coke + vermouth) < 1f ? vermouth :   vermouth == 0f ? 0f : vermouth / (whiskey + rum + vodka + soda + coke + vermouth); } set { vermouth = value; } }
+    public int Lane { get { return lane; } set { lane = value; }}
+    public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value); } }
+    public Garnish TheGarnish { get { return selectedGarnish; } set { selectedGarnish = value; } }
 
     void Start()
     {
         maxLanes = lanes.Length;
+        GameEventSystem.Instance.DrinkMade.AddListener(DrinkMadeListener);
     }
 
 	// Update is called once per frame
@@ -95,14 +96,15 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     {
         // Drink drink = new Drink();  // I believe this creates memory leaks in Unity
         var drink = Instantiate(DrinkPrefab);
-        drink.WhiskeyValue = Whiskey;
-        drink.RumValue = Rum;
-        drink.VodkaValue = Vodka;
-        drink.SodaValue = Soda;
-        drink.CokeValue = Coke;
-        drink.VermouthValue = Vermouth;
-        drink.TypeOfGarnish = selectedGarnish;
-        drink.LaneValue = lane;
+        drink.Whiskey = Whiskey;
+        drink.Rum = Rum;
+        drink.Vodka = Vodka;
+        drink.Soda = Soda;
+        drink.Coke = Coke;
+        drink.Vermouth = Vermouth;
+        drink.TheGarnish = selectedGarnish;
+        drink.Lane = lane;
+        drink.IsJustWater = false;
 
         return drink;
     }
@@ -111,7 +113,7 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
     {
         // Drink drink = new Drink(); // I believe this creates memory leaks in Unity
         var drink = MakeDrink();
-        drink.IsJustWaterValue = true;
+        drink.IsJustWater = true;
 
         return drink;
     }
@@ -138,6 +140,17 @@ public class KeyboardInputController : MonoBehaviour, IMixedDrink {
             return true;
         }
         return false;
+    }
+
+    void DrinkMadeListener(GameObject drink)
+    {
+        ClearValues();
+    }
+
+    private void OnDestroy()
+    {
+        if (GameEventSystem.Instance != null)
+            GameEventSystem.Instance.DrinkMade.RemoveListener(DrinkMadeListener);
     }
 }
 
