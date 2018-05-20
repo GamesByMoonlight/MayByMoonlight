@@ -1292,6 +1292,10 @@ Prefab:
       propertyPath: scoreDisplay
       value: 
       objectReference: {fileID: 1392863896}
+    - target: {fileID: 1811785316526076, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
+      propertyPath: m_Name
+      value: Patron Destroyer
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f321cbc15c8f5d498387cba05daf612, type: 2}
   m_IsPrefabParent: 0
@@ -2544,7 +2548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -54.26001, y: -13.050003}
+  m_AnchoredPosition: {x: -54.26001, y: -13.049988}
   m_SizeDelta: {x: 108.53, y: 26.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911526553
