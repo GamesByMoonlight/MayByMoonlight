@@ -23,13 +23,25 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	private float myTimer = 0.0f;
 
-	public int MaxPatronCount = 10;
+	public int CurrentMaxPatronCount = 3;
 
 	public float SpawnChance = 0.5f;
+
+	public float TimerSecondsCheck = 2f;
+
+	public bool Break = false;
+
+	public int StartingBucks = 300;
+
+	public int MinPatronCount = 3;
+
+	public int BreakTimeSeconds = 10;
+
 
 	// Use this for initialization
 	void Start () {
 		this.Spawners = GameObject.Find("Bars").GetComponentsInChildren<PatronSpawner>();
+		this.ScoreDisplay.Bucks = this.StartingBucks;
 	}
 
 
@@ -41,13 +53,18 @@ public class DifficultyRegulator : MonoBehaviour {
 
 		myTimer += Time.deltaTime;
 
-		if (myTimer >= 1) {
+		if (myTimer >= TimerSecondsCheck) {
 			myTimer = 0;
 
 			SpawnPatrons();
 			KillPatrons();
+			ReduceBucks();
 		}
 
+	}
+
+	private void ReduceBucks() {
+		this.ScoreDisplay.SubtractBucks(1);
 	}
 
 	public PatronSpawner GetRandomSpawner() {
@@ -60,11 +77,27 @@ public class DifficultyRegulator : MonoBehaviour {
 		return  this.PatronPrefabs[i] ;
 	}	
 
-	public bool ShouldSpawn() {
+	bool ShouldSpawn() {
+		if (this.Break) {
+			return false;
+		}
+
+		if (CurrentPatrons.Count >= this.CurrentMaxPatronCount) {
+			this.Break = true;
+			Invoke("CancelBreak", this.BreakTimeSeconds);
+			return false;
+		}
+
 		if (ScoreDisplay.Bucks > 100) {
-			this.SpawnChance += 0.1f * ScoreDisplay.Bucks;
+			this.SpawnChance += 0.005f * ScoreDisplay.Bucks;
 		} else {
 			this.SpawnChance = 0.50f;
+		}
+
+		this.CurrentMaxPatronCount = this.ScoreDisplay.Bucks / 200;
+
+		if (this.CurrentMaxPatronCount < MinPatronCount) {
+			this.CurrentMaxPatronCount = MinPatronCount;
 		}
 
 		var i = Random.Range(0.0f, 1.0f);
@@ -74,11 +107,12 @@ public class DifficultyRegulator : MonoBehaviour {
 		return false;
 	}
 
-	public void SpawnPatrons() {
-		Debug.Log(CurrentPatrons.Count);
-		if (CurrentPatrons.Count >= this.MaxPatronCount) {
-			return;
-		}
+	private void CancelBreak() {
+		this.Break = false;
+		AdjustSpeed();
+	}
+
+	private void SpawnPatrons() {
 
 		if (!this.ShouldSpawn()) {
 			return;
@@ -87,23 +121,33 @@ public class DifficultyRegulator : MonoBehaviour {
 		var randomPatronPrefab = GetRandomPatron();
 		
 		var patronComponent = randomPatronPrefab.GetComponent<IPatron>();
-
-		// if (patronComponent.MoveSpeed >  0) {
-
-		// 	patronComponent.MoveSpeed += SpeedModifier;
-		// }
-		// else {
-		// 	SpeedModifier = 0f;
-		// 	patronComponent.MoveSpeed = 0.5f;
-		// }
-
-		// Debug.Log(patronComponent.MoveSpeked);
-
 		var spawnedPatron = GetRandomSpawner().Spawn( randomPatronPrefab); 
+		spawnedPatron.GetComponent<IPatron>().MoveSpeed += CurrentPatronSpeed;
+	}
+
+	public float CurrentPatronSpeed = 0.0f;
+
+	private void AdjustSpeed() {
+		CurrentPatronSpeed = ScoreDisplay.Bucks / 1000 / 10;
+		if (ScoreDisplay.Bucks < 500) {
+			CurrentPatronSpeed = 0.0f;
+		}
+	}
+
+	public int KillPatronXCoord = 10;
+	public int PenaltyDenominator = 10;
+	public int MinPenalty = 100;
+	public int PissedPatronPenalty { 
+		get { 
+			var penalty = this.ScoreDisplay.Bucks / PenaltyDenominator;
+			if (penalty < MinPenalty)
+				penalty = MinPenalty;
+
+			return penalty;
+		}
 
 	}
 
-	public int KillXCoordinate = 12;
 	public void KillPatrons() {
 		var removed = new List<GameObject>();
 		foreach(var patron in this.CurrentPatrons) {
@@ -111,8 +155,8 @@ public class DifficultyRegulator : MonoBehaviour {
 				continue;
 			}
 			//TODO why do I need localPosition here?
-			if (patron.transform.localPosition.x >= KillXCoordinate) {
-				ScoreDisplay.Bucks -= 50;
+			if (patron.transform.localPosition.x >= KillPatronXCoord) {
+				ScoreDisplay.SubtractBucks(PissedPatronPenalty);
 				Destroy(patron);
 			}
 		}

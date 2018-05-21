@@ -1414,9 +1414,17 @@ MonoBehaviour:
   PatronPrefabs:
   - {fileID: 1625615275879892, guid: d6cd1cc074358264186ea6e55b7b5ffe, type: 2}
   - {fileID: 1416002034144896, guid: 411ff8d53c5ff614eae63a451f38144b, type: 2}
-  MaxPatronCount: 10
-  SpawnChance: 0.5
-  KillXCoordinate: 14
+  CurrentMaxPatronCount: 3
+  SpawnChance: 0.3
+  TimerSecondsCheck: 0.5
+  Break: 0
+  StartingBucks: 300
+  MinPatronCount: 3
+  BreakTimeSeconds: 10
+  CurrentPatronSpeed: 0
+  KillPatronXCoord: 10
+  PenaltyDenominator: 10
+  MinPenalty: 100
 --- !u!4 &1183121598 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4185641154363074, guid: 313509cfbc5ade9468575a770652c2bc,
@@ -1476,6 +1484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbd0ba03d6ada648824d9aee76ca651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bucks: 0
+  Score: 0
   bucksText: {fileID: 177867228}
   scoreText: {fileID: 1905751610}
 --- !u!223 &1392863897
