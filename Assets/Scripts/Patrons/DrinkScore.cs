@@ -6,6 +6,7 @@ public class DrinkScore
     public int Bucks { get; set; }
     public int Score { get; set; }
     public int PreferenceMatches { get; set; }
+    public int GarnishBounus = 100;
 
     public DrinkScore()
         {
@@ -105,8 +106,8 @@ public class DrinkScore
 
         if (drinkToScore.TypeOfGarnish == fancyPatron.TypeOfGarnish)
         {
-            Bucks += Bucks;
-            Score += Score;
+            Bucks += GarnishBounus; //Currently 100, but could be changed
+            Score += GarnishBounus;
         }
 
         if (drinkToScore.TypeOfGarnish == fancyPatron.TypeOfGarnish)  // This is dumb and I hate it but it works and I'm on a time crunch
