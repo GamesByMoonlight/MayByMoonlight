@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class scr_levelManager : MonoBehaviour 
+public class scr_levelManager : MonoBehaviour, IMixedDrink
 {
     public enum State
     {
@@ -13,12 +13,13 @@ public class scr_levelManager : MonoBehaviour
     };
     public State currentState;
 
-    public int myMoney;
-    public int myXp;
+    public GameObject DrinkPrefab;
+    public GameObject[] lanes;
+    public GameObject CurrentDrinkInProgress;   // This is the KeyboardInputController for right now.  It could be anything, but to work in tandem with Keyboard input, just make this the KeyboardInputController
+    IMixedDrink CurrentDrink;
 
     public string drinkType;
     public string mixerType;
-    public string garnishType;
 
     public bool addDrink;
     public bool addMixer;
@@ -27,33 +28,29 @@ public class scr_levelManager : MonoBehaviour
     public float drinkAmount;
     public float mixerAmount;
 
-    public Text drinkTypeText;
-    public Text drinkAmountText;
-    public Text mixerAmountText;
+    // IMixedDrink interface ---------------------------------
+    public float Whiskey { get { return CurrentDrink.Whiskey; } set { CurrentDrink.Whiskey = value; } }
+    public float Rum { get { return CurrentDrink.Rum; } set { CurrentDrink.Rum = value; } }
+    public float Vodka { get { return CurrentDrink.Vodka; } set { CurrentDrink.Vodka = value; } }
+    public float Soda { get { return CurrentDrink.Soda; } set { CurrentDrink.Soda = value; } }
+    public float Coke { get { return CurrentDrink.Coke; } set { CurrentDrink.Coke = value; } }
+    public float Vermouth { get { return CurrentDrink.Vermouth; } set { CurrentDrink.Vermouth = value; } }
+    public Garnish TheGarnish { get { return CurrentDrink.TheGarnish; } set { CurrentDrink.TheGarnish = value; } }
+    public bool IsJustWater { get { return false; } set { Debug.Log("Controller water value set (does nothing) " + value); } }
+    public int Lane { get { return CurrentDrink.Lane; } set { CurrentDrink.Lane = value; } }
+    //----------------------------------------------------------
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
     {
-        addDrink = false;
-        addMixer = false;
-        hasGarnish = false;
+        ResetDrink();
+        CurrentDrink = CurrentDrinkInProgress.GetComponent<IMixedDrink>();
+        GameEventSystem.Instance.DrinkMade.AddListener(DrinkMadeListener);
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (mixerType != string.Empty)
-        {
-            if (hasGarnish != true)
-                drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType;
-            else
-                drinkTypeText.text = "Current Drink: " + drinkType + " and " + mixerType + " with " + garnishType;
-        }
-        else
-            drinkTypeText.text = "Current Drink: " + drinkType;
-        
-        drinkAmountText.text = "Alcohol: " + drinkAmount.ToString() + "%";
-        mixerAmountText.text = "Mixer: " + mixerAmount.ToString() + "%";
 
         if (addDrink)
         {
@@ -63,6 +60,7 @@ public class scr_levelManager : MonoBehaviour
                 drinkAmount = 100;
             if (drinkAmount + mixerAmount >= 100)
                 mixerAmount = 100 - drinkAmount;
+            UpdateDrink();
         }
 
         if (addMixer)
@@ -73,15 +71,61 @@ public class scr_levelManager : MonoBehaviour
                 mixerAmount = 100;
             if (drinkAmount + mixerAmount >= 100)
                 drinkAmount = 100 - mixerAmount;
+            UpdateDrink();
         }
 	}
 
-    void BuildDrink()
+    void UpdateDrink()
     {
-        
+        CurrentDrink.Whiskey = drinkType == "Whiskey" ? drinkAmount / 100f : 0f; 
+        CurrentDrink.Rum = drinkType == "Rum" ? drinkAmount / 100f : 0f; 
+        CurrentDrink.Vodka = drinkType == "Vodka" ? drinkAmount / 100f : 0f; 
+        CurrentDrink.Soda = mixerType == "Soda" ? mixerAmount / 100f : 0f; 
+        CurrentDrink.Coke = mixerType == "Cola" ? mixerAmount / 100f : 0f; 
+        CurrentDrink.Vermouth = mixerType == "Vermouth" ? mixerAmount / 100f : 0f; 
     }
 
-    void StartRound()
+    public void MakeDrinkAtLane(int lane)
     {
+        Lane = lane;
+        lanes[lane].GetComponent<DrinkCreator>().InputDrink(MakeDrink(lane).gameObject);
+        ResetDrink();
+    }
+
+    GameObject MakeDrink(int lane)
+    {
+        var drink = Instantiate(DrinkPrefab).GetComponent<Drink>();
+        drink.Whiskey = Whiskey;
+        drink.Rum = Rum;
+        drink.Vodka = Vodka;
+        drink.Soda = Soda;
+        drink.Coke = Coke;
+        drink.Vermouth = Vermouth;
+        drink.TheGarnish = TheGarnish;
+        drink.Lane = lane;
+        drink.IsJustWater = false;
+
+        return drink.gameObject;
+    }
+
+    void ResetDrink()
+    {
+        addDrink = false;
+        addMixer = false;
+        hasGarnish = false;
+
+        drinkAmount = 0f;
+        mixerAmount = 0f;
+    }
+
+    void DrinkMadeListener(GameObject drink)
+    {
+        ResetDrink();
+    }
+
+    private void OnDestroy()
+    {
+        if (GameEventSystem.Instance != null)
+            GameEventSystem.Instance.DrinkMade.RemoveListener(DrinkMadeListener);
     }
 }

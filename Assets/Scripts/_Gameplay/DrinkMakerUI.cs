@@ -4,37 +4,41 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DrinkMakerUI : MonoBehaviour {
+
     public GameObject DrinkToDisplay;
 
-    public Slider Alcohol;
-    public Image AlcoholFill;
-    public Slider Mixer;
-    public Image MixerFill;
     public Text LaneValue;
-    public Text GarnishValue;
-
+    
     IMixedDrink theDrink;
+    Drink2DSprite drinkSprite;
 
 	// Use this for initialization
 	void Start () {
         if(DrinkToDisplay != null)
         {
             theDrink = DrinkToDisplay.GetComponent<IMixedDrink>();
+            drinkSprite = transform.root.GetComponentInChildren<Drink2DSprite>();
+
             if (theDrink != null)
             {
-                return;
+                if (drinkSprite != null)
+                {
+                    return;
+                }
+                Debug.Log("Could not find Drink2DSprite attached to GameObject " + transform.root.name);
             }
         }
         Debug.Log("Could not find IMixedDrink implemented on DrinkToDisplay GameObject.  Can not display.");
+
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        AlcoholFill.color = new Color(theDrink.Rum, theDrink.Whiskey, theDrink.Vodka);
-        MixerFill.color = new Color(theDrink.Coke, theDrink.Soda, theDrink.Vermouth);
-        Alcohol.value = theDrink.Rum + theDrink.Whiskey + theDrink.Vodka;
-        Mixer.value = theDrink.Coke + theDrink.Soda + theDrink.Vermouth;
+
+        drinkSprite.UpdateImage(theDrink);
         LaneValue.text = theDrink.Lane.ToString();
-        GarnishValue.text = "(previous) " + theDrink.TheGarnish;
+        
 	}
 }

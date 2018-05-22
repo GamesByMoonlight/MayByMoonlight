@@ -14,17 +14,14 @@ public interface IPatron {
 
     void ReceiveDrink(GameObject T);
 
-
-
-
 }
 
 public enum AlcoholPref
 {
-    Whiskey, Vodka, Rum
+    Vodka, Whiskey, Rum
 }
 
 public enum MixerPref
 {
-    Soda, Coke, Vermouth
+    Coke, Soda, Vermouth
 }
