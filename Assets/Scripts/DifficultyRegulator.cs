@@ -89,12 +89,12 @@ public class DifficultyRegulator : MonoBehaviour {
 		}
 
 		if (ScoreDisplay.Bucks > 100) {
-			this.SpawnChance += 0.005f * ScoreDisplay.Bucks;
+			this.SpawnChance += 0.001f * ScoreDisplay.Bucks ;
 		} else {
 			this.SpawnChance = 0.50f;
 		}
 
-		this.CurrentMaxPatronCount = this.ScoreDisplay.Bucks / 200;
+		this.CurrentMaxPatronCount = this.ScoreDisplay.Bucks / 500;
 
 		if (this.CurrentMaxPatronCount < MinPatronCount) {
 			this.CurrentMaxPatronCount = MinPatronCount;
@@ -122,14 +122,16 @@ public class DifficultyRegulator : MonoBehaviour {
 		
 		var patronComponent = randomPatronPrefab.GetComponent<IPatron>();
 		var spawnedPatron = GetRandomSpawner().Spawn( randomPatronPrefab); 
-		spawnedPatron.GetComponent<IPatron>().MoveSpeed += CurrentPatronSpeed;
+		spawnedPatron.GetComponent<IPatron>().MoveSpeed += Random.Range(CurrentPatronSpeed / 2, CurrentPatronSpeed );
 	}
 
 	public float CurrentPatronSpeed = 0.0f;
 
+	public int MinimumBucksToAdjustSpeed = 500;
+
 	private void AdjustSpeed() {
-		CurrentPatronSpeed = ScoreDisplay.Bucks / 1000 / 10;
-		if (ScoreDisplay.Bucks < 500) {
+		CurrentPatronSpeed = ScoreDisplay.Bucks / 1000 ;
+		if (ScoreDisplay.Bucks < MinimumBucksToAdjustSpeed) {
 			CurrentPatronSpeed = 0.0f;
 		}
 	}
