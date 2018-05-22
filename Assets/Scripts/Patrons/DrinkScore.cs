@@ -15,27 +15,27 @@ public class DrinkScore
             PreferenceMatches = 0;
         }
 
-    public DrinkScore(Drink drinkToScore, Patron patron)
+    public DrinkScore(IMixedDrink drinkToScore, Patron patron)
     {
         
         switch (patron.preferredAlcohol)
         {
             case AlcoholPref.Whiskey:
-                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.WhiskeyValue);
-                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.WhiskeyValue);
-                if (drinkToScore.WhiskeyValue > 0)
+                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.Whiskey);
+                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.Whiskey);
+                if (drinkToScore.Whiskey > 0)
                     PreferenceMatches += 1;
                 break;
             case AlcoholPref.Vodka:
-                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.VodkaValue);
-                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.VodkaValue);
-                if (drinkToScore.VodkaValue > 0)
+                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.Vodka);
+                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.Vodka);
+                if (drinkToScore.Vodka > 0)
                     PreferenceMatches += 1;
                 break;
             case AlcoholPref.Rum:
-                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.RumValue);
-                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.RumValue);
-                if (drinkToScore.RumValue > 0)
+                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.Rum);
+                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.Rum);
+                if (drinkToScore.Rum > 0)
                     PreferenceMatches += 1;
                 break;
         }
@@ -43,26 +43,26 @@ public class DrinkScore
         switch (patron.preferredMixer)
         {
             case MixerPref.Soda:
-                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.SodaValue);
-                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.SodaValue);
-                if (drinkToScore.SodaValue > 0)
+                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.Soda);
+                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.Soda);
+                if (drinkToScore.Soda > 0)
                     PreferenceMatches += 1;
                 break;
             case MixerPref.Coke:
-                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.CokeValue);
-                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.CokeValue);
-                if (drinkToScore.CokeValue > 0)
+                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.Coke);
+                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.Coke);
+                if (drinkToScore.Coke > 0)
                     PreferenceMatches += 1;
                 break;
             case MixerPref.Vermouth:
-                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.VermouthValue);
-                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.VermouthValue);
-                if (drinkToScore.VermouthValue > 0)
+                Bucks += Mathf.RoundToInt(patron.tipRate * drinkToScore.Vermouth);
+                Score += Mathf.RoundToInt(patron.scoreRate * drinkToScore.Vermouth);
+                if (drinkToScore.Vermouth > 0)
                     PreferenceMatches += 1;
                 break;
         }
 
-        if (drinkToScore.TypeOfGarnish == patron.preferredGarnish)
+        if (drinkToScore.TheGarnish == patron.preferredGarnish)
         {
             Bucks += Bucks;
             Score += Score;
@@ -70,7 +70,7 @@ public class DrinkScore
         }
     }
 
-    public DrinkScore(Drink drinkToScore, FancyPatron fancyPatron)
+    public DrinkScore(IMixedDrink drinkToScore, FancyPatron fancyPatron)
     {
         int matches = 0;
   
@@ -104,13 +104,13 @@ public class DrinkScore
         Bucks = matches * fancyPatron.TipRate;
         Score = matches * fancyPatron.ScoreRate;
 
-        if (drinkToScore.TypeOfGarnish == fancyPatron.TypeOfGarnish)
+        if (drinkToScore.TheGarnish == fancyPatron.TypeOfGarnish)
         {
             Bucks += GarnishBounus; //Currently 100, but could be changed
             Score += GarnishBounus;
         }
 
-        if (drinkToScore.TypeOfGarnish == fancyPatron.TypeOfGarnish)  // This is dumb and I hate it but it works and I'm on a time crunch
+        if (drinkToScore.TheGarnish == fancyPatron.TypeOfGarnish)  // This is dumb and I hate it but it works and I'm on a time crunch
             matches++;
         PreferenceMatches = matches;
     }

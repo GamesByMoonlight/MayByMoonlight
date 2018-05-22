@@ -16,6 +16,7 @@ public class DrinkCreator : MonoBehaviour {
     public void InputDrink(GameObject input)
     {
         SpawnDrink( input );
+        GameEventSystem.Instance.DrinkMade.Invoke(input);
     }
 
     private void SpawnDrink(GameObject input)
