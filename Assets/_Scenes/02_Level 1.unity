@@ -649,6 +649,11 @@ Prefab:
       propertyPath: lanes.Array.data[4]
       value: 
       objectReference: {fileID: 1848109363}
+    - target: {fileID: 114970486956730100, guid: 9eb8a03939283bd4281157cf8e0e10d4,
+        type: 2}
+      propertyPath: FillRate
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eb8a03939283bd4281157cf8e0e10d4, type: 2}
   m_IsPrefabParent: 0
