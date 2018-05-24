@@ -617,6 +617,68 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 177867226}
+--- !u!1001 &186017707
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -54.49818
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 22.506193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.728661
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117989558959250, guid: 94705c74910107c489f16158abbc7587, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114354425904684714, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: difficultyReadout
+      value: 
+      objectReference: {fileID: 1434507490}
+    - target: {fileID: 114354425904684714, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: patronsReadout
+      value: 
+      objectReference: {fileID: 1900230358}
+    - target: {fileID: 114354425904684714, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: specPatronsReadout
+      value: 
+      objectReference: {fileID: 1724486938}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: ScoreDisplay
+      value: 
+      objectReference: {fileID: 1392863896}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 94705c74910107c489f16158abbc7587, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &227696015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,84 +1411,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019230707}
---- !u!1 &1063639977
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1063639979}
-  - component: {fileID: 1063639978}
-  - component: {fileID: 1063639980}
-  m_Layer: 0
-  m_Name: Difficulty Scaler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1063639978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1063639977}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf829097fb9d4a46b16fbff331385f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficultyReadout: {fileID: 1434507490}
-  patronsReadout: {fileID: 1900230358}
-  specPatronsReadout: {fileID: 1724486938}
-  targetGameplaySeconds: 60
-  patronsMultiplier: 5
-  specialPatronsMultiplier: 2
-  startingBucks: 100
-  bucksLossPerMinute: 500
---- !u!4 &1063639979
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1063639977}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.49818, y: 22.506193, z: -4.728661}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1063639980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1063639977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 453f5dc0de4ea45a58e13f1984646cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TotalNumberOfPatrons: 0
-  ScoreInLastNSeconds: 0
-  ScoreDisplay: {fileID: 1392863896}
-  ScoreTimeThreshold: 10
-  PatronPrefabs:
-  - {fileID: 1625615275879892, guid: d6cd1cc074358264186ea6e55b7b5ffe, type: 2}
-  - {fileID: 1416002034144896, guid: 411ff8d53c5ff614eae63a451f38144b, type: 2}
-  CurrentMaxPatronCount: 3
-  SpawnChance: 0.3
-  TimerSecondsCheck: 0.5
-  Break: 0
-  StartingBucks: 300
-  MinPatronCount: 3
-  BreakTimeSeconds: 10
-  CurrentPatronSpeed: 0
-  KillPatronXCoord: 10
-  PenaltyDenominator: 10
-  MinPenalty: 100
 --- !u!4 &1183121598 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4185641154363074, guid: 313509cfbc5ade9468575a770652c2bc,
