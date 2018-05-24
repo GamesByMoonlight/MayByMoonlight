@@ -21,7 +21,7 @@ public class DrinkDestroyer : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
+        // Debug.Log(collision.collider.tag);
 
         if (collision.collider.tag == "Floor" || collision.collider.tag == "Patron")
             Destroy(this.gameObject);

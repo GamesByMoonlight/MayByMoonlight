@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 65159685456998780}
   - component: {fileID: 54222842659683578}
   - component: {fileID: 114674997044303270}
-  - component: {fileID: 114298177223717396}
   - component: {fileID: 114882866545774860}
+  - component: {fileID: 114164490340517992}
   m_Layer: 0
   m_Name: DrinkPrefab
   m_TagString: Untagged
@@ -71,7 +71,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.53, z: 0}
---- !u!114 &114298177223717396
+--- !u!114 &114164490340517992
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,15 +79,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1353737038237236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caaa21a929a7545dda96e00908fb5c2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fe62195852e21e439bc60f8ba745dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LaneValue: 0
   WhiskeyValue: 0
   VodkaValue: 0
-  RumValue: 0.2
+  RumValue: 0
   SodaValue: 0
-  CokeValue: 0.2
+  CokeValue: 0
   VermouthValue: 0
   TypeOfGarnish: 0
   IsJustWaterValue: 0
