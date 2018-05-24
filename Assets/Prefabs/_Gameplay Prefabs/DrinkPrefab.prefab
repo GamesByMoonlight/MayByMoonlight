@@ -19,12 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4886415502710086}
-  - component: {fileID: 33468378964312618}
-  - component: {fileID: 23217234441778106}
   - component: {fileID: 65159685456998780}
   - component: {fileID: 54222842659683578}
   - component: {fileID: 114674997044303270}
   - component: {fileID: 114298177223717396}
+  - component: {fileID: 114882866545774860}
   m_Layer: 0
   m_Name: DrinkPrefab
   m_TagString: Untagged
@@ -39,54 +38,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1353737038237236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.644, y: 1.641, z: -11}
+  m_LocalPosition: {x: -0.44, y: 1.649, z: -7.97}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23217234441778106
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1353737038237236}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: dc05030d13f0ca24b9314459f12f8f1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33468378964312618
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1353737038237236}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54222842659683578
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -100,7 +57,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65159685456998780
 BoxCollider:
@@ -113,7 +70,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.53, z: 0}
 --- !u!114 &114298177223717396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,15 +82,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaa21a929a7545dda96e00908fb5c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lane: 0
-  Whiskey: 0
-  Vodka: 0
-  Rum: 0
-  Soda: 0
-  Coke: 0
-  Vermouth: 0
+  LaneValue: 0
+  WhiskeyValue: 0
+  VodkaValue: 0
+  RumValue: 0.2
+  SodaValue: 0
+  CokeValue: 0.2
+  VermouthValue: 0
   TypeOfGarnish: 0
-  IsJustWater: 0
+  IsJustWaterValue: 0
 --- !u!114 &114674997044303270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,3 +102,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80613f0926edd7448b7e63c4a5c9420f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114882866545774860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012e433b76dfda74a8aaae00b8a2216f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glasses:
+  - {fileID: 1456482295324570, guid: d380005a0d55fdc4da8e35aaf19cca1a, type: 2}
+  - {fileID: 1703375568213452, guid: bd31639d3e7cdbc4c8a35a679dc02aca, type: 2}
+  - {fileID: 1406063071546134, guid: 613594a887fef2a429d72aa968e58e82, type: 2}
+  fluidMaterials:
+  - {fileID: 2100000, guid: 500ff67f8e5cc2c4a8d97993985f68c7, type: 2}
+  - {fileID: 2100000, guid: 1d44c5d289c1e7f4eb4337166bd8d979, type: 2}
+  - {fileID: 2100000, guid: 0f6ff7c21d9621c4e85f5a06b50abd66, type: 2}
+  garnishes:
+  - {fileID: 1862505499424692, guid: ea9cfabb8d3004349b4243fc7c9dc23a, type: 2}
+  - {fileID: 1625694014485974, guid: b3daadd678bfdda46933b2143e426324, type: 2}
+  - {fileID: 1426073203832290, guid: 509215c5261a73d4d87c51f3fca62d24, type: 2}

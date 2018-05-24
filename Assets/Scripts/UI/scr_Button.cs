@@ -25,7 +25,20 @@ public class scr_Button : MonoBehaviour
     public void AddGarnish(string typeOfGarnish)
     {
         levelManager.hasGarnish = true;
-        levelManager.garnishType = typeOfGarnish;
+
+        switch(typeOfGarnish)
+        {
+            case "Olive":
+                levelManager.TheGarnish = Garnish.Olive;
+                break;
+            case "Cherry":
+                levelManager.TheGarnish = Garnish.Cherry;
+                break;
+            case "Lime":
+                levelManager.TheGarnish = Garnish.Lime;
+                break;
+        }
+
     }
 
     public void StopPour()

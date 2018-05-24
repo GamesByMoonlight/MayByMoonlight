@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 114766765001815310}
   - component: {fileID: 114389984458290460}
   m_Layer: 5
-  m_Name: MouseController UI_Canvas
+  m_Name: MouseController UI_Canvas (Old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,11 +1206,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  myMoney: 0
-  myXp: 0
+  CurrentDrinkInProgress: {fileID: 0}
   drinkType: 
   mixerType: 
-  garnishType: 
   addDrink: 0
   addMixer: 0
   hasGarnish: 0
