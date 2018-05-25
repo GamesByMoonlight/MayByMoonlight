@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4497081220856266}
   - component: {fileID: 114094321640618278}
+  - component: {fileID: 114631753953609944}
   m_Layer: 0
   m_Name: Grabbed Drink Display
   m_TagString: Untagged
@@ -171,7 +172,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4091745597491736}
   - component: {fileID: 95799999855651966}
-  - component: {fileID: 114913320191233070}
   m_Layer: 0
   m_Name: Satisfaction Hearts
   m_TagString: Untagged
@@ -274,7 +274,6 @@ GameObject:
   - component: {fileID: 114490799175834112}
   - component: {fileID: 114665846172689164}
   - component: {fileID: 95060004368315642}
-  - component: {fileID: 114121462277687892}
   m_Layer: 5
   m_Name: Score Display Prefab
   m_TagString: Untagged
@@ -311,7 +310,6 @@ GameObject:
   - component: {fileID: 114222772995387124}
   - component: {fileID: 114439381453015498}
   - component: {fileID: 95984996531269128}
-  - component: {fileID: 114096798872566220}
   m_Layer: 5
   m_Name: Tip Display Prefab
   m_TagString: Untagged
@@ -1016,28 +1014,6 @@ MonoBehaviour:
   scoreDisplayPrefab: {fileID: 1788203077293702}
   tipDisplayPrefab: {fileID: 1989774633461604}
   satisfactionHeartsPrefab: {fileID: 1516100380204302}
---- !u!114 &114096798872566220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989774633461604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad928c1de0c7d0940b1e98dba24541e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114121462277687892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788203077293702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad928c1de0c7d0940b1e98dba24541e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114164993154278762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1162,6 +1138,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 100
+--- !u!114 &114631753953609944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192270627037332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad928c1de0c7d0940b1e98dba24541e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114665846172689164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1178,17 +1165,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114913320191233070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516100380204302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad928c1de0c7d0940b1e98dba24541e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222372794682892056
 CanvasRenderer:
   m_ObjectHideFlags: 1

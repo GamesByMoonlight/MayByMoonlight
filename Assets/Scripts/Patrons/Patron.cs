@@ -22,7 +22,11 @@ public class Patron : MonoBehaviour, IPatron {
 
     public GameObject grabbedDrinkDisplay;
     
-    public float MoveSpeed { get { return advanceSpeed; } }
+    public float MoveSpeed { get { return advanceSpeed; } 
+        set { 
+            this.advanceSpeed = value;
+        } 
+    }
     public int TipRate { get { return tipRate; } }
     public int ScoreRate { get { return scoreRate; } }
     public float SeenEverySeconds { get { return seenEverySeconds; } }
