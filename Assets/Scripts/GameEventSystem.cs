@@ -24,4 +24,5 @@ public class GameEventSystem : MonoBehaviour {
 
 
     public GameEvent GameEnded;
+    public GameObjectEvent DrinkMade;
 }
