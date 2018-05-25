@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour {
 
-    public int Bucks { get; set; }
-    public int Score { get; set; }
+    // public int Bucks { get; set; }
+    // public int Score { get; set; }
+    public int Bucks;
+    public int Score;
 
     public Text bucksText;
     public Text scoreText;

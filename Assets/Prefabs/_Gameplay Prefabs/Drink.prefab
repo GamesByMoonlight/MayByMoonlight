@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4801067386631804}
-  - component: {fileID: 114550561534294972}
+  - component: {fileID: 114601884973678806}
   m_Layer: 0
   m_Name: Drink
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114550561534294972
+--- !u!114 &114601884973678806
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1250030255410318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caaa21a929a7545dda96e00908fb5c2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fe62195852e21e439bc60f8ba745dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LaneValue: 0
