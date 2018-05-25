@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class DifficultyRegulator : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class DifficultyRegulator : MonoBehaviour {
 	public int ScoreInLastNSeconds;  // how many points in last N seconds, N defined by sccore time threshold
     public ScoreDisplay ScoreDisplay;
 	public int ScoreTimeThreshold = 10; //how many seconds w/o scoring before we're concerned.
+    
 
 	private PatronSpawner[] Spawners;
 
@@ -37,11 +39,28 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	public int BreakTimeSeconds = 10;
 
+    private Dictionary<string, object> parameters
+         = new Dictionary<string, object>();
 
-	// Use this for initialization
-	void Start () {
+
+    void GameOverListener() {
+        parameters["Score"] = ScoreDisplay.Score;
+        AnalyticsEvent.Custom("HighScore",parameters);
+    }
+
+    private void OnDestroy()
+    {
+        if (GameEventSystem.Instance != null) {
+            GameEventSystem.Instance.GameEnded.RemoveListener(GameOverListener);
+                                                    }
+    }
+
+    // Use this for initialization
+    void Start () {
 		this.Spawners = GameObject.Find("Bars").GetComponentsInChildren<PatronSpawner>();
-		this.ScoreDisplay.Bucks = this.StartingBucks;
+        GameEventSystem.Instance.GameEnded.AddListener(GameOverListener);
+        parameters.Add("Score", 0);
+        this.ScoreDisplay.Bucks = this.StartingBucks;
 	}
 
 
