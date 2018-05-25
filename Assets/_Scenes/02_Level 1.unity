@@ -548,6 +548,56 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eb8a03939283bd4281157cf8e0e10d4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &281273537
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b96eb046079c84e30b848dd0e25b9164, type: 2}
+    - target: {fileID: 100700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+      propertyPath: m_Name
+      value: Walking Tiger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+  m_IsPrefabParent: 0
 --- !u!4 &287347415 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4527801811328222, guid: a490415526155a246b6cb46066a9531e,
