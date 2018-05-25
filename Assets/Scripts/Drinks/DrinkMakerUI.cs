@@ -10,8 +10,8 @@ public class DrinkMakerUI : MonoBehaviour {
     public Text LaneValue;
 
     //keeps bucks score
-    public Text myBucks;
-    public DrinkScore drinkScore;
+    //public Text myBucks;
+    //public DrinkScore drinkScore;
     
     IMixedDrink theDrink;
     Drink2DSprite drinkSprite;
@@ -20,7 +20,7 @@ public class DrinkMakerUI : MonoBehaviour {
 	void Start () {
         if(DrinkToDisplay != null)
         {
-            drinkScore = gameObject.GetComponent<DrinkScore>();
+            //drinkScore = gameObject.GetComponent<DrinkScore>();
             theDrink = DrinkToDisplay.GetComponent<IMixedDrink>();
             drinkSprite = transform.root.GetComponentInChildren<Drink2DSprite>();
 
@@ -42,7 +42,7 @@ public class DrinkMakerUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        myBucks.text = drinkScore.Bucks.ToString();
+        //myBucks.text = drinkScore.Bucks.ToString();
         drinkSprite.UpdateImage(theDrink);
         LaneValue.text = theDrink.Lane.ToString();
         
