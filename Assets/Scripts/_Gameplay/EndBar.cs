@@ -17,8 +17,12 @@ public class EndBar : MonoBehaviour {
             
             scoreDisplay.SubtractBucks(BucksPenalty);
             scoreDisplay.SubtractScore(ScorePenalty);
-
-
+        }
+        else if(col.GetComponent<PatronDrinkCollector>() != null)
+        {
+            Destroy(col.transform.parent.gameObject);
+            scoreDisplay.SubtractBucks(BucksPenalty);
+            scoreDisplay.SubtractScore(ScorePenalty);
         }
 
     }
