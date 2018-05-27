@@ -1208,7 +1208,7 @@ GameObject:
   - component: {fileID: 911526554}
   - component: {fileID: 911526553}
   m_Layer: 5
-  m_Name: Difficulty Display
+  m_Name: Speed Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1227,7 +1227,6 @@ RectTransform:
   - {fileID: 1019230708}
   - {fileID: 1434507489}
   - {fileID: 1900230356}
-  - {fileID: 1724486940}
   m_Father: {fileID: 1392863895}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1286,7 +1285,7 @@ GameObject:
   - component: {fileID: 1019230710}
   - component: {fileID: 1019230709}
   m_Layer: 5
-  m_Name: 'Difficulty:'
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1342,7 +1341,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Difficulty:'
+  m_Text: 'Speed:'
 --- !u!222 &1019230710
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1379,7 +1378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyReadout: {fileID: 1434507490}
   patronsReadout: {fileID: 1900230358}
-  specPatronsReadout: {fileID: 1724486938}
+  specPatronsReadout: {fileID: 0}
   targetGameplaySeconds: 60
   patronsMultiplier: 5
   specialPatronsMultiplier: 2
@@ -1424,6 +1423,7 @@ MonoBehaviour:
   MinPatronCount: 3
   BreakTimeSeconds: 10
   CurrentPatronSpeed: 0
+  MinimumBucksToAdjustSpeed: 500
   KillPatronXCoord: 10
   PenaltyDenominator: 10
   MinPenalty: 100
@@ -1521,7 +1521,7 @@ GameObject:
   - component: {fileID: 1434507491}
   - component: {fileID: 1434507490}
   m_Layer: 5
-  m_Name: Number
+  m_Name: Speed Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1577,7 +1577,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5
+  m_Text: '0
+
+'
 --- !u!222 &1434507491
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1644,8 +1646,7 @@ Prefab:
     - target: {fileID: 1191839545783046, guid: 313509cfbc5ade9468575a770652c2bc, type: 2}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 4185641154363074, guid: 313509cfbc5ade9468575a770652c2bc, type: 2}
       propertyPath: m_LocalScale.x
       value: 10.9
@@ -2066,80 +2067,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 034f775557b38494e8276dd561d9d055, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1724486937
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1724486940}
-  - component: {fileID: 1724486939}
-  - component: {fileID: 1724486938}
-  m_Layer: 5
-  m_Name: Special Patrons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1724486938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1724486937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: New Text
---- !u!222 &1724486939
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1724486937}
---- !u!224 &1724486940
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1724486937}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 911526552}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -31.32}
-  m_SizeDelta: {x: 108.53, y: 12.26}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1839661635 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1243096839816998, guid: 9eb8a03939283bd4281157cf8e0e10d4,

@@ -15,6 +15,23 @@ public class ScoreDisplay : MonoBehaviour {
 
     private bool gameOverFlag = false;
 
+    private Text SpeedNumberText ;
+    private Text PatronsText;
+
+    public void Start() {
+        this.PatronsText= 
+                                this.transform
+                                    .FindChild("Speed Display")
+                                    .FindChild("Patrons")
+                                    .GetComponentInChildren<Text>();
+        this.SpeedNumberText = 
+                                this.transform
+                                    .FindChild("Speed Display")
+                                    .FindChild("Speed Number")
+                                    .GetComponentInChildren<Text>();
+
+    }
+
 	public void UpdateScoreboard(DrinkScore drinkScore)
     {
         Bucks += drinkScore.Bucks;
@@ -35,6 +52,11 @@ public class ScoreDisplay : MonoBehaviour {
             gameOverFlag = true;
             GameEventSystem.Instance.GameEnded.Invoke();
         }
+    }
+
+    public void UpdateDifficulty(int numberOfPatrons, float speedModifier) {
+        PatronsText.text = "Max Patrons: " + numberOfPatrons;
+        SpeedNumberText.text = speedModifier.ToString();
     }
 
   

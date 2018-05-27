@@ -19,7 +19,6 @@ public class DifficultyRegulator : MonoBehaviour {
 		}
 	}
 
-	// public float SpeedModifier = -0.2f;
 
 	private float myTimer = 0.0f;
 
@@ -59,6 +58,7 @@ public class DifficultyRegulator : MonoBehaviour {
 			SpawnPatrons();
 			KillPatrons();
 			ReduceBucks();
+			ScoreDisplay.UpdateDifficulty(CurrentMaxPatronCount, CurrentPatronSpeed);
 		}
 
 	}
@@ -77,6 +77,16 @@ public class DifficultyRegulator : MonoBehaviour {
 		return  this.PatronPrefabs[i] ;
 	}	
 
+
+	public float SpawnMinimumChance = 0.4f;
+	public float SpawnChanceMultiplier = 0.0001f;
+
+	public int SpanwBucksThreshold = 100;
+
+	public int MaxPatronCountBucksDivisor = 500;
+
+	
+
 	bool ShouldSpawn() {
 		if (this.Break) {
 			return false;
@@ -88,13 +98,13 @@ public class DifficultyRegulator : MonoBehaviour {
 			return false;
 		}
 
-		if (ScoreDisplay.Bucks > 100) {
-			this.SpawnChance += 0.001f * ScoreDisplay.Bucks ;
+		if (ScoreDisplay.Bucks > SpanwBucksThreshold) {
+			this.SpawnChance += SpawnChanceMultiplier * ScoreDisplay.Bucks ;
 		} else {
-			this.SpawnChance = 0.50f;
+			this.SpawnChance = SpawnMinimumChance;
 		}
 
-		this.CurrentMaxPatronCount = this.ScoreDisplay.Bucks / 500;
+		this.CurrentMaxPatronCount = this.ScoreDisplay.Bucks / MaxPatronCountBucksDivisor;
 
 		if (this.CurrentMaxPatronCount < MinPatronCount) {
 			this.CurrentMaxPatronCount = MinPatronCount;
@@ -112,6 +122,7 @@ public class DifficultyRegulator : MonoBehaviour {
 		AdjustSpeed();
 	}
 
+	public float MinimumSpeedDivisor = 10.0f;
 	private void SpawnPatrons() {
 
 		if (!this.ShouldSpawn()) {
@@ -122,18 +133,21 @@ public class DifficultyRegulator : MonoBehaviour {
 		
 		var patronComponent = randomPatronPrefab.GetComponent<IPatron>();
 		var spawnedPatron = GetRandomSpawner().Spawn( randomPatronPrefab); 
-		spawnedPatron.GetComponent<IPatron>().MoveSpeed += Random.Range(CurrentPatronSpeed / 2, CurrentPatronSpeed );
+		spawnedPatron.GetComponent<IPatron>().MoveSpeed += Random.Range(CurrentPatronSpeed / MinimumSpeedDivisor, CurrentPatronSpeed );
 	}
 
 	public float CurrentPatronSpeed = 0.0f;
 
 	public int MinimumBucksToAdjustSpeed = 500;
 
+	public float PatronSpeedBucksDivisor = 10000f;
+
 	private void AdjustSpeed() {
-		CurrentPatronSpeed = ScoreDisplay.Bucks / 1000 ;
+		CurrentPatronSpeed = ScoreDisplay.Bucks / PatronSpeedBucksDivisor ;
 		if (ScoreDisplay.Bucks < MinimumBucksToAdjustSpeed) {
 			CurrentPatronSpeed = 0.0f;
 		}
+		Debug.Log(CurrentPatronSpeed);
 	}
 
 	public int KillPatronXCoord = 10;
