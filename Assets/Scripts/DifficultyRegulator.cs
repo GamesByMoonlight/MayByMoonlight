@@ -5,8 +5,9 @@ using UnityEngine;
 public class DifficultyRegulator : MonoBehaviour {
 
 
-	public int TotalNumberOfPatrons;
-	public int ScoreInLastNSeconds;  // how many points in last N seconds, N defined by sccore time threshold
+	[SerializeField]
+	int _totalNumberOfPatrons = 0;
+	public int TotalNumberOfPatrons { get {return _totalNumberOfPatrons;}  private set { _totalNumberOfPatrons = value;} }
     public ScoreDisplay ScoreDisplay;
 	public int ScoreTimeThreshold = 10; //how many seconds w/o scoring before we're concerned.
 
