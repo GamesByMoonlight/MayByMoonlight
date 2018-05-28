@@ -179,7 +179,7 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	private void AdjustSpeed() {
 		CurrentPatronSpeed = ScoreDisplay.Bucks / PatronSpeedBucksDivisor ;
-		if (ScoreDisplay.Bucks < MinimumBucksToAdjustSpeed) {
+		if (ScoreDisplay.Bucks > MinimumBucksToAdjustSpeed) {
 			CurrentPatronSpeed = 0.0f;
 		}
 	}

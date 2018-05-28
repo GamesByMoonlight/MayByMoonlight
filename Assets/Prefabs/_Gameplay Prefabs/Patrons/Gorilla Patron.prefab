@@ -1679,7 +1679,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412697240155382}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 2.15, z: 1.824}
+  m_LocalPosition: {x: -0, y: 1.354, z: 1.824}
   m_LocalScale: {x: 0.20000006, y: 0.2, z: 1}
   m_Children:
   - {fileID: 4318797351251926}
@@ -2889,11 +2889,11 @@ MonoBehaviour:
   VodkaValue: 0
   RumValue: 0
   SodaValue: 0
-  CokeValue: 0.3
+  CokeValue: 0.2
   VermouthValue: 0
   TypeOfGarnish: 1
   tipRate: 3
-  scoreRate: 50
+  scoreRate: 75
   bigTipper: 1
   advanceSpeed: 2
   seenEverySeconds: 2

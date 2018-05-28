@@ -73,17 +73,29 @@ public class DrinkScore
     public DrinkScore(IMixedDrink drinkToScore, FancyPatron fancyPatron)
     {
         int matches = 0;
+        bool bigTip = false;
   
         if (fancyPatron.bigTipper == true)
         {
             
             if (drinkToScore.Whiskey > fancyPatron.WhiskeyValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Whiskey))
+            {
+                bigTip = true;
                 matches++;
+            }
+                
             if (drinkToScore.Vodka > fancyPatron.VodkaValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Vodka))
+            {
+                bigTip = true;
                 matches++;
+            }
+                
             if (drinkToScore.Rum > fancyPatron.RumValue * 2 && (fancyPatron.TheAlcoholPref == AlcoholPref.Rum))
+            {
+                bigTip = true;
                 matches++;
-             
+            }
+                             
         }
         
         
@@ -102,6 +114,12 @@ public class DrinkScore
 
      
         Bucks = matches * fancyPatron.TipRate;
+
+        if (bigTip)
+        {
+            Bucks += fancyPatron.TipRate * 2;
+        }
+
         Score = matches * fancyPatron.ScoreRate;
 
         if (drinkToScore.TheGarnish == fancyPatron.TypeOfGarnish)
