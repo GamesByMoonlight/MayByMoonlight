@@ -1242,6 +1242,16 @@ Prefab:
       propertyPath: SpawnChance
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: SpawnMinimumChance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: CurrentWave.SpawnBreak
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94705c74910107c489f16158abbc7587, type: 2}
   m_IsPrefabParent: 0
