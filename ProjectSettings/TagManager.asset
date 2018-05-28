@@ -7,6 +7,11 @@ TagManager:
   - Floor
   - Patron
   - Cat
+  - Bar1
+  - Bar2
+  - Bar3
+  - Bar4
+  - Bar5
   layers:
   - Default
   - TransparentFX
