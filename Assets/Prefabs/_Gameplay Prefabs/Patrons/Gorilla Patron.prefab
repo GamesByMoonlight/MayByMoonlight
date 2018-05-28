@@ -2885,15 +2885,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94282b892a2bebc4b806b66635269933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhiskeyValue: 0.25
+  WhiskeyValue: 0.3
   VodkaValue: 0
   RumValue: 0
   SodaValue: 0
-  CokeValue: 0.25
+  CokeValue: 0.3
   VermouthValue: 0
   TypeOfGarnish: 1
-  tipRate: 20
-  scoreRate: 100
+  tipRate: 3
+  scoreRate: 50
   bigTipper: 1
   advanceSpeed: 2
   seenEverySeconds: 2
