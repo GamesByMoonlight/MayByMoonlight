@@ -59,7 +59,6 @@ public class DifficultyRegulator : MonoBehaviour {
 			SpawnPatrons();
 			KillPatrons();
 			ReduceBucks();
-			ScoreDisplay.UpdateDifficulty(CurrentMaxPatronCount, CurrentPatronSpeed);
 		}
 
 	}
@@ -87,9 +86,10 @@ public class DifficultyRegulator : MonoBehaviour {
 	public int MaxPatronCountBucksDivisor = 500;
 
 	
+	public int MinimumPatronsDuringBreak = 1; 
 
 	bool ShouldSpawn() {
-		if (this.Break) {
+		if (this.Break && this.MinimumPatronsDuringBreak > 1) {
 			return false;
 		}
 

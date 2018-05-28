@@ -19,16 +19,6 @@ public class ScoreDisplay : MonoBehaviour {
     private Text PatronsText;
 
     public void Start() {
-        this.PatronsText= 
-                                this.transform
-                                    .FindChild("Speed Display")
-                                    .FindChild("Patrons")
-                                    .GetComponentInChildren<Text>();
-        this.SpeedNumberText = 
-                                this.transform
-                                    .FindChild("Speed Display")
-                                    .FindChild("Speed Number")
-                                    .GetComponentInChildren<Text>();
 
     }
 
@@ -59,11 +49,5 @@ public class ScoreDisplay : MonoBehaviour {
         scoreText.text = Score.ToString();
 
     }
-
-    public void UpdateDifficulty(int numberOfPatrons, float speedModifier) {
-        PatronsText.text = "Max Patrons: " + numberOfPatrons;
-        SpeedNumberText.text = speedModifier.ToString();
-    }
-
   
 }
