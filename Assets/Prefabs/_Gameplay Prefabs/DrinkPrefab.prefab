@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1353737038237236}
+  m_IsPrefabParent: 1
+--- !u!1 &1353737038237236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4886415502710086}
+  - component: {fileID: 65159685456998780}
+  - component: {fileID: 54222842659683578}
+  - component: {fileID: 114674997044303270}
+  - component: {fileID: 114882866545774860}
+  - component: {fileID: 114164490340517992}
+  m_Layer: 0
+  m_Name: DrinkPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4886415502710086
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44, y: 1.649, z: -7.97}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54222842659683578
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &65159685456998780
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.53, z: 0}
+--- !u!114 &114164490340517992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe62195852e21e439bc60f8ba745dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LaneValue: 0
+  WhiskeyValue: 0
+  VodkaValue: 0
+  RumValue: 0
+  SodaValue: 0
+  CokeValue: 0
+  VermouthValue: 0
+  TypeOfGarnish: 0
+  IsJustWaterValue: 0
+--- !u!114 &114674997044303270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80613f0926edd7448b7e63c4a5c9420f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114882866545774860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353737038237236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012e433b76dfda74a8aaae00b8a2216f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glasses:
+  - {fileID: 1456482295324570, guid: d380005a0d55fdc4da8e35aaf19cca1a, type: 2}
+  - {fileID: 1703375568213452, guid: bd31639d3e7cdbc4c8a35a679dc02aca, type: 2}
+  - {fileID: 1406063071546134, guid: 613594a887fef2a429d72aa968e58e82, type: 2}
+  fluidMaterials:
+  - {fileID: 2100000, guid: 500ff67f8e5cc2c4a8d97993985f68c7, type: 2}
+  - {fileID: 2100000, guid: 1d44c5d289c1e7f4eb4337166bd8d979, type: 2}
+  - {fileID: 2100000, guid: 0f6ff7c21d9621c4e85f5a06b50abd66, type: 2}
+  garnishes:
+  - {fileID: 1862505499424692, guid: ea9cfabb8d3004349b4243fc7c9dc23a, type: 2}
+  - {fileID: 1625694014485974, guid: b3daadd678bfdda46933b2143e426324, type: 2}
+  - {fileID: 1426073203832290, guid: 509215c5261a73d4d87c51f3fca62d24, type: 2}
