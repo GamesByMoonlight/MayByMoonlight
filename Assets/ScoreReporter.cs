@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Analytics;
+
+public class ScoreReporter : MonoBehaviour {
+
+    public ScoreDisplay ScoreDisplay;
+
+    private Dictionary<string, object> parameters
+     = new Dictionary<string, object>();
+
+    void GameOverListener()
+    {
+        parameters["Score"] = ScoreDisplay.Score;
+        AnalyticsEvent.Custom("HighScore", parameters);
+    }
+
+    private void OnDestroy()
+    {
+        if (GameEventSystem.Instance != null)
+        {
+            GameEventSystem.Instance.GameEnded.RemoveListener(GameOverListener);
+        }
+    }
+
+    void Start() {
+        GameEventSystem.Instance.GameEnded.AddListener(GameOverListener);
+        parameters.Add("Score", 0);
+    }
+}
