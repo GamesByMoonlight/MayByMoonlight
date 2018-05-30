@@ -10664,14 +10664,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WhiskeyValue: 0
-  VodkaValue: 0.2
+  VodkaValue: 0.3
   RumValue: 0
   SodaValue: 0.3
   CokeValue: 0
   VermouthValue: 0
   TypeOfGarnish: 0
-  tipRate: 30
-  scoreRate: 100
+  tipRate: 4
+  scoreRate: 50
   bigTipper: 0
   advanceSpeed: 1
   seenEverySeconds: 6
