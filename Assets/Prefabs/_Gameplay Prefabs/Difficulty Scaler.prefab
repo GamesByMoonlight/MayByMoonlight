@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4117989558959250}
-  - component: {fileID: 114354425904684714}
   - component: {fileID: 114065719128682988}
   - component: {fileID: 114727224566723332}
   m_Layer: 0
@@ -53,43 +52,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453f5dc0de4ea45a58e13f1984646cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalNumberOfPatrons: 0
-  ScoreInLastNSeconds: 0
   ScoreDisplay: {fileID: 0}
-  ScoreTimeThreshold: 10
   PatronPrefabs:
   - {fileID: 1785350139722436, guid: a3791e23fb8124dc4a23c28e9d94186c, type: 2}
   - {fileID: 1675385093243098, guid: dbae4501a67f9476ca06fdef2df11a48, type: 2}
-  CurrentMaxPatronCount: 3
-  SpawnChance: 0.1
   TimerSecondsCheck: 0.5
   Break: 0
   StartingBucks: 300
-  MinPatronCount: 3
-  BreakTimeSeconds: 10
-  CurrentPatronSpeed: 0
+  CurrentWave:
+    Level: 1
+    SpawnBreak: 3
+    PatronMultiplier: 1
+    MimNumberOfPatrons: 3
+    _maxNumberOfPatronsForThisWave: 0
+    PatronsLeftToSpawn: 0
+    PatronSpeedIncreasePerWave: 0.05
+    _patronSpeedIncreaseCurrent: 0
+    NumberOfBucksPerLevel: 500
+  SpawnTimer: 0
+  DelayBetweenSpawns: 0
+  CancelBreakStarted: 0
   KillPatronXCoord: 10
   PenaltyDenominator: 10
   MinPenalty: 100
---- !u!114 &114354425904684714
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682583780575646}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf829097fb9d4a46b16fbff331385f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficultyReadout: {fileID: 0}
-  patronsReadout: {fileID: 0}
-  specPatronsReadout: {fileID: 0}
-  targetGameplaySeconds: 60
-  patronsMultiplier: 5
-  specialPatronsMultiplier: 2
-  startingBucks: 100
-  bucksLossPerMinute: 500
 --- !u!114 &114727224566723332
 MonoBehaviour:
   m_ObjectHideFlags: 1
