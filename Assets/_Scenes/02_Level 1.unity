@@ -1215,33 +1215,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+    - target: {fileID: 114727224566723332, guid: 94705c74910107c489f16158abbc7587,
         type: 2}
       propertyPath: ScoreDisplay
       value: 
       objectReference: {fileID: 1392863896}
     - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
         type: 2}
-      propertyPath: TotalNumberOfPatrons
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
-        type: 2}
-      propertyPath: PatronPrefabs.Array.data[1]
+      propertyPath: ScoreDisplay
       value: 
-      objectReference: {fileID: 1675385093243098, guid: dbae4501a67f9476ca06fdef2df11a48,
-        type: 2}
-    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
-        type: 2}
-      propertyPath: PatronPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1785350139722436, guid: a3791e23fb8124dc4a23c28e9d94186c,
-        type: 2}
-    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
-        type: 2}
-      propertyPath: SpawnChance
-      value: 0.1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1392863896}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94705c74910107c489f16158abbc7587, type: 2}
   m_IsPrefabParent: 0
