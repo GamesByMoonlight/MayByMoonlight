@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public CanvasGroup GameOverWindowCG;
+    public CanvasGroup GameOverHighScoreCG;
 
     void Start()
     {
@@ -14,19 +15,34 @@ public class GameManager : MonoBehaviour
         GameOverWindowCG.alpha = 0f;
         GameOverWindowCG.interactable = false;
         GameOverWindowCG.blocksRaycasts = false;
+        GameOverHighScoreCG.alpha = 0f;
+        GameOverHighScoreCG.interactable = false;
+        GameOverHighScoreCG.blocksRaycasts = false;
     }
 
     void GameEndedListener()
     {
-        GameOverWindowCG.alpha = 1f;
-        GameOverWindowCG.interactable = true;
-        GameOverWindowCG.blocksRaycasts = true;
+        if (PlayerPrefsManager.CheckForHighScore(FindObjectOfType<ScoreDisplay>().Score))
+        {
+            GameOverHighScoreCG.alpha = 1f;
+            GameOverHighScoreCG.interactable = true;
+            GameOverHighScoreCG.blocksRaycasts = true;
+        }
+        else
+        {
+            GameOverWindowCG.alpha = 1f;
+            GameOverWindowCG.interactable = true;
+            GameOverWindowCG.blocksRaycasts = true;
+        }
+        
     }
 
+    
     public void Restart()
     {
         SceneManager.LoadScene("01_Start");
     }
+
 
     private void OnDestroy()
     {

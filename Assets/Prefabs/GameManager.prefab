@@ -52,3 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverWindowCG: {fileID: 0}
+  GameOverHighScoreCG: {fileID: 0}

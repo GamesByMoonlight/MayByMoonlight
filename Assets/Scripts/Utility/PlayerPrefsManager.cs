@@ -21,46 +21,37 @@ public class PlayerPrefsManager : MonoBehaviour {
             scores[i] = PlayerPrefs.GetInt(SCORE_KEY + i.ToString());
         }
 
-        int maxScore = 0;
+        int highestScore = 0;
         int position = 0;
+        int count = 0;
 
-        string movingPlayer;
-        int movingScore;
-
-        for (int j = 0; j < 5; j++)
+        while (count <= players.Length)
         {
-            maxScore = 0;
+            highestScore = 0;
             position = 0;
 
-            for (int i = j; i < 5; i++)
+            for (int i = 0; i < players.Length; i++)
             {
-                if (scores[i] > maxScore)
+                if (scores[i] > highestScore)
                 {
-                    maxScore = scores[i];
+                    highestScore = scores[i];
                     position = i;
                 }
             }
 
-            movingPlayer = players[position];
-            movingScore = scores[position];
+            PlayerPrefs.SetString(PLAYER_KEY + count.ToString(), players[position]);
+            PlayerPrefs.SetInt(SCORE_KEY + count.ToString(), scores[position]);
 
-            players[position] = players[j];
-            scores[position] = scores[j];
+            scores[position] = 0;
 
-            players[j] = movingPlayer;
-            scores[j] = movingScore;
+            count++;
         }
 
-        for (int i = 0; i < 5; i++)
-        {
-            PlayerPrefs.SetString(PLAYER_KEY + i.ToString(), players[i]);
-            PlayerPrefs.SetInt(SCORE_KEY + i.ToString(), scores[i]);
-        }
     }
 
     public static bool CheckForHighScore(int newScore)
     {
-        if (newScore > PlayerPrefs.GetFloat(SCORE_KEY + "4"))
+        if (newScore > PlayerPrefs.GetInt(SCORE_KEY + "4"))
         {
             return true;
         }
@@ -70,8 +61,9 @@ public class PlayerPrefsManager : MonoBehaviour {
 
     public static void AddHighScore(string playerToAdd, int scoreToAdd)
     {
+        ArrangeHighScores();
         PlayerPrefs.SetString(PLAYER_KEY + "4", playerToAdd);
-        PlayerPrefs.SetFloat(SCORE_KEY + "4", scoreToAdd);
+        PlayerPrefs.SetInt(SCORE_KEY + "4", scoreToAdd);
         ArrangeHighScores();
     }
 

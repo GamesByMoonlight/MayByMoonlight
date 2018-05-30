@@ -18,7 +18,10 @@ public class HighScoreList : MonoBehaviour {
 
         foreach (Text childText in texts)
         {
-            childText.text = PlayerPrefsManager.GetPlayerName(i) + " - " + PlayerPrefsManager.GetPlayerScore(i).ToString();
+            if (PlayerPrefsManager.GetPlayerScore(i) != 0)
+            {
+                childText.text = PlayerPrefsManager.GetPlayerName(i) + " - " + PlayerPrefsManager.GetPlayerScore(i).ToString();
+            }
             i++;
         }
 	}
