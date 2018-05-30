@@ -21,7 +21,6 @@ public class DifficultyRegulator : MonoBehaviour {
 		public int MaxNumberOfPatronsForThisWave { 
 			get {
 				var val = System.Convert.ToInt32( Level * PatronMultiplier );
-				Debug.Log(val);
 				if (val < MimNumberOfPatrons) {
 					val = MimNumberOfPatrons;
 				}
@@ -35,6 +34,15 @@ public class DifficultyRegulator : MonoBehaviour {
 		public int PatronsLeftToSpawn ;
 
 		public float PatronSpeedIncreasePerWave = 0.05f;
+
+		//ony for visibility in ui, can remove later
+		public float _patronSpeedIncreaseCurrent;
+		public float PatronSpeedIncreaseCurrent { 
+			get {
+				_patronSpeedIncreaseCurrent = Level * PatronSpeedIncreasePerWave;
+				return _patronSpeedIncreaseCurrent;
+			}
+		}
 
 		public float PatronSpeedModifier { 
 			get {
@@ -131,7 +139,7 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	public float SpawnTimer = 0.0f;
 
-	public int DelayBetweenSpawns = 2;
+	public float DelayBetweenSpawns;
 
 
 	public bool CancelBreakStarted;
@@ -176,7 +184,7 @@ public class DifficultyRegulator : MonoBehaviour {
 		// AdjustSpeed();
 	}
 
-	public float MinimumSpeedDivisor = 10.0f;
+	// public float MinimumSpeedDivisor = 10.0f;
 	private void SpawnPatrons() {
 
 		if (!this.ShouldSpawn()) {
@@ -187,23 +195,26 @@ public class DifficultyRegulator : MonoBehaviour {
 		
 		var patronComponent = randomPatronPrefab.GetComponent<IPatron>();
 		var spawnedPatron = GetRandomSpawner().Spawn( randomPatronPrefab); 
-		spawnedPatron.GetComponent<IPatron>().MoveSpeed += Random.Range(CurrentPatronSpeed / MinimumSpeedDivisor, CurrentPatronSpeed );
+		spawnedPatron.GetComponent<IPatron>().MoveSpeed += 
+			Random.Range( 0.5f * this.CurrentWave.PatronSpeedIncreaseCurrent, 2f * this.CurrentWave.PatronSpeedIncreaseCurrent );
 
 		this.CurrentWave.AlertPatronSpawned();
 	}
 
-	public float CurrentPatronSpeed = 0.0f;
+	// public float CurrentPatronSpeed = 0.0f;
 
-	public int MinimumBucksToAdjustSpeed = 500;
+	// public int MinimumBucksToAdjustSpeed = 500;
 
-	public float PatronSpeedBucksDivisor = 10000f;
+	// public float PatronSpeedBucksDivisor = 10000f;
 
-	private void AdjustSpeed() {
-		CurrentPatronSpeed = ScoreDisplay.Bucks / PatronSpeedBucksDivisor ;
-		if (ScoreDisplay.Bucks < MinimumBucksToAdjustSpeed) {
-			CurrentPatronSpeed = 0.0f;
-		}
-	}
+	// private void AdjustSpeed() {
+		// CurrentPatronSpeed = ScoreDisplay.Bucks / PatronSpeedBucksDivisor ;
+		// if (ScoreDisplay.Bucks < MinimumBucksToAdjustSpeed) {
+		// 	CurrentPatronSpeed = 0.0f;
+		// }
+
+
+	// }
 
 	public int KillPatronXCoord = 10;
 	public int PenaltyDenominator = 10;
