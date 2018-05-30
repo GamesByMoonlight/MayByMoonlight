@@ -5,12 +5,74 @@ using UnityEngine;
 
 public class DifficultyRegulator : MonoBehaviour {
 
+	[System.Serializable]
+	public class Wave
+	{
+		public int Level = 1;
 
-	public int TotalNumberOfPatrons;
-	public int ScoreInLastNSeconds;  // how many points in last N seconds, N defined by sccore time threshold
+		[SerializeField]
+		public float SpawnBreak ;
+
+		public float PatronMultiplier ;
+
+		public int MimNumberOfPatrons ;
+
+		//field is only there to be visible in the UI
+		public int _maxNumberOfPatronsForThisWave ;
+		public int MaxNumberOfPatronsForThisWave { 
+			get {
+				var val = System.Convert.ToInt32( Level * PatronMultiplier );
+				if (val < MimNumberOfPatrons) {
+					val = MimNumberOfPatrons;
+				}
+
+				_maxNumberOfPatronsForThisWave = val;
+				return val;
+			}
+		}
+
+
+		public int PatronsLeftToSpawn ;
+
+		public float PatronSpeedIncreasePerWave = 0.05f;
+
+		//ony for visibility in ui, can remove later
+		public float _patronSpeedIncreaseCurrent;
+		public float PatronSpeedIncreaseCurrent { 
+			get {
+				_patronSpeedIncreaseCurrent = Level * PatronSpeedIncreasePerWave;
+				return _patronSpeedIncreaseCurrent;
+			}
+		}
+
+		public float PatronSpeedModifier { 
+			get {
+				return Level * PatronSpeedIncreasePerWave;
+			}
+		}
+
+		public bool AlertPatronSpawned() {
+			this.PatronsLeftToSpawn -=1;
+			if (this.PatronsLeftToSpawn <= 0) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public int NumberOfBucksPerLevel = 500;
+
+		public void IncrementLevel(int currentBucks) {
+			this.Level = currentBucks / NumberOfBucksPerLevel;
+			// this.Level +=1;
+			this.PatronsLeftToSpawn = MaxNumberOfPatronsForThisWave;
+		}
+
+
+	}
+
     public ScoreDisplay ScoreDisplay;
-	public int ScoreTimeThreshold = 10; //how many seconds w/o scoring before we're concerned.
-    
 
 	private PatronSpawner[] Spawners;
 
@@ -21,13 +83,10 @@ public class DifficultyRegulator : MonoBehaviour {
 		}
 	}
 
-	// public float SpeedModifier = -0.2f;
 
 	private float myTimer = 0.0f;
 
-	public int CurrentMaxPatronCount = 3;
 
-	public float SpawnChance = 0.5f;
 
 	public float TimerSecondsCheck = 2f;
 
@@ -35,14 +94,13 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	public int StartingBucks = 300;
 
-	public int MinPatronCount = 3;
 
-	public int BreakTimeSeconds = 10;
+	[SerializeField]
+	public Wave CurrentWave = new Wave();
 
+	// Use this for initialization
+	void Start () {
 
-
-    // Use this for initialization
-    void Start () {
 		this.Spawners = GameObject.Find("Bars").GetComponentsInChildren<PatronSpawner>();
 
         this.ScoreDisplay.Bucks = this.StartingBucks;
@@ -53,15 +111,14 @@ public class DifficultyRegulator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float gameTime = Time.timeSinceLevelLoad;	
-
+		SpawnTimer += Time.deltaTime;
 		myTimer += Time.deltaTime;
 
 		if (myTimer >= TimerSecondsCheck) {
 			myTimer = 0;
 
 			SpawnPatrons();
-			KillPatrons();
+			// KillPatrons();
 			ReduceBucks();
 		}
 
@@ -81,41 +138,55 @@ public class DifficultyRegulator : MonoBehaviour {
 		return  this.PatronPrefabs[i] ;
 	}	
 
+
+	public float SpawnTimer = 0.0f;
+
+	public float DelayBetweenSpawns;
+
+
+	public bool CancelBreakStarted;
+
 	bool ShouldSpawn() {
-		if (this.Break) {
+		if (this.Break  ) {
+			if (this.CurrentPatrons.Count == 0 && !this.CancelBreakStarted) {
+				this.CancelBreakStarted = true;
+				Invoke("CancelBreak", this.CurrentWave.SpawnBreak);
+			}
 			return false;
 		}
 
-		if (CurrentPatrons.Count >= this.CurrentMaxPatronCount) {
-			this.Break = true;
-			Invoke("CancelBreak", this.BreakTimeSeconds);
+		if (this.CurrentWave.PatronsLeftToSpawn <= 0) {
+			this.StartBreak();
 			return false;
 		}
 
-		if (ScoreDisplay.Bucks > 100) {
-			this.SpawnChance += 0.005f * ScoreDisplay.Bucks;
-		} else {
-			this.SpawnChance = 0.50f;
-		}
+		// if (CurrentPatrons.Count >= this.CurrentMaxPatronCount) {
+		// 	this.Break = true;
+		// 	Invoke("CancelBreak", this.BreakTimeSeconds);
+		// 	return false;
+		// }
 
-		this.CurrentMaxPatronCount = this.ScoreDisplay.Bucks / 200;
 
-		if (this.CurrentMaxPatronCount < MinPatronCount) {
-			this.CurrentMaxPatronCount = MinPatronCount;
-		}
-
-		var i = Random.Range(0.0f, 1.0f);
-		if (i <= this.SpawnChance) {
+		if (SpawnTimer >= DelayBetweenSpawns) {
+			this.SpawnTimer = 0;
 			return true;
 		}
+
+
 		return false;
 	}
 
+	private void StartBreak() {
+		this.CancelBreakStarted = false;
+		this.Break = true;		
+	}
 	private void CancelBreak() {
 		this.Break = false;
-		AdjustSpeed();
+		this.CurrentWave.IncrementLevel(this.ScoreDisplay.Bucks);
+		// AdjustSpeed();
 	}
 
+	// public float MinimumSpeedDivisor = 10.0f;
 	private void SpawnPatrons() {
 
 		if (!this.ShouldSpawn()) {
@@ -126,17 +197,26 @@ public class DifficultyRegulator : MonoBehaviour {
 		
 		var patronComponent = randomPatronPrefab.GetComponent<IPatron>();
 		var spawnedPatron = GetRandomSpawner().Spawn( randomPatronPrefab); 
-		spawnedPatron.GetComponent<IPatron>().MoveSpeed += CurrentPatronSpeed;
+		spawnedPatron.GetComponent<IPatron>().MoveSpeed += 
+			Random.Range( 0.5f * this.CurrentWave.PatronSpeedIncreaseCurrent, 2f * this.CurrentWave.PatronSpeedIncreaseCurrent );
+
+		this.CurrentWave.AlertPatronSpawned();
 	}
 
-	public float CurrentPatronSpeed = 0.0f;
+	// public float CurrentPatronSpeed = 0.0f;
 
-	private void AdjustSpeed() {
-		CurrentPatronSpeed = ScoreDisplay.Bucks / 1000 / 10;
-		if (ScoreDisplay.Bucks < 500) {
-			CurrentPatronSpeed = 0.0f;
-		}
-	}
+	// public int MinimumBucksToAdjustSpeed = 500;
+
+	// public float PatronSpeedBucksDivisor = 10000f;
+
+	// private void AdjustSpeed() {
+		// CurrentPatronSpeed = ScoreDisplay.Bucks / PatronSpeedBucksDivisor ;
+		// if (ScoreDisplay.Bucks < MinimumBucksToAdjustSpeed) {
+		// 	CurrentPatronSpeed = 0.0f;
+		// }
+
+
+	// }
 
 	public int KillPatronXCoord = 10;
 	public int PenaltyDenominator = 10;
@@ -152,19 +232,19 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	}
 
-	public void KillPatrons() {
-		var removed = new List<GameObject>();
-		foreach(var patron in this.CurrentPatrons) {
-			if (patron == null) {
-				continue;
-			}
-			//TODO why do I need localPosition here?
-			if (patron.transform.localPosition.x >= KillPatronXCoord) {
-				ScoreDisplay.SubtractBucks(PissedPatronPenalty);
-				Destroy(patron);
-			}
-		}
-	}
+	// public void KillPatrons() {
+	// 	var removed = new List<GameObject>();
+	// 	foreach(var patron in this.CurrentPatrons) {
+	// 		if (patron == null) {
+	// 			continue;
+	// 		}
+	// 		//TODO why do I need localPosition here?
+	// 		if (patron.transform.localPosition.x >= KillPatronXCoord) {
+	// 			ScoreDisplay.SubtractBucks(PissedPatronPenalty);
+	// 			Destroy(patron);
+	// 		}
+	// 	}
+	// }
 
 
 }
