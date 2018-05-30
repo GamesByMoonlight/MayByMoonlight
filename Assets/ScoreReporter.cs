@@ -18,6 +18,7 @@ public class ScoreReporter : MonoBehaviour {
     {
         parameters["Score"] = ScoreDisplay.Score;
         AnalyticsEvent.Custom("HighScore", parameters);
+        // Debug.Log("Reporting score of " + parameters["Score"]);
     }
 
     private void OnDestroy()

@@ -39,6 +39,6 @@ public class EndBar : MonoBehaviour {
         Text text = newDisplay.GetComponentInChildren<Text>();
         text.text = "-" + BucksPenalty.ToString();
         text.color = Color.red;
-        
+        // Debug.Log("Patron destroyed at position " + patronPosition.position);
     }
 }
