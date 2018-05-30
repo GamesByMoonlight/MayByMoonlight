@@ -5,12 +5,22 @@ using UnityEngine;
 public class Cat : MonoBehaviour {
     public float LateralBounceNoise = 5f;
     public Animator Anim;
+    public float SpawnTime = 7f;
+    public float Noise = 2f;
+    public Transform[] SpawnPoints;
 
     float lastTriggerTime;
 
     private void Start()
     {
-        
+        StartCoroutine(Spawn(SpawnTime + Random.Range(-Noise, Noise)));
+    }
+
+    IEnumerator Spawn(float time)
+    {
+        yield return new WaitForSeconds(time);
+        transform.position = SpawnPoints[Random.Range(0,SpawnPoints.Length)].position;
+        StartCoroutine(Spawn(SpawnTime + Random.Range(-Noise, Noise)));
     }
 
     private void OnCollisionExit(Collision collision)
