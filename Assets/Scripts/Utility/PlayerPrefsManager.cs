@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPrefsManager : MonoBehaviour {
 
-	const string SCORE_KEY = "score_";
+    const string MUSIC_VOLUME_KEY = "music_volume";
+    const string SFX_VOLUME_KEY = "sfx_volume";
+    const string SCORE_KEY = "score_";
 	const string PLAYER_KEY = "playerName_";
 
 	private static void ArrangeHighScores()
@@ -73,5 +75,44 @@ public class PlayerPrefsManager : MonoBehaviour {
         ArrangeHighScores();
     }
 
+    public static string GetPlayerName(int index)
+    {
+        return PlayerPrefs.GetString(PLAYER_KEY + index.ToString());
+    }
 
+    public static int GetPlayerScore(int index)
+    {
+        return PlayerPrefs.GetInt(SCORE_KEY + index.ToString());
+    }
+
+
+    public static void SetMusicVolume(float volume)
+    {
+        if (volume >= 0f && volume <= 100f)
+        {
+            PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, volume);
+        }
+        else Debug.LogError("Master volume out of range, set between 0 and 100");
+
+    }
+
+    public static float GetMusicVoume()
+    {
+        return PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY);
+    }
+
+    public static void SetSFXVolume(float volume)
+    {
+        if (volume >= 0f && volume <= 100f)
+        {
+            PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
+        }
+        else Debug.LogError("SFX volume out of range, set between 0 and 100");
+
+    }
+
+    public static float GetSFXVoume()
+    {
+        return PlayerPrefs.GetFloat(SFX_VOLUME_KEY);
+    }
 }
