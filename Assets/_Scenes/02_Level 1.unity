@@ -7107,6 +7107,11 @@ Prefab:
         type: 2}
       propertyPath: GameOverWindowCG
       value: 
+      objectReference: {fileID: 1363957013}
+    - target: {fileID: 114995076690595560, guid: ee6520f00dda4424eb6f04281e00302d,
+        type: 2}
+      propertyPath: GameOverHighScoreCG
+      value: 
       objectReference: {fileID: 1979860180}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6520f00dda4424eb6f04281e00302d, type: 2}
@@ -8379,6 +8384,11 @@ Transform:
   m_Father: {fileID: 439913815}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1363957013 stripped
+CanvasGroup:
+  m_PrefabParentObject: {fileID: 225548959318954958, guid: 93309652d3ecb754b8e6cd53807551dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1435032806}
 --- !u!4 &1367714318 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4914792314128584, guid: a490415526155a246b6cb46066a9531e,
@@ -8968,7 +8978,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114725143208300086, guid: 93309652d3ecb754b8e6cd53807551dd,
+    - target: {fileID: 114962303054225862, guid: 93309652d3ecb754b8e6cd53807551dd,
+        type: 2}
+      propertyPath: scoreDisplay
+      value: 
+      objectReference: {fileID: 1392863896}
+    - target: {fileID: 114658967643219746, guid: 93309652d3ecb754b8e6cd53807551dd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
