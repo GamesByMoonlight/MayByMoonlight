@@ -10,18 +10,29 @@ public class DifficultyRegulator : MonoBehaviour {
 		public int Level = 1;
 
 		[SerializeField]
-		public int SpawnBreak = 3;
+		public float SpawnBreak ;
 
-		public float PatronMultiplier = 0.3f;
+		public float PatronMultiplier ;
 
+		public int MimNumberOfPatrons ;
+
+		//field is only there to be visible in the UI
+		public int _maxNumberOfPatronsForThisWave ;
 		public int MaxNumberOfPatronsForThisWave { 
 			get {
-				return Mathf.RoundToInt( Level * PatronMultiplier );
+				var val = System.Convert.ToInt32( Level * PatronMultiplier );
+				Debug.Log(val);
+				if (val < MimNumberOfPatrons) {
+					val = MimNumberOfPatrons;
+				}
+
+				_maxNumberOfPatronsForThisWave = val;
+				return val;
 			}
 		}
 
-		public int PatronsLeftToSpawn = 1;
-		public float PatronSpawnPausing = 0.4f;
+
+		public int PatronsLeftToSpawn ;
 
 		public float PatronSpeedIncreasePerWave = 0.05f;
 
@@ -41,8 +52,11 @@ public class DifficultyRegulator : MonoBehaviour {
 			return false;
 		}
 
-		public void IncrementLevel() {
-			this.Level +=1;
+		public int NumberOfBucksPerLevel = 500;
+
+		public void IncrementLevel(int currentBucks) {
+			this.Level = currentBucks / NumberOfBucksPerLevel;
+			// this.Level +=1;
 			this.PatronsLeftToSpawn = MaxNumberOfPatronsForThisWave;
 		}
 
@@ -72,12 +86,12 @@ public class DifficultyRegulator : MonoBehaviour {
 	public int StartingBucks = 300;
 
 
-	public Wave CurrentWave;
+	[SerializeField]
+	public Wave CurrentWave = new Wave();
 
 	// Use this for initialization
 	void Start () {
 
-		this.CurrentWave = new Wave();
 		this.Spawners = GameObject.Find("Bars").GetComponentsInChildren<PatronSpawner>();
 		this.ScoreDisplay.Bucks = this.StartingBucks;
 	}
@@ -117,10 +131,16 @@ public class DifficultyRegulator : MonoBehaviour {
 
 	public float SpawnTimer = 0.0f;
 
+	public int DelayBetweenSpawns = 2;
+
+
+	public bool CancelBreakStarted;
+
 	bool ShouldSpawn() {
 		if (this.Break  ) {
-			if (this.CurrentPatrons.Count == 0) {
-				this.CancelBreak();
+			if (this.CurrentPatrons.Count == 0 && !this.CancelBreakStarted) {
+				this.CancelBreakStarted = true;
+				Invoke("CancelBreak", this.CurrentWave.SpawnBreak);
 			}
 			return false;
 		}
@@ -137,7 +157,7 @@ public class DifficultyRegulator : MonoBehaviour {
 		// }
 
 
-		if (SpawnTimer >= 1.5) {
+		if (SpawnTimer >= DelayBetweenSpawns) {
 			this.SpawnTimer = 0;
 			return true;
 		}
@@ -147,11 +167,12 @@ public class DifficultyRegulator : MonoBehaviour {
 	}
 
 	private void StartBreak() {
+		this.CancelBreakStarted = false;
 		this.Break = true;		
 	}
 	private void CancelBreak() {
 		this.Break = false;
-		this.CurrentWave.IncrementLevel();
+		this.CurrentWave.IncrementLevel(this.ScoreDisplay.Bucks);
 		// AdjustSpeed();
 	}
 

@@ -1250,7 +1250,37 @@ Prefab:
     - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
         type: 2}
       propertyPath: CurrentWave.SpawnBreak
-      value: 5
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: StartingBucks
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: CurrentWave.Level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: CurrentWave.MimNumberOfPatrons
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: CurrentWave.PatronSpeedIncreasePerWave
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: CurrentWave.PatronMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065719128682988, guid: 94705c74910107c489f16158abbc7587,
+        type: 2}
+      propertyPath: DelayBetweenSpawns
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94705c74910107c489f16158abbc7587, type: 2}
