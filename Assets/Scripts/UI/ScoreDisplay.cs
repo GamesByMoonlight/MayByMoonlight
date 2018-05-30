@@ -15,6 +15,13 @@ public class ScoreDisplay : MonoBehaviour {
 
     private bool gameOverFlag = false;
 
+    private Text SpeedNumberText ;
+    private Text PatronsText;
+
+    public void Start() {
+
+    }
+
 	public void UpdateScoreboard(DrinkScore drinkScore)
     {
         if (gameOverFlag == false)
@@ -45,6 +52,5 @@ public class ScoreDisplay : MonoBehaviour {
         scoreText.text = Score.ToString();
 
     }
-
   
 }
