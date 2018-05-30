@@ -7,8 +7,12 @@ public class ScoreReporter : MonoBehaviour {
 
     public ScoreDisplay ScoreDisplay;
 
-    private Dictionary<string, object> parameters
-     = new Dictionary<string, object>();
+    private Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+    void Start() {
+        GameEventSystem.Instance.GameEnded.AddListener(GameOverListener);
+        parameters.Add("Score", 0);
+    }
 
     void GameOverListener()
     {
@@ -25,8 +29,4 @@ public class ScoreReporter : MonoBehaviour {
         }
     }
 
-    void Start() {
-        GameEventSystem.Instance.GameEnded.AddListener(GameOverListener);
-        parameters.Add("Score", 0);
-    }
 }
