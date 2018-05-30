@@ -77,6 +77,15 @@ public class PlayerPrefsManager : MonoBehaviour {
         return PlayerPrefs.GetInt(SCORE_KEY + index.ToString());
     }
 
+    public static void ResetHighScores()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            PlayerPrefs.SetInt(SCORE_KEY + i.ToString(), 0);
+        }
+
+        ArrangeHighScores();
+    }
 
     public static void SetMusicVolume(float volume)
     {

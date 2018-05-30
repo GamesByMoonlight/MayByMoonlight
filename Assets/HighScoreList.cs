@@ -9,6 +9,17 @@ public class HighScoreList : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
+        RefreshHighScoreList();
+	}
+	
+    public void ResetHighScores()
+    {
+        PlayerPrefsManager.ResetHighScores();
+        RefreshHighScoreList();
+    }
+
+    private void RefreshHighScoreList()
+    {
         foreach (Transform child in transform)
         {
             texts.Add(child.GetComponent<Text>());
@@ -24,6 +35,6 @@ public class HighScoreList : MonoBehaviour {
             }
             i++;
         }
-	}
-	
+    }
+
 }
