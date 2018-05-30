@@ -81,5 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreDisplay: {fileID: 0}
+  tipPrefab: {fileID: 1418868971265952, guid: 9776ed370b5c0cb479500cd4fd68211f, type: 2}
   ScorePenalty: 0
   BucksPenalty: 150

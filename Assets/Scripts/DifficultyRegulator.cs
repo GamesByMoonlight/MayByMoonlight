@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DifficultyRegulator : MonoBehaviour {
 
 	[System.Serializable]
@@ -101,7 +102,8 @@ public class DifficultyRegulator : MonoBehaviour {
 	void Start () {
 
 		this.Spawners = GameObject.Find("Bars").GetComponentsInChildren<PatronSpawner>();
-		this.ScoreDisplay.Bucks = this.StartingBucks;
+
+        this.ScoreDisplay.Bucks = this.StartingBucks;
 	}
 
 
