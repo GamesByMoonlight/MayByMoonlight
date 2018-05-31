@@ -5,70 +5,115 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPrefsManager : MonoBehaviour {
 
-	const string MUSIC_VOLUME_KEY = "music_volume";
-	const string SFX_VOLUME_KEY = "sfx_volume";
-	const string DIFFICULTY_KEY = "difficulty";
-	const string LEVEL_KEY = "level_unlocked_";   // level_unlocked_1, level_unlocked_2, etc
+    const string MUSIC_VOLUME_KEY = "music_volume";
+    const string SFX_VOLUME_KEY = "sfx_volume";
+    const string SCORE_KEY = "score_";
+	const string PLAYER_KEY = "playerName_";
 
-	public static void SetMusicVolume (float volume)
-	{
-		if (volume >= 0f && volume <= 100f) {
-			PlayerPrefs.SetFloat (MUSIC_VOLUME_KEY, volume);
-		} else Debug.LogError("Master volume out of range, set between 0 and 100");
+	private static void ArrangeHighScores()
+    {
+        int[] scores = new int[5];
+        string[] players = new string[5];
 
-	}
+        for (int i = 0; i < 5; i++)
+        {
+            players[i] = PlayerPrefs.GetString(PLAYER_KEY + i.ToString());
+            scores[i] = PlayerPrefs.GetInt(SCORE_KEY + i.ToString());
+        }
 
-	public static float GetMusicVoume (){
-		return PlayerPrefs.GetFloat (MUSIC_VOLUME_KEY);
-	}
+        int highestScore = 0;
+        int position = 0;
+        int count = 0;
 
-	public static void SetSFXVolume (float volume)
-	{
-		if (volume >= 0f && volume <= 100f) {
-			PlayerPrefs.SetFloat (SFX_VOLUME_KEY, volume);
-		} else Debug.LogError("SFX volume out of range, set between 0 and 100");
+        while (count <= players.Length)
+        {
+            highestScore = 0;
+            position = 0;
 
-	}
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (scores[i] > highestScore)
+                {
+                    highestScore = scores[i];
+                    position = i;
+                }
+            }
 
-	public static float GetSFXVoume (){
-		return PlayerPrefs.GetFloat (SFX_VOLUME_KEY);
-	}
+            PlayerPrefs.SetString(PLAYER_KEY + count.ToString(), players[position]);
+            PlayerPrefs.SetInt(SCORE_KEY + count.ToString(), scores[position]);
 
-	public static void UnlockLevel (int level)
-	{
-		if (level <= SceneManager.sceneCountInBuildSettings - 1) {	
-			PlayerPrefs.SetInt (LEVEL_KEY + level.ToString(), 1);  // use 1 for true
-		} else {
-			Debug.LogError ("Failed to unlock scene, scene index outside of maximum range");
-		}
-	}
+            scores[position] = 0;
 
-	public static bool IsLevelUnlocked (int level)
-	{
-		int levelValue = PlayerPrefs.GetInt (LEVEL_KEY + level.ToString());
-		bool isLevelUnlocked = (levelValue == 1);
+            count++;
+        }
 
-		if (level <= SceneManager.sceneCountInBuildSettings - 1) {
-			Debug.LogError("Checking for possible level outside of maximum range");
-			return false;
-		}
+    }
 
-		return isLevelUnlocked;
-	}
+    public static bool CheckForHighScore(int newScore)
+    {
+        if (newScore > PlayerPrefs.GetInt(SCORE_KEY + "4"))
+        {
+            return true;
+        }
 
-	public static void SetDifficulty (float difficulty)
-	{
-		if (difficulty < 0 || difficulty > 10) {
-			Debug.LogError("Attempted to set difficulty outside of available range, must be from 0 to 10");
-			return;
-		}
+        return false;
+    }
 
-		PlayerPrefs.SetFloat (DIFFICULTY_KEY, difficulty);
-	}
+    public static void AddHighScore(string playerToAdd, int scoreToAdd)
+    {
+        ArrangeHighScores();
+        PlayerPrefs.SetString(PLAYER_KEY + "4", playerToAdd);
+        PlayerPrefs.SetInt(SCORE_KEY + "4", scoreToAdd);
+        ArrangeHighScores();
+    }
 
+    public static string GetPlayerName(int index)
+    {
+        return PlayerPrefs.GetString(PLAYER_KEY + index.ToString());
+    }
 
-	public static float GetDifficulty (){
-		return PlayerPrefs.GetFloat(DIFFICULTY_KEY);
-	}
+    public static int GetPlayerScore(int index)
+    {
+        return PlayerPrefs.GetInt(SCORE_KEY + index.ToString());
+    }
 
+    public static void ResetHighScores()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            PlayerPrefs.SetInt(SCORE_KEY + i.ToString(), 0);
+        }
+
+        ArrangeHighScores();
+    }
+
+    public static void SetMusicVolume(float volume)
+    {
+        if (volume >= 0f && volume <= 100f)
+        {
+            PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, volume);
+        }
+        else Debug.LogError("Master volume out of range, set between 0 and 100");
+
+    }
+
+    public static float GetMusicVoume()
+    {
+        return PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY);
+    }
+
+    public static void SetSFXVolume(float volume)
+    {
+        if (volume >= 0f && volume <= 100f)
+        {
+            PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
+        }
+        else Debug.LogError("SFX volume out of range, set between 0 and 100");
+
+    }
+
+    public static float GetSFXVoume()
+    {
+        return PlayerPrefs.GetFloat(SFX_VOLUME_KEY);
+    }
 }

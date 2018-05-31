@@ -24,11 +24,14 @@ public class ScoreDisplay : MonoBehaviour {
 
 	public void UpdateScoreboard(DrinkScore drinkScore)
     {
-        Bucks += drinkScore.Bucks;
-        Score += drinkScore.Score;
+        if (gameOverFlag == false)
+        {
+            Bucks += drinkScore.Bucks;
+            Score += drinkScore.Score;
 
-        bucksText.text = Bucks.ToString();
-        scoreText.text = Score.ToString();
+            bucksText.text = Bucks.ToString();
+            scoreText.text = Score.ToString();
+        }
     }
 
     public void SubtractBucks(int bucksToSubtract)
