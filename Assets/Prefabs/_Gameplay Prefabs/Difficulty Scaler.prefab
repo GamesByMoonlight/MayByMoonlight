@@ -68,9 +68,9 @@ MonoBehaviour:
     PatronsLeftToSpawn: 0
     PatronSpeedIncreasePerWave: 0.05
     _patronSpeedIncreaseCurrent: 0
-    NumberOfBucksPerLevel: 500
+    NumberOfBucksPerLevel: 175
   SpawnTimer: 0
-  DelayBetweenSpawns: 0
+  DelayBetweenSpawns: 1.2
   CancelBreakStarted: 0
   KillPatronXCoord: 10
   PenaltyDenominator: 10
