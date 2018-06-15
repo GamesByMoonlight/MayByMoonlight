@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/02_Level 1.unity
     guid: dba3c77853e351142a282cf56ccf1f96
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/03_TestEnvironment.unity
     guid: 419ababa1a9a404418e21eefcf9c8821
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Drink Preferences Test Scene.unity
     guid: 14824809b1906aa4398c26739c3092f0
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Keyboard Input Example.unity
     guid: 1eae4f682e0c04ac9a5942b0813ad7e5
   m_configObjects: {}
